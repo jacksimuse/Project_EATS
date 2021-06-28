@@ -1,15 +1,33 @@
 import paho.mqtt.client as mqtt #import the client1
 import time
+import signal
+import os
 
+def handler(sig, frame):
+	print (sig, frame)
+	print("SIGINT Corrupted")
+	for i in range(3):
+		print(i)
+		time.sleep(1)
+	
+
+def func1():
+	print("do func1")
+	signal.signal(signal.SIGINT, handler)
+	for i in range(10):
+		print(i)
+		time.sleep(1)
+def func2():
+	print("do func2")
 
 def on_message(client, userdata, message):
 	topic=str(message.topic)
 	message = str(message.payload.decode("utf-8"))
 	print(topic+message)
 	if message == 'msg1':
-		pass # do something (def func)
+		func1()
 	elif message == 'msg2':
-		pass
+		func2()
 	elif message == 'msg3':
 		pass
 
@@ -25,11 +43,10 @@ client.subscribe(pub_topic)
 # client.on_connect = on_connect
 client.on_message = on_message
 
-if __name__ == '__main__':
-	try:
-		while(1):
-			client.loop_forever()
-	except KeyboardInterrupt:
-		client.disconnect()
-		client.loop_stop()
+try:
+	while(1):
+		client.loop_forever()
+except KeyboardInterrupt:
+	client.disconnect()
+	client.loop_stop()
 
