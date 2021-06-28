@@ -1,15 +1,27 @@
-﻿using M2Mqtt;
+﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace DeviceSubApp
 {
     public partial class FrmMain : Form
     {
         MqttClient client;
-        readonly string ip = "210.119.12.96"; // 서버 IP
+        string subscriptionTopic = "TOMATO/";
+        string message = string.Empty;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -18,11 +30,14 @@ namespace DeviceSubApp
 
         private void InitializeAllData()
         {
-            // client 객체 생성
+
+            IPAddress brokerAddress = IPAddress.Parse("192.168.0.5");
+
+            // client 연결
             try
             {
-                IPAddress brokerAddress = IPAddress.Parse(ip);
                 client = new MqttClient(brokerAddress);
+
             }
             catch (Exception ex)
             {
@@ -49,15 +64,70 @@ namespace DeviceSubApp
             LblAlert.Text = "DISCONNECTED!!";
         }
 
-        private void BtnSend_Click(object sender, EventArgs e)
+        private void BtnSend1_Click(object sender, EventArgs e)
         {
-            string subscriptionTopic = "TOMATO/";
+            message = "0";
             // Publish
             client.Publish(subscriptionTopic, // topic
-                              Encoding.UTF8.GetBytes(TxtMsg.Text), // message body
+                              Encoding.UTF8.GetBytes(message), // message body
                               0, // QoS level
                               true); // retained
-            LblAlert.Text = "SUCCESS!!";
+            LblAlert.Text = "0도 회전";
+        }
+
+        private void BtnSend2_Click(object sender, EventArgs e)
+        {
+            message = "90";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "90도 회전";
+        }
+
+        private void BtnSend3_Click(object sender, EventArgs e)
+        {
+            message = "180";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "180도 회전";
+        }
+
+        private void BtnRotate_Click(object sender, EventArgs e)
+        {
+            message = "r";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "회전";
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            message = "s";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "회전 시작";
+        }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            message = "p";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "회전 끝";
         }
     }
 }
