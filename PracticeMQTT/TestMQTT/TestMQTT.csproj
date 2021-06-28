@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="M2Mqtt.Net, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
+      <HintPath>packages\M2Mqtt.4.3.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
     </Reference>
     <Reference Include="M2MqttClientDotnetCore1.0.1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\M2MqttClientDotnetCore.1.0.1\lib\netstandard1.3\M2MqttClientDotnetCore1.0.1.dll</HintPath>

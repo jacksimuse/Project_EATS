@@ -29,31 +29,16 @@ namespace DeviceSubApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtMsg = new System.Windows.Forms.TextBox();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.BtnDisconnect = new System.Windows.Forms.Button();
-            this.BtnSend = new System.Windows.Forms.Button();
+            this.BtnSend1 = new System.Windows.Forms.Button();
             this.LblAlert = new System.Windows.Forms.Label();
+            this.BtnSend2 = new System.Windows.Forms.Button();
+            this.BtnSend3 = new System.Windows.Forms.Button();
+            this.BtnRotate = new System.Windows.Forms.Button();
+            this.BtnStart = new System.Windows.Forms.Button();
+            this.BtnStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("나눔고딕", 15F);
-            this.label1.Location = new System.Drawing.Point(50, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Message";
-            // 
-            // TxtMsg
-            // 
-            this.TxtMsg.Font = new System.Drawing.Font("나눔고딕", 15F);
-            this.TxtMsg.Location = new System.Drawing.Point(163, 58);
-            this.TxtMsg.Name = "TxtMsg";
-            this.TxtMsg.Size = new System.Drawing.Size(376, 30);
-            this.TxtMsg.TabIndex = 3;
             // 
             // BtnConnect
             // 
@@ -69,7 +54,7 @@ namespace DeviceSubApp
             // BtnDisconnect
             // 
             this.BtnDisconnect.Font = new System.Drawing.Font("나눔고딕", 15F);
-            this.BtnDisconnect.Location = new System.Drawing.Point(414, 221);
+            this.BtnDisconnect.Location = new System.Drawing.Point(284, 221);
             this.BtnDisconnect.Name = "BtnDisconnect";
             this.BtnDisconnect.Size = new System.Drawing.Size(124, 29);
             this.BtnDisconnect.TabIndex = 7;
@@ -77,37 +62,96 @@ namespace DeviceSubApp
             this.BtnDisconnect.UseVisualStyleBackColor = true;
             this.BtnDisconnect.Click += new System.EventHandler(this.BtnDisconnect_Click);
             // 
-            // BtnSend
+            // BtnSend1
             // 
-            this.BtnSend.Font = new System.Drawing.Font("나눔고딕", 15F);
-            this.BtnSend.Location = new System.Drawing.Point(284, 221);
-            this.BtnSend.Name = "BtnSend";
-            this.BtnSend.Size = new System.Drawing.Size(124, 29);
-            this.BtnSend.TabIndex = 8;
-            this.BtnSend.Text = "Send";
-            this.BtnSend.UseVisualStyleBackColor = true;
-            this.BtnSend.Click += new System.EventHandler(this.BtnSend_Click);
+            this.BtnSend1.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnSend1.Location = new System.Drawing.Point(59, 64);
+            this.BtnSend1.Name = "BtnSend1";
+            this.BtnSend1.Size = new System.Drawing.Size(142, 47);
+            this.BtnSend1.TabIndex = 8;
+            this.BtnSend1.Text = "0";
+            this.BtnSend1.UseVisualStyleBackColor = true;
+            this.BtnSend1.Click += new System.EventHandler(this.BtnSend1_Click);
             // 
             // LblAlert
             // 
             this.LblAlert.AutoSize = true;
             this.LblAlert.Font = new System.Drawing.Font("나눔고딕", 15F);
-            this.LblAlert.Location = new System.Drawing.Point(159, 100);
+            this.LblAlert.Location = new System.Drawing.Point(239, 19);
             this.LblAlert.Name = "LblAlert";
-            this.LblAlert.Size = new System.Drawing.Size(0, 23);
+            this.LblAlert.Size = new System.Drawing.Size(89, 23);
             this.LblAlert.TabIndex = 10;
+            this.LblAlert.Text = "message";
+            // 
+            // BtnSend2
+            // 
+            this.BtnSend2.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnSend2.Location = new System.Drawing.Point(212, 64);
+            this.BtnSend2.Name = "BtnSend2";
+            this.BtnSend2.Size = new System.Drawing.Size(142, 47);
+            this.BtnSend2.TabIndex = 11;
+            this.BtnSend2.Text = "90";
+            this.BtnSend2.UseVisualStyleBackColor = true;
+            this.BtnSend2.Click += new System.EventHandler(this.BtnSend2_Click);
+            // 
+            // BtnSend3
+            // 
+            this.BtnSend3.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnSend3.Location = new System.Drawing.Point(365, 64);
+            this.BtnSend3.Name = "BtnSend3";
+            this.BtnSend3.Size = new System.Drawing.Size(142, 47);
+            this.BtnSend3.TabIndex = 12;
+            this.BtnSend3.Text = "180";
+            this.BtnSend3.UseVisualStyleBackColor = true;
+            this.BtnSend3.Click += new System.EventHandler(this.BtnSend3_Click);
+            // 
+            // BtnRotate
+            // 
+            this.BtnRotate.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnRotate.Location = new System.Drawing.Point(59, 117);
+            this.BtnRotate.Name = "BtnRotate";
+            this.BtnRotate.Size = new System.Drawing.Size(142, 47);
+            this.BtnRotate.TabIndex = 13;
+            this.BtnRotate.Text = "Rotate";
+            this.BtnRotate.UseVisualStyleBackColor = true;
+            this.BtnRotate.Click += new System.EventHandler(this.BtnRotate_Click);
+            // 
+            // BtnStart
+            // 
+            this.BtnStart.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnStart.Location = new System.Drawing.Point(212, 117);
+            this.BtnStart.Name = "BtnStart";
+            this.BtnStart.Size = new System.Drawing.Size(142, 47);
+            this.BtnStart.TabIndex = 14;
+            this.BtnStart.Text = "Start";
+            this.BtnStart.UseVisualStyleBackColor = true;
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
+            // BtnStop
+            // 
+            this.BtnStop.Font = new System.Drawing.Font("나눔고딕", 15F);
+            this.BtnStop.Location = new System.Drawing.Point(365, 117);
+            this.BtnStop.Name = "BtnStop";
+            this.BtnStop.Size = new System.Drawing.Size(142, 47);
+            this.BtnStop.TabIndex = 15;
+            this.BtnStop.Text = "Stop";
+            this.BtnStop.UseVisualStyleBackColor = true;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 272);
+            this.Controls.Add(this.BtnStop);
+            this.Controls.Add(this.BtnStart);
+            this.Controls.Add(this.BtnRotate);
+            this.Controls.Add(this.BtnSend3);
+            this.Controls.Add(this.BtnSend2);
             this.Controls.Add(this.LblAlert);
-            this.Controls.Add(this.BtnSend);
+            this.Controls.Add(this.BtnSend1);
             this.Controls.Add(this.BtnDisconnect);
             this.Controls.Add(this.BtnConnect);
-            this.Controls.Add(this.TxtMsg);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("나눔고딕", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -119,13 +163,15 @@ namespace DeviceSubApp
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtMsg;
         private System.Windows.Forms.Button BtnConnect;
         private System.Windows.Forms.Button BtnDisconnect;
-        private System.Windows.Forms.Button BtnSend;
+        private System.Windows.Forms.Button BtnSend1;
         private System.Windows.Forms.Label LblAlert;
+        private System.Windows.Forms.Button BtnSend2;
+        private System.Windows.Forms.Button BtnSend3;
+        private System.Windows.Forms.Button BtnRotate;
+        private System.Windows.Forms.Button BtnStart;
+        private System.Windows.Forms.Button BtnStop;
     }
 }
 
