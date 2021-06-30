@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,9 +30,9 @@ namespace DeviceSubApp
 
         private void InitializeAllData()
         {
-
-            IPAddress brokerAddress = IPAddress.Parse("192.168.0.5");
-
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
+            BtnStop.Enabled = false;
+            BtnPause.Enabled = false;
             // client 연결
             try
             {
@@ -97,19 +97,17 @@ namespace DeviceSubApp
             LblAlert.Text = "180도 회전";
         }
 
-        private void BtnRotate_Click(object sender, EventArgs e)
-        {
-            message = "r";
-            // Publish
-            client.Publish(subscriptionTopic, // topic
-                              Encoding.UTF8.GetBytes(message), // message body
-                              0, // QoS level
-                              true); // retained
-            LblAlert.Text = "회전";
-        }
-
         private void BtnStart_Click(object sender, EventArgs e)
         {
+
+            BtnStart.Enabled = false;
+            BtnSend1.Enabled = false;
+            BtnSend2.Enabled = false;
+            BtnSend3.Enabled = false;
+
+            BtnStop.Enabled = true;
+            BtnPause.Enabled = true;
+
             message = "s";
             // Publish
             client.Publish(subscriptionTopic, // topic
@@ -121,6 +119,14 @@ namespace DeviceSubApp
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
+            BtnStop.Enabled = false;
+            BtnPause.Enabled = false;
+
+            BtnStart.Enabled = true;
+            BtnSend1.Enabled = true;
+            BtnSend2.Enabled = true;
+            BtnSend3.Enabled = true;
+
             message = "p";
             // Publish
             client.Publish(subscriptionTopic, // topic
@@ -128,6 +134,22 @@ namespace DeviceSubApp
                               0, // QoS level
                               true); // retained
             LblAlert.Text = "회전 끝";
+        }
+
+        private void BtnPause_Click(object sender, EventArgs e)
+        {
+            message = "r";
+            // Publish
+            client.Publish(subscriptionTopic, // topic
+                              Encoding.UTF8.GetBytes(message), // message body
+                              0, // QoS level
+                              true); // retained
+            LblAlert.Text = "3초 간 일시정지";
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            client.Disconnect();
         }
     }
 }
