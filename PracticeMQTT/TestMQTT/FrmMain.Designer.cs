@@ -157,6 +157,7 @@ namespace DeviceSubApp
             this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.Text = "TestPublisher";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
