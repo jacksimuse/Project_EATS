@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using EntityInsertTest.Model;
 
-namespace EntityTest
+namespace EntitySelectTest
 {
     public partial class Form1 : Form
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace EntityTest
+namespace EntitySelectTest
 {
     partial class Form1
     {
