@@ -69,7 +69,7 @@ namespace DeviceSubApp
             this.BtnSend1.Name = "BtnSend1";
             this.BtnSend1.Size = new System.Drawing.Size(142, 47);
             this.BtnSend1.TabIndex = 8;
-            this.BtnSend1.Text = "0";
+            this.BtnSend1.Text = "red";
             this.BtnSend1.UseVisualStyleBackColor = true;
             this.BtnSend1.Click += new System.EventHandler(this.BtnSend1_Click);
             // 
@@ -90,7 +90,7 @@ namespace DeviceSubApp
             this.BtnSend2.Name = "BtnSend2";
             this.BtnSend2.Size = new System.Drawing.Size(142, 47);
             this.BtnSend2.TabIndex = 11;
-            this.BtnSend2.Text = "90";
+            this.BtnSend2.Text = "yellow";
             this.BtnSend2.UseVisualStyleBackColor = true;
             this.BtnSend2.Click += new System.EventHandler(this.BtnSend2_Click);
             // 
@@ -101,7 +101,7 @@ namespace DeviceSubApp
             this.BtnSend3.Name = "BtnSend3";
             this.BtnSend3.Size = new System.Drawing.Size(142, 47);
             this.BtnSend3.TabIndex = 12;
-            this.BtnSend3.Text = "180";
+            this.BtnSend3.Text = "green";
             this.BtnSend3.UseVisualStyleBackColor = true;
             this.BtnSend3.Click += new System.EventHandler(this.BtnSend3_Click);
             // 

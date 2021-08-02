@@ -9,7 +9,8 @@ namespace DeviceSubApp
     public partial class FrmMain : Form
     {
         MqttClient client;
-        string subscriptionTopic = "MOTOR/TEST/";
+        //string subscriptionTopic = "MOTOR/TEST/";
+        string subscriptionTopic = "TRAFFICLIGHT/TEST/";
         string message = string.Empty;
 
         public FrmMain()
@@ -66,28 +67,28 @@ namespace DeviceSubApp
         private void BtnSend1_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "0";
+            message = "r";
             // Publish
             Publish(message);
-            LblAlert.Text = "0도 회전";
+            LblAlert.Text = "빨간불";
         }
 
         private void BtnSend2_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "90";
+            message = "y";
             // Publish
             Publish(message);
-            LblAlert.Text = "90도 회전";
+            LblAlert.Text = "노란불";
         }
 
         private void BtnSend3_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "180";
+            message = "g";
             // Publish
             Publish(message);
-            LblAlert.Text = "180도 회전";
+            LblAlert.Text = "초록불";
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -104,7 +105,7 @@ namespace DeviceSubApp
             message = "s";
             // Publish
             Publish(message);
-            LblAlert.Text = "회전 시작";
+            LblAlert.Text = "루프 시작";
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -121,7 +122,7 @@ namespace DeviceSubApp
             message = "t";
             // Publish
             Publish(message);
-            LblAlert.Text = "회전 끝";
+            LblAlert.Text = "루프 끝";
         }
 
         private void BtnPause_Click(object sender, EventArgs e)
