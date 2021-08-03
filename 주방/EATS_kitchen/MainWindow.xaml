@@ -8,52 +8,66 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:EATS_kitchen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1000">
+        Title="MainWindow" Height="600" Width="800" Icon="kitchen.ico" ResizeMode="NoResize"
+        Loaded="MetroWindow_Loaded">
     <DockPanel Background="White">
         <Grid DockPanel.Dock="Top" Height="70">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="179"/>
-                <ColumnDefinition Width="234*"/>
-                <ColumnDefinition Width="229*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="46*"/>
+                <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
             <Label Content="주방" 
-               FontSize="50"/>
+               FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Margin="20,0" Width="110"/>
             <Button x:Name="BtnOrder" Grid.Column="1"
-                    Content="주문현황" FontSize="25" 
+                    Content="주문현황" FontSize="23" 
                     Foreground="White" Background="LightBlue"
-                    Margin="5, 10"
+                    Margin="5, 5"
                     Click="BtnOrder_Click">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" Margin="15, 0" VerticalAlignment="Center"/>
-                            <iconPacks:PackIconVaadinIcons Kind="Cutlery" Width="20" Height="30" Margin="0, 0, 5, 0"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="LightBlue" RadiusX="20" RadiusY="20" Stroke="Blue"/>
+                            <Label Content="{TemplateBinding Content}"
+                                   Foreground="White"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="5, 0"/>
+                            <iconPacks:PackIconVaadinIcons Kind="Cutlery" Width="20" Height="30" Margin="0, 5, 10, 0"
+                                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                
             </Button>
             <Button x:Name="BtnActivation" Grid.Column="2"
-                    Content="활성/비활성" FontSize="30" 
+                    Content="활성/비활성" FontSize="18" 
                     Foreground="White" Background="RoyalBlue"
-                    Margin="5, 10"
+                    Margin="5,5"
                     Click="BtnActivation_Click">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Center" />
-                            <iconPacks:PackIconUnicons Kind="BoltAlt" Width="20" Height="40" />
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="RoyalBlue" RadiusX="20" RadiusY="20" Stroke="Blue"/>
+                            <Label Content="{TemplateBinding Content}"
+                                   Foreground="White"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="5, 0"/>
+                            <iconPacks:PackIconUnicons Kind="BoltAlt" Width="20" Height="30" Margin="0, 1, 6, 0"
+                                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
-            <Label Content="현재시간" Grid.Column="5"
-                   FontSize="40"/>
+            <Label x:Name="LblDatetime" Content="현재시간 HH:mm:ss" Grid.Column="4"
+                   FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Height="38" Margin="53,17,18,15" Width="229"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                
+
             </Grid.ColumnDefinitions>
             <Frame x:Name="ActiveControl" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" />
         </Grid>
