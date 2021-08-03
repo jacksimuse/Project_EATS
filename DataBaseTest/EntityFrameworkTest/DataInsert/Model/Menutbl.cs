@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkTest.Model
+namespace DataInsert.Model
 {
     using System;
     using System.Collections.Generic;

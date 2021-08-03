@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkTest.Model
+namespace DataInsert.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Menutbl
+    public partial class sysdiagrams
     {
-        public int idx { get; set; }
-        public string MenuCode { get; set; }
-        public string MenuName { get; set; }
-        public int Price { get; set; }
-        public bool Activation { get; set; }
-        public Nullable<System.DateTime> RegisterDate { get; set; }
-        public string Description { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
