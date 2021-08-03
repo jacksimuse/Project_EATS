@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkTest", "EntityFrameworkTest.csproj", "{035A2995-1C81-4B9B-AD1B-02106AB91C0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataView", "..\DataView\DataView.csproj", "{2829FC7A-CCD8-4094-8643-52E13772F82D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInsert", "DataInsert\DataInsert.csproj", "{8EDCAC2A-9C1D-442E-B64D-033D20F52BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{035A2995-1C81-4B9B-AD1B-02106AB91C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{035A2995-1C81-4B9B-AD1B-02106AB91C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{035A2995-1C81-4B9B-AD1B-02106AB91C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{035A2995-1C81-4B9B-AD1B-02106AB91C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2829FC7A-CCD8-4094-8643-52E13772F82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2829FC7A-CCD8-4094-8643-52E13772F82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2829FC7A-CCD8-4094-8643-52E13772F82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2829FC7A-CCD8-4094-8643-52E13772F82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDCAC2A-9C1D-442E-B64D-033D20F52BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDCAC2A-9C1D-442E-B64D-033D20F52BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDCAC2A-9C1D-442E-B64D-033D20F52BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDCAC2A-9C1D-442E-B64D-033D20F52BC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

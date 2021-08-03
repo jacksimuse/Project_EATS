@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFrameworkTest.Model
+namespace DataView.Model
 {
     using System;
     using System.Collections.Generic;
