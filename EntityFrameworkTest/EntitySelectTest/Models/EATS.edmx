@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Menutbl">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuCode" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Activation" Type="bit" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderDetailtbl">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCode" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="MenuCode" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="OrderComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Ordertbl">
+          <Key>
+            <PropertyRef Name="OrderCode" />
+          </Key>
+          <Property Name="OrderCode" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="OrderTime" Type="datetime" Nullable="false" />
+          <Property Name="CustomerNum" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TblNum" Type="int" Nullable="false" />
+          <Property Name="OrderPrice" Type="int" Nullable="false" />
+          <Property Name="OrderRemark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Usertbl">
+          <Key>
+            <PropertyRef Name="Idx" />
+          </Key>
+          <Property Name="Idx" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <!--생성 중 오류 발생:
+경고 6035: 관계의 기본 측에 있는 테이블의 키 일부가 아닌 열이 'FK_OrderDetailtbl_Menutbl' 관계에 있습니다. 관계가 제외되었습니다.
+        <Association Name="FK_OrderDetailtbl_Menutbl" />-->
+        <Association Name="FK_OrderDetailtbl_Ordertbl">
+          <End Role="Ordertbl" Type="Self.Ordertbl" Multiplicity="1" />
+          <End Role="OrderDetailtbl" Type="Self.OrderDetailtbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordertbl">
+              <PropertyRef Name="OrderCode" />
+            </Principal>
+            <Dependent Role="OrderDetailtbl">
+              <PropertyRef Name="OrderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EATSModelStoreContainer">
+          <EntitySet Name="Menutbl" EntityType="Self.Menutbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetailtbl" EntityType="Self.OrderDetailtbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordertbl" EntityType="Self.Ordertbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usertbl" EntityType="Self.Usertbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OrderDetailtbl_Ordertbl" Association="Self.FK_OrderDetailtbl_Ordertbl">
+            <End Role="Ordertbl" EntitySet="Ordertbl" />
+            <End Role="OrderDetailtbl" EntitySet="OrderDetailtbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Menutbl">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Activation" Type="Boolean" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OrderDetailtbl">
+          <Key>
+            <PropertyRef Name="idx" />
+          </Key>
+          <Property Name="idx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCode" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MenuCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="OrderComplete" Type="Boolean" />
+          <NavigationProperty Name="Ordertbl" Relationship="Self.FK_OrderDetailtbl_Ordertbl" FromRole="OrderDetailtbl" ToRole="Ordertbl" />
+        </EntityType>
+        <EntityType Name="Ordertbl">
+          <Key>
+            <PropertyRef Name="OrderCode" />
+          </Key>
+          <Property Name="OrderCode" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerNum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TblNum" Type="Int32" Nullable="false" />
+          <Property Name="OrderPrice" Type="Int32" Nullable="false" />
+          <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetailtbl" Relationship="Self.FK_OrderDetailtbl_Ordertbl" FromRole="Ordertbl" ToRole="OrderDetailtbl" />
+        </EntityType>
+        <EntityType Name="Usertbl">
+          <Key>
+            <PropertyRef Name="Idx" />
+          </Key>
+          <Property Name="Idx" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_OrderDetailtbl_Ordertbl">
+          <End Role="Ordertbl" Type="Self.Ordertbl" Multiplicity="1" />
+          <End Role="OrderDetailtbl" Type="Self.OrderDetailtbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ordertbl">
+              <PropertyRef Name="OrderCode" />
+            </Principal>
+            <Dependent Role="OrderDetailtbl">
+              <PropertyRef Name="OrderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EATSEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Menutbl" EntityType="Self.Menutbl" />
+          <EntitySet Name="OrderDetailtbl" EntityType="Self.OrderDetailtbl" />
+          <EntitySet Name="Ordertbl" EntityType="Self.Ordertbl" />
+          <EntitySet Name="Usertbl" EntityType="Self.Usertbl" />
+          <AssociationSet Name="FK_OrderDetailtbl_Ordertbl" Association="Self.FK_OrderDetailtbl_Ordertbl">
+            <End Role="Ordertbl" EntitySet="Ordertbl" />
+            <End Role="OrderDetailtbl" EntitySet="OrderDetailtbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EATSModelStoreContainer" CdmEntityContainer="EATSEntities2">
+          <EntitySetMapping Name="Menutbl">
+            <EntityTypeMapping TypeName="EATSModel.Menutbl">
+              <MappingFragment StoreEntitySet="Menutbl">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Activation" ColumnName="Activation" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetailtbl">
+            <EntityTypeMapping TypeName="EATSModel.OrderDetailtbl">
+              <MappingFragment StoreEntitySet="OrderDetailtbl">
+                <ScalarProperty Name="idx" ColumnName="idx" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="MenuCode" ColumnName="MenuCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OrderComplete" ColumnName="OrderComplete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordertbl">
+            <EntityTypeMapping TypeName="EATSModel.Ordertbl">
+              <MappingFragment StoreEntitySet="Ordertbl">
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
+                <ScalarProperty Name="TblNum" ColumnName="TblNum" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usertbl">
+            <EntityTypeMapping TypeName="EATSModel.Usertbl">
+              <MappingFragment StoreEntitySet="Usertbl">
+                <ScalarProperty Name="Idx" ColumnName="Idx" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
