@@ -52,7 +52,7 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-                </Style>
+        </Style>
 
 
             </ListBox.ItemContainerStyle>
@@ -64,17 +64,18 @@
 
 
         <!--메뉴-->
-
+        
         <Grid Grid.Row="1" Background="Beige" Margin="0, 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="67*"/>
 
                 <RowDefinition Height="69*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition/>
                 <ColumnDefinition Width="225"/>
-            </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
 
             <Button x:Name="BtnMenu2" Grid.Column="0" Grid.Row="0" Click="BtnMenu2_Click_1" >
                 <ContentControl>
@@ -94,15 +95,17 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Background="LightGoldenrodYellow">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                     <ColumnDefinition/>
 
-                </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="0" Grid.Column="0">
                     <Label Content="메뉴" Background="LightGoldenrodYellow"
@@ -148,12 +151,12 @@
             <Grid Grid.Column="1">
                 <Button x:Name="BtnOK" Content="결제하기" FontSize="16" FontWeight="Black" 
                         Margin="10" Background="Red" Foreground="White"></Button>
-            </Grid>
-
-
-
-
         </Grid>
+
+
+
+
+    </Grid>
         <ScrollViewer HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="450" Grid.Row="1"/>
         <Button  HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="47" Background="#00DDDDDD"  />
         <Button Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="47" Background="#00DDDDDD" Margin="74,0,0,0"/>

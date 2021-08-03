@@ -78,15 +78,15 @@ namespace kiosk1.View.Select
                 Pay.payView pay1 = new Pay.payView(Txtmenu.Text.ToString(), int.Parse(NudAmount.Value.ToString()), Txtprice.Text.ToString());
                 
                 NavigationService.Navigate(pay1);
-            }
         }
+    }
 
         private void BtnMenu2_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoForward)
             {
                 NavigationService.GoForward();
-            }
+}
             else
             {
                 Select.Menu2 menu2 = new Select.Menu2();

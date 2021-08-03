@@ -49,6 +49,18 @@
                 </Button.ContentTemplate>
             </Button>
 
+            <Button x:Name="Btnorder" Grid.Column="1" 
+                    Content="주문하기" Margin="10"
+                    Background="LightGray" Foreground="White" FontSize="30">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
+                            <iconpacks:Material Kind="OrderNumericAscending" Width="20" Height="40"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
 
             <Grid Grid.Column="1"  >
                 <Grid.RowDefinitions>
@@ -64,13 +76,13 @@
                         <Border BorderBrush="Black" BorderThickness="1"/>
                     </Border>
 
-                </Grid>
+        </Grid>
 
 
                 <Grid Grid.Row="1" Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
