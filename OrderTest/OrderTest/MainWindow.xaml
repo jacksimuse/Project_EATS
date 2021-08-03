@@ -6,8 +6,154 @@
         xmlns:local="clr-namespace:OrderTest"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800" Loaded="MetroWindow_Loaded">
+
+    <Grid Margin="10" Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="210"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--제목 시작 1,0-->
+        <Label Grid.Column="1" Grid.Row="0" Content="주문 테스트" FontSize="30" FontWeight="bold" Grid.ColumnSpan="2" />
+        <!--제목 끝 1,0-->
+
+        <!--메인 주문 시작 1,1-->
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="인원수 선택" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="테이블 선택" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="메인 메뉴" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="3" Content="사이드 메뉴" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="4" Content="음료 선택" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Column="0" Grid.Row="5" Content="결제 수단" FontSize="18" FontWeight="bold" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                <Button Width="70" Content="1" FontSize="20" Margin="5" Name="btnCustomer1" Click="btnCustomer1_Click"/>
+                <Button Width="70" Content="2" FontSize="20" Margin="5" Name="btnCustomer2" Click="btnCustomer2_Click"/>
+                <Button Width="70" Content="3" FontSize="20" Margin="5" Name="btnCustomer3" Click="btnCustomer3_Click"/>
+                <Button Width="70" Content="4" FontSize="20" Margin="5" Name="btnCustomer4" Click="btnCustomer4_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <Button Width="70" Content="1" FontSize="20" Margin="5" Name="btnTable1" Click="btnTable1_Click"/>
+                <Button Width="70" Content="2" FontSize="20" Margin="5" Name="btnTable2" Click="btnTable2_Click"/>
+                <Button Width="70" Content="3" FontSize="20" Margin="5" Name="btnTable3" Click="btnTable3_Click"/>
+                <Button Width="70" Content="4" FontSize="20" Margin="5" Name="btnTable4" Click="btnTable4_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                <ComboBox Margin="5" Width="200" Name="cboMainMenu" 
+                          SelectionChanged="cboMainMenu_SelectionChanged"
+                          Text="메인 메뉴 선택" IsEditable="True" IsReadOnly="True"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="center"/>
+                <mah:NumericUpDown Width="120" Background="White" 
+                                   Margin="5" Name="numMainMenu" Minimum="0" 
+                                   ValueChanged="numMainMenu_ValueChanged"/>
+
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                <ComboBox Margin="5" Width="200" Name="cboSideMenu" 
+                          SelectionChanged="cboSideMenu_SelectionChanged"
+                          Text="사이드 메뉴 선택" IsEditable="True" IsReadOnly="True"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="center"/>
+                <mah:NumericUpDown Width="120" Background="White" 
+                                   Margin="5" Name="numSideMenu" Minimum="0"
+                                   ValueChanged="numSideMenu_ValueChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
+                <ComboBox Margin="5" Width="200" Name="cboBeverage" 
+                          SelectionChanged="cboBeverage_SelectionChanged"
+                          Text="음료 선택" IsEditable="True" IsReadOnly="True"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="center"/>
+                <mah:NumericUpDown Width="120" Background="White" Margin="5" 
+                                   Name="numBeverage" Minimum="0"
+                                   ValueChanged="numBeverage_ValueChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal">
+                <Button Width="70" Content="현금" FontSize="20" Margin="5"/>
+                <Button Width="70" Content="카드" FontSize="20" Margin="5"/>
+                <Button Width="70" Content="페이" FontSize="20" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        <!--메인 주문 끝 1,1-->
         
+        <!--가격 표시 시작 1,2-->
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Label Content="총 가격 : " FontSize="20" />
+            <Label FontSize="20" Name="lblTotalPay"/>
+        </StackPanel>
+        
+        <!--가격 표시 끝 1,2-->
+        
+        
+        <!--주문 내역 확인 시작 2,1-->
+        <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="인원수 표시" FontSize="20" FontWeight="Bold" Name="lblCustomerNum"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="1" Content="테이블 표시" FontSize="20" FontWeight="Bold" Name="lblTableNum" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="2" Content="메인 메뉴 표시" FontSize="20" FontWeight="Bold" Name="lblMainMenu"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="3" Content="사이드 메뉴 표시" FontSize="20" FontWeight="Bold" Name="lblSideMenu"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="4" Content="음료 표시" FontSize="20" FontWeight="Bold" Name="lblBeverage"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="5" Content="결제수단 표시" FontSize="20" FontWeight="Bold" Name="lblPayment"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Grid>
+        <!--주문 내역 확인 끝 2,1-->
+
+        <!--주문 버튼 시작 2,2-->
+        <Button Grid.Column="3" Grid.Row="2" Content="주문 완료" FontSize="30" 
+                Foreground="WhiteSmoke" Background="BlueViolet"
+                Margin="10" Name="btnOrder" Click="btnOrder_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!--주문 버튼 끝 2,2-->
     </Grid>
+
+
+
 </mah:MetroWindow>
