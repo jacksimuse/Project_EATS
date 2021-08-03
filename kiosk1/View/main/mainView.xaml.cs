@@ -109,7 +109,7 @@ namespace kiosk1.View.main
                 }
 
                 else if (!tableInUse.OrderComplete)
-                {
+        {
                     return int.Parse(tableInUse.OrderCode.Substring(8));
                 }
 

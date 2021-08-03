@@ -1,0 +1,31 @@
+﻿<mah:MetroWindow 
+    x:Class="Test1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:Test1"
+        mc:Ignorable="d"
+        Title="관리자 로그인" Height="327" Width="334"  Background="LightPink">
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconpacks:PackIconBoxIcons Kind="LogosApple" Foreground="Black"/>
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+
+    <Grid Margin="20" Background="White">
+
+        <StackPanel Margin="20">
+            <Label Content="LOGIN" FontSize="20" HorizontalAlignment="Center" />
+            <Label Content="아이디" FontSize="16" />
+            <TextBox x:Name="TxtUserId" FontSize="14" Height="25" KeyDown="TxtUserId_KeyDown"/>
+            <Label Content="비밀번호" FontSize="16" />
+            <PasswordBox x:Name="TxtUserPassword" FontSize="14" Height="25" KeyDown="TxtUserPassword_KeyDown"/>
+            <Button x:Name="BtnLogin" Content="로그인" FontSize="16" Height="30" Width="100" Margin="20" />
+
+        </StackPanel>
+
+    </Grid>
+</mah:MetroWindow>

@@ -106,8 +106,8 @@ namespace kiosk1.View.Pay
             {
                 MessageBox.Show(ex.Message);
                 
-            }
         }
+    }
 
         private void MessagePublish(string orderCode)
         {
