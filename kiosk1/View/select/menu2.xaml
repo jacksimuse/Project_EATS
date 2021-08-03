@@ -35,14 +35,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" 
-                    Margin="10, 10" Content="고기" ></Button>
-            <Button Grid.Row="1" Grid.Column="0"
-                    Margin="10, 10" Content="식사류"></Button>
-            <Button Grid.Row="2" Grid.Column="0"
-                    Margin="10, 10" Content="음료" ></Button>
-            <Button Grid.Column="0" Grid.Row="3"
-                    Margin="10, 10" Content="다른부위" ></Button>
+            
         </Grid>
 
         <Grid Grid.Column="1" Background="White" >
@@ -62,8 +55,6 @@
 
 
             </Grid.RowDefinitions>
-
-
 
 
             <Image x:Name="Imgmeat" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="D:\GitRepository\팀프로젝트\kiosk1\soup.png" Margin="-5,-10,5,10">

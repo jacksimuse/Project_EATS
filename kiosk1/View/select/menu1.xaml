@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:kiosk1.View.select"
+      xmlns:local="clr-namespace:kiosk1.View.select" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
       Title="menu1">
@@ -24,9 +24,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="22*"/>
-            <RowDefinition Height= "69*"/>
+            <RowDefinition Height= "74*"/>
             <RowDefinition Height="60*"/>
-            <RowDefinition Height="74*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
 
@@ -70,10 +70,99 @@
             </ListBox.ItemContainerStyle>
             <ListBoxItem>고기</ListBoxItem>
 
+
             <ListBoxItem>식사류</ListBoxItem>
             <ListBoxItem>음료</ListBoxItem>
-            <ListBoxItem>디저트</ListBoxItem>
+
         </ListBox>
+
+        <Grid Grid.Row="1" Background="Beige">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="67*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="10" Background="White">
+                <Image Grid.RowSpan="2" Source="D:\GitRepository\Project_EATS\kiosk1\meat.jpg"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="LightGoldenrodYellow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Label Content="메뉴" Background="LightGoldenrodYellow"
+                             VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                             FontSize="16" FontWeight="Black"></Label>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Label Content="수량" Background="LightGoldenrodYellow"
+                             VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                             FontSize="16" FontWeight="Black"></Label>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="2" Background="LightGoldenrodYellow">
+                    <Label Content="가격" Background="LightGoldenrodYellow"
+                             VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                             FontSize="16" FontWeight="Black"></Label>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Background="White" >
+                <Label Content="메뉴뉴" VerticalAlignment="Center" />
+                <mah:NumericUpDown Background="GhostWhite" Margin="3,3,3,2" Width="105" NumericInputMode="Numbers" Minimum="0"/>
+
+            </Grid>
+
+
+        </Grid>
+
+
+
+        <Grid Grid.Row="3" Background="Beige">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button x:Name="Btncancel" Content="취소하기" FontSize="16" FontWeight="Black" Margin="10"></Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Button x:Name="BtnOK" Content="결제하기" FontSize="16" FontWeight="Black" 
+                        Margin="10" Background="Red" Foreground="White"></Button>
+            </Grid>
+
+
+
+
+        </Grid>
+        <ScrollViewer HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="450" Grid.Row="1"/>
+        <Button Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="53" Background="#00DDDDDD" Click="Button_Click"/>
     </Grid>
 </Page>
     
