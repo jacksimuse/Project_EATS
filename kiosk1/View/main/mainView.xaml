@@ -48,30 +48,48 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="Btnorder" Grid.Column="1" 
-                    Content="주문하기" Margin="10"
-                    Background="LightGray" Foreground="White" FontSize="30">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
-                            <iconpacks:Material Kind="OrderNumericAscending" Width="20" Height="40"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>
+            <Grid Grid.Column="1"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
+                <Grid Grid.Row="0" Margin="10" Background="White">
+                    <Label Content="주문하기" 
+                             FontSize="30" HorizontalAlignment="Center" Margin="12,44,13,23" />
+                    <Border >
+                        <Border BorderBrush="Black" BorderThickness="1"/>
+                    </Border>
 
+                </Grid>
 
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-        </Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                    <Button  x:Name="tableone" Content="1" 
+                FontSize="20" Margin="10" Background="#018D41">
 
-            </Grid.ColumnDefinitions>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="1"
+            x:Name="tabletwo" Content="2"
+                FontSize="20" Margin="10" Background="#018D41"></Button>
+                    <Button Grid.Column="0" Grid.Row="1"  
+                x:Name="tablethree" Content="3"
+                FontSize="20" Margin="10" Background="#018D41"></Button>
+                    <Button Grid.Column="1" Grid.Row="1"
+                x:Name="tablefour" Content="4"
+                FontSize="20" Margin="10" Background="#018D41"></Button>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
+
 </Page>

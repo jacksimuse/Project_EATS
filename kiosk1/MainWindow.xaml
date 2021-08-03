@@ -49,7 +49,7 @@ x:Class="kiosk1.MainWindow"
 
             <Button x:Name="Btntable"
                 Grid.Column="1"
-                Content="테이블" FontSize="16"
+                Content="항목" FontSize="16"
                 Foreground="White" Background="PaleVioletRed"
                 Margin="5, 10">
                 <Button.ContentTemplate>
