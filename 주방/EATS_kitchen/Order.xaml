@@ -1,34 +1,41 @@
 ﻿<Page
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:EATS_kitchen"
-      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="EATS_kitchen.Order"
-      mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
-      Title="Order">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:EATS_kitchen"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    x:Class="EATS_kitchen.Order"
+    mc:Ignorable="d" 
+    d:DesignHeight="530" d:DesignWidth="800"
+    Title="Order">
 
-    <Grid Background="White">
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="10,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="10,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="343,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="314"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="343,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="314"/>
-        <Button Width="75" Height="30"
-                Content="운전중" HorizontalAlignment="Left" Background="Crimson"
-                Margin="668,10,0,0" VerticalAlignment="Top" 
-                FontSize="15">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" Margin="10, 0" />
 
-                    </StackPanel>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+    <DockPanel Background="White">
+        <Grid DockPanel.Dock="Top">
+            <Button x:Name="BtnDriving" Content="운행중" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,2" Background="Gray">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconJamIcons Kind="Car" Width="20" Height="20" Margin="5,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <mah:MetroProgressBar x:Name="PgbDriving" HorizontalAlignment="Right" Height="44" Margin="0,10,23,0" VerticalAlignment="Top" Width="648" Background="#1FFFFFFF"/>
+        </Grid>
+        <Grid>
+            <TextBox HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" TextWrapping="Wrap" Text="Table1" VerticalAlignment="Top" Width="374"/>
+            <TextBox HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" TextWrapping="Wrap" Text="Table2" VerticalAlignment="Top" Width="374"/>
+            <TextBox HorizontalAlignment="Left" Height="202" Margin="403,10,0,0" TextWrapping="Wrap" Text="Table3" VerticalAlignment="Top" Width="374"/>
+            <TextBox HorizontalAlignment="Left" Height="202" Margin="403,228,0,0" TextWrapping="Wrap" Text="Table4" VerticalAlignment="Top" Width="374"/>
+            <Button x:Name="Btntbl1" Content="" HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl1_Click" />
+            <Button x:Name="Btntbl2" Content="" HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl2_Click"/>
+            <Button x:Name="Btntbl3" Content="" HorizontalAlignment="Left" Height="202" Margin="403,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl3_Click"/>
+            <Button x:Name="Btntbl4" Content="" HorizontalAlignment="Left" Height="202" Margin="403,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl4_Click"/>
+        </Grid>
+    </DockPanel>
 
-        <mah:MetroProgressBar HorizontalAlignment="Left" Height="367" Margin="668,58,0,0" VerticalAlignment="Top" Width="72" Background="Green"/>
-
-    </Grid>
 </Page>

@@ -10,8 +10,8 @@
 
     <Grid Background="White">
         <Grid HorizontalAlignment="Left" Height="389" Margin="10,41,0,0" VerticalAlignment="Top" Width="675"/>
-        <Button Content="ON" HorizontalAlignment="Left" Height="50" Margin="706,41,0,0" VerticalAlignment="Top" Width="84" FontSize="30"/>
-        <Button Content="OFF" HorizontalAlignment="Left" Height="50" Margin="706,114,0,0" VerticalAlignment="Top" Width="84" FontSize="25"/>
+        <Button Content="ON" HorizontalAlignment="Left" Height="50" Margin="704,41,0,0" VerticalAlignment="Top" Width="84" FontSize="30"/>
+        <Button Content="OFF" HorizontalAlignment="Left" Height="50" Margin="704,114,0,0" VerticalAlignment="Top" Width="84" FontSize="25"/>
 
     </Grid>
 </Page>
