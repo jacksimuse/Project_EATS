@@ -3,7 +3,7 @@
 
 =======
 ## 팀원 역할 (자기가 맡은 파트 업데이트 해주세요)  
-🧓 최재훈 :    
+🧓 최재훈 : 주방UI(기능 : 주문현황, 메뉴활성화) MQTT서버를 통해 주문 메시지 받기, 서빙로봇 출발시키기
 🧑 허재현 : 취업 완료 (2021.07.2x)       
 👦 김현수 : EntityFramework DB 연동, Data Select/Insert 테스트 (8/2), [주문 테스트](https://github.com/jacksimuse/Project_EATS/tree/main/OrderTest) (8/3)  
 🧔 성홍렬 : Serving Robot 설계 및 구현   
