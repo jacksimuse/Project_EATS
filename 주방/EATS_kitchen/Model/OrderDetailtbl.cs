@@ -18,7 +18,7 @@ namespace EATS_kitchen.Model
         public string OrderCode { get; set; }
         public string MenuCode { get; set; }
         public int Amount { get; set; }
-        public Nullable<bool> OrderComplete { get; set; }
+        public bool OrderComplete { get; set; }
     
         public virtual Ordertbl Ordertbl { get; set; }
     }

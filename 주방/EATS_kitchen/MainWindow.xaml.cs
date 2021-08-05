@@ -1,7 +1,13 @@
 ﻿using MahApps.Metro.Controls;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
 using System.Windows;
 using System.Windows.Threading;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace EATS_kitchen
 {
@@ -13,6 +19,12 @@ namespace EATS_kitchen
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void InitializeMqtt()
+        {
+            
         }
 
         private  void BtnOrder_Click(object sender, RoutedEventArgs e)
@@ -20,6 +32,7 @@ namespace EATS_kitchen
             try
             {
                 ActiveControl.Content = new Order();
+
             }
             catch (Exception)
             {
@@ -46,11 +59,24 @@ namespace EATS_kitchen
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+
+            
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             LblDatetime.Content = DateTime.Now.ToString("yy년MM월dd일 HH:mm:ss");
+        }
+
+
+        private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //client.Disconnect();
+            await Commons.ShowMessageAsync("영업", "종료합니다");
+        }
+        private void UpdateText(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }
