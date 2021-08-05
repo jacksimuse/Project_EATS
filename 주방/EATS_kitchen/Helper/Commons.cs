@@ -12,7 +12,7 @@ using System.Linq;
 using System.Data.Entity.Migrations;
 using System;
 
-namespace EATS_kitchen
+namespace EATS_kitchen.Helper
 {
     public class Commons
     {
@@ -31,6 +31,26 @@ namespace EATS_kitchen
             using (var ctx = new EATSEntities())
                 list = ctx.OrderDetailtbl.ToList();
 
+            return list;
+        }
+
+        internal static int SetMenuActive(Menutbl menuName)
+        {
+            using (var ctx = new EATSEntities())
+            {
+                ctx.Menutbl.AddOrUpdate(menuName);
+                return ctx.SaveChanges();
+            }
+        }
+
+        internal static List<Menutbl> GetMenu()
+        {
+            List<Menutbl> list;
+
+            using (var ctx = new EATSEntities())
+            {
+                list = ctx.Menutbl.ToList();
+            }
             return list;
         }
 

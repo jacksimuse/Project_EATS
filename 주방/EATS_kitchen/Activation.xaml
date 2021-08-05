@@ -9,9 +9,10 @@
       Title="Activation">
 
     <Grid Background="White">
-        <Grid HorizontalAlignment="Left" Height="389" Margin="10,41,0,0" VerticalAlignment="Top" Width="675"/>
-        <Button Content="ON" HorizontalAlignment="Left" Height="50" Margin="704,41,0,0" VerticalAlignment="Top" Width="84" FontSize="30"/>
-        <Button Content="OFF" HorizontalAlignment="Left" Height="50" Margin="704,114,0,0" VerticalAlignment="Top" Width="84" FontSize="25"/>
+        <Grid HorizontalAlignment="Left" Height="389" Margin="10,41,0,0" VerticalAlignment="Top" Width="675">
+            <Frame x:Name="ActiveControl" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"></Frame></Grid>
+        <Button x:Name="BtnSave" Content="저장" HorizontalAlignment="Left" Height="50" Margin="704,41,0,0" VerticalAlignment="Top" Width="84" FontSize="30" Click="BtnSave_Click"/>
+        <Button x:Name="BtnCancel" Content="취소" HorizontalAlignment="Left" Height="50" Margin="704,114,0,0" VerticalAlignment="Top" Width="84" FontSize="25" Click="BtnCancel_Click"/>
 
     </Grid>
 </Page>
