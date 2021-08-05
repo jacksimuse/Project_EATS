@@ -1,0 +1,71 @@
+﻿<Page x:Class="kiosk1.View.Waiting.Wait"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:kiosk1.View.Waiting"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="450"
+      Title="Wait">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="번호를 입력하세요"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="전송" Grid.Column="1" Height="100"
+                    HorizontalAlignment="Stretch" FontSize="16" FontWeight="Bold"
+                    Background="Beige" Margin="10" VerticalAlignment="Center">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="3, 0" VerticalAlignment="Bottom" />
+                            <iconpacks:Material Kind="Send" Width="15" Height="24"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Grid Grid.Column="0" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="1" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="2" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="3" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="4" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="5" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="6" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="7" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="8" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="9" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="3" Grid.Column="0" Content="*" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="0" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="#" Background="Beige" FontSize="20" Margin="3"/>
+            </Grid>
+            
+            
+        </Grid>
+    </Grid>
+</Page>

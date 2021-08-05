@@ -119,5 +119,23 @@ namespace kiosk1.View.main
                 }
             }
         }
+
+        private void tablefour_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btnwait_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                Waiting.Wait wait1 = new Waiting.Wait();
+                NavigationService.Navigate(wait1);
+            }
+        }
     }
 }
