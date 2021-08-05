@@ -228,6 +228,9 @@
     <Compile Include="Model\Ordertbl.cs">
       <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Usertbl.cs">
+      <DependentUpon>EATS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
     </Compile>
