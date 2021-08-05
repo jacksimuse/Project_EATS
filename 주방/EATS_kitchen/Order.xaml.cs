@@ -27,7 +27,8 @@ namespace EATS_kitchen
         MqttClient client;
         string connectionString;
         delegate void UpdateTextCallback(string message);
-        string thisId = "EATS_Subscrb";
+        string thisId = "MOTOR/TEST/";
+        string message = "나는 전설이다.";
 
         BackgroundWorker _worker = null;
 
@@ -39,7 +40,7 @@ namespace EATS_kitchen
         {
             InitializeComponent();
 
-            IPAddress brokerAddress = IPAddress.Parse("127.0.0.1");
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.93");
             client = new MqttClient(brokerAddress);
             client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
             client.Connect(thisId);
@@ -134,43 +135,38 @@ namespace EATS_kitchen
             
         }
 
-        private void GetOrderCode()
-        {
-            //// select MenuCode from OrderDetailtbl where OrderCode ='20210802001';
-            //var menucodes = Commons.GetDetail().Where(o => o.OrderCode.Equals("20210802001"))
-                
-            //if (menucodes == null)
-            //{
-            //    Commons.ShowMessageAsync("오류", "값이 없습니다.");
-            //}
-            //else
-            //{
-            //    Commons.ShowMessageAsync("찾았다", "없습니다.");
-            //}
-        }
-
         private void Btntbl1_Click(object sender, RoutedEventArgs e)
         {
             Progressing();
             DrivingCheck();
+            
+            Publish(message);
         }
+
+        
 
         private void Btntbl2_Click(object sender, RoutedEventArgs e)
         {
             Progressing();
             DrivingCheck();
+            
+            Publish(message);
         }
 
         private void Btntbl3_Click(object sender, RoutedEventArgs e)
         {
             Progressing();
             DrivingCheck();
+
+            Publish(message);
         }
 
         private void Btntbl4_Click(object sender, RoutedEventArgs e)
         {
             Progressing();
             DrivingCheck();
+
+
         }
 
         private void _worker_DoWork(object sender, DoWorkEventArgs e)
@@ -202,6 +198,14 @@ namespace EATS_kitchen
             PgbDriving.Maximum = 100;
             PgbDriving.Minimum = 0;
 
+        }
+
+        private void Publish(string message)
+        {
+            client.Publish(thisId,
+                                Encoding.UTF8.GetBytes(message),
+                                0,
+                                true);
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
