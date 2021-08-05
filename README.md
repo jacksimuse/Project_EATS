@@ -1,5 +1,8 @@
 # 1.메인화면(손님UI)
 ![image](https://user-images.githubusercontent.com/77951833/128292847-bb93b225-cc8d-421c-ac6f-589ef8fb92df.png)
+# 1-2-1.대기창
+## 좌석이 다 차있을 경우, 대기하는 손님은 번호를 입력후 전송
+![image](https://user-images.githubusercontent.com/77951833/128315581-6842f6d8-468d-4ae2-8359-8386d7db9a4b.png)
 # 1-2.메뉴선택창
 ## 손님이 좌석선택을 하면 메뉴선택창으로 이동
 ![image](https://user-images.githubusercontent.com/77951833/128292940-f442b317-e420-46f9-984d-4d53804f81f4.png)
@@ -8,7 +11,7 @@
 ![image](https://user-images.githubusercontent.com/77951833/128293159-6945458f-0fea-4f9f-9117-2fc71016753b.png)
 # 1-4. 결제
 ## 결제전 주문정보를 한번더 확인 
-![image](https://user-images.githubusercontent.com/77951833/128293440-a0af0cc9-1f50-4c42-8619-f7d9ba9644cc.png)
+![image](https://user-images.githubusercontent.com/77951833/128316013-2ce1fe4f-1668-4870-8aa5-d8ab554c2ce5.png)
 
 
 # 역할 : 주방 UI
