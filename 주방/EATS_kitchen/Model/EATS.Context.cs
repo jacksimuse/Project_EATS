@@ -28,5 +28,6 @@ namespace EATS_kitchen.Model
         public virtual DbSet<Menutbl> Menutbl { get; set; }
         public virtual DbSet<OrderDetailtbl> OrderDetailtbl { get; set; }
         public virtual DbSet<Ordertbl> Ordertbl { get; set; }
+        public virtual DbSet<Usertbl> Usertbl { get; set; }
     }
 }

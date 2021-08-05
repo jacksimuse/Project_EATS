@@ -12,14 +12,11 @@ namespace EATS_kitchen.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetailtbl
+    public partial class Usertbl
     {
-        public int idx { get; set; }
-        public string OrderCode { get; set; }
-        public string MenuCode { get; set; }
-        public int Amount { get; set; }
-        public bool OrderComplete { get; set; }
-    
-        public virtual Ordertbl Ordertbl { get; set; }
+        public int Idx { get; set; }
+        public string UserId { get; set; }
+        public string Password { get; set; }
+        public string Description { get; set; }
     }
 }
