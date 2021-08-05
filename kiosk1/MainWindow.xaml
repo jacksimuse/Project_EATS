@@ -12,12 +12,13 @@ x:Class="kiosk1.MainWindow"
     Title="Mainkiosk" Height="450" Width="450" Background="White"
     ContentRendered="MetroWindow_ContentRendered" Activated="MetroWindow_Activated"
     WindowStartupLocation="CenterScreen">
-<!--<mah:MetroWindow.RightWindowCommands>
-    <mah:WindowCommands>
-        <Button x:Name="BtnMain" />
-    </mah:WindowCommands>
-</mah:MetroWindow.RightWindowCommands>-->
-    <DockPanel Margin="20" Background="Beige">
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconpacks:PackIconMaterial Kind="Store" Margin="5, 10" Foreground="White"/>
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+
+    <DockPanel  Background="Beige">
         <Grid DockPanel.Dock="Top" Height="70">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -26,11 +27,7 @@ x:Class="kiosk1.MainWindow"
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <!--<Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>-->
+            
 
             <Button x:Name="Btnmain" 
                 Grid.Column="0"
@@ -49,9 +46,9 @@ x:Class="kiosk1.MainWindow"
 
             <Button x:Name="Btntable"
                 Grid.Column="1"
-                Content="테이블" FontSize="16"
+                Content="대기출력" FontSize="16"
                 Foreground="White" Background="PaleVioletRed"
-                Margin="5, 10">
+                Margin="5, 10" >
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -66,7 +63,7 @@ x:Class="kiosk1.MainWindow"
                 Grid.Column="2"
                 Content="메뉴선택" FontSize="16"
                 Foreground="White" Background="Coral"
-                Margin="5, 10">
+                Margin="5, 10" Click="Btnselect_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

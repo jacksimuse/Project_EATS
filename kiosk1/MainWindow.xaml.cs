@@ -1,4 +1,5 @@
 ﻿using kiosk1.View.main;
+using kiosk1.View.select;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace kiosk1
         {
             try
             {
-                ActiveControl.Content = new mainView();
+                ActiveControl.Content = new MainView();
 
             }
             catch (Exception)
@@ -51,7 +52,14 @@ namespace kiosk1
 
                 throw;
             }
-            
+
+
+
+
+        }
+
+        private void Btnselect_Click(object sender, RoutedEventArgs e)
+        {
            
         }
     }
