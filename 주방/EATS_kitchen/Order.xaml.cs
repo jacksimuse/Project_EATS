@@ -63,7 +63,7 @@ namespace EATS_kitchen
         {
             if (isUsing)
             {
-                await Commons.ShowMessageAsync("예외", "현재 운행중입니다");
+                await Helper.Commons.ShowMessageAsync("예외", "현재 운행중입니다");
                 return;
             }
             isUsing = true;
@@ -101,10 +101,10 @@ namespace EATS_kitchen
                 };
 
                 // 1. DB에 주문내역을 저장
-                var result = Commons.SetOrderDetail(item);
+                var result = Helper.Commons.SetOrderDetail(item);
 
                 // 2. DB상에 있는 메뉴를 불러옴
-                var menuinfo = Commons.GetMenuInfo(item);
+                var menuinfo = Helper.Commons.GetMenuInfo(item);
 
                 // 3. 내용 출력
 
@@ -187,7 +187,7 @@ namespace EATS_kitchen
             PgbDriving.Value = PgbDriving.Maximum;
             isClicked = false;
             isUsing = false;
-            await Commons.ShowMessageAsync("도착", "음식이 도착하였습니다");
+            await Helper.Commons.ShowMessageAsync("도착", "음식이 도착하였습니다");
             BtnDriving.Background = Brushes.Gray;
             PgbDriving.Value = 0;
         }

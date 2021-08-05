@@ -72,7 +72,7 @@ namespace EATS_kitchen
         private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             //client.Disconnect();
-            await Commons.ShowMessageAsync("영업", "종료합니다");
+            await Helper.Commons.ShowMessageAsync("영업", "종료합니다");
         }
         private void UpdateText(string message)
         {
