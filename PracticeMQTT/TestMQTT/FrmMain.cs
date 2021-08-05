@@ -9,8 +9,8 @@ namespace DeviceSubApp
     public partial class FrmMain : Form
     {
         MqttClient client;
-        //string subscriptionTopic = "MOTOR/TEST/";
-        string subscriptionTopic = "TRAFFICLIGHT/TEST/";
+        string subscriptionTopic = "MOTOR/TEST/";
+        //string subscriptionTopic = "TRAFFICLIGHT/TEST/";
         string message = string.Empty;
 
         public FrmMain()
@@ -21,11 +21,10 @@ namespace DeviceSubApp
 
         private void InitializeAllData()
         {
-            IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.93");
             BtnStop.Enabled = false;
             BtnPause.Enabled = false;
             BtnSend1.Enabled = false;
-            BtnSend2.Enabled = false;
             BtnSend3.Enabled = false;
             BtnStart.Enabled = false;
             BtnDisconnect.Enabled = false;
@@ -49,9 +48,10 @@ namespace DeviceSubApp
             BtnConnect.Enabled = false;
             BtnDisconnect.Enabled = true;
             BtnSend1.Enabled = true;
-            BtnSend2.Enabled = true;
             BtnSend3.Enabled = true;
             BtnStart.Enabled = true;
+            BtnStop.Enabled = true;
+            BtnPause.Enabled = true;
 
             LblAlert.Text = "CONNECTED!!";
         }
@@ -67,71 +67,57 @@ namespace DeviceSubApp
         private void BtnSend1_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "r";
+            //BtnSend1.Enabled = false;
+            message = "l";
             // Publish
             Publish(message);
-            LblAlert.Text = "빨간불";
-        }
-
-        private void BtnSend2_Click(object sender, EventArgs e)
-        {
-            Reconnect();
-            message = "y";
-            // Publish
-            Publish(message);
-            LblAlert.Text = "노란불";
+            LblAlert.Text = "left";
         }
 
         private void BtnSend3_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "g";
+            //BtnSend3.Enabled = false;
+            message = "r";
             // Publish
             Publish(message);
-            LblAlert.Text = "초록불";
+            LblAlert.Text = "right";
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
             Reconnect();
-            BtnStart.Enabled = false;
-            BtnSend1.Enabled = false;
-            BtnSend2.Enabled = false;
-            BtnSend3.Enabled = false;
-
-            BtnStop.Enabled = true;
-            BtnPause.Enabled = true;
+            //BtnStart.Enabled = false;
 
             message = "s";
             // Publish
             Publish(message);
-            LblAlert.Text = "루프 시작";
+            LblAlert.Text = "start";
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
             Reconnect();
-            BtnStop.Enabled = false;
+            /*BtnStop.Enabled = false;
             BtnPause.Enabled = false;
 
             BtnStart.Enabled = true;
             BtnSend1.Enabled = true;
-            BtnSend2.Enabled = true;
-            BtnSend3.Enabled = true;
+            BtnSend3.Enabled = true;*/
 
             message = "t";
             // Publish
             Publish(message);
-            LblAlert.Text = "루프 끝";
+            LblAlert.Text = "stop";
         }
 
         private void BtnPause_Click(object sender, EventArgs e)
         {
             Reconnect();
-            message = "p";
+            message = "b";
             // Publish
             Publish(message);
-            LblAlert.Text = "3초 간 일시정지";
+            LblAlert.Text = "Back";
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
