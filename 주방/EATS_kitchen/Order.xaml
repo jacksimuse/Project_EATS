@@ -9,7 +9,7 @@
     x:Class="EATS_kitchen.Order"
     mc:Ignorable="d" 
     d:DesignHeight="530" d:DesignWidth="800"
-    Title="Order">
+    Title="Order" Unloaded="Page_Unloaded">
 
 
     <DockPanel Background="White">
@@ -27,14 +27,30 @@
             <mah:MetroProgressBar x:Name="PgbDriving" HorizontalAlignment="Right" Height="44" Margin="0,10,23,0" VerticalAlignment="Top" Width="648" Background="#1FFFFFFF"/>
         </Grid>
         <Grid>
-            <TextBox HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" TextWrapping="Wrap" Text="Table1" VerticalAlignment="Top" Width="374"/>
-            <TextBox HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" TextWrapping="Wrap" Text="Table2" VerticalAlignment="Top" Width="374"/>
-            <TextBox HorizontalAlignment="Left" Height="202" Margin="403,10,0,0" TextWrapping="Wrap" Text="Table3" VerticalAlignment="Top" Width="374"/>
-            <TextBox HorizontalAlignment="Left" Height="202" Margin="403,228,0,0" TextWrapping="Wrap" Text="Table4" VerticalAlignment="Top" Width="374"/>
+            <TextBox x:Name="TxbTbl1" HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" 
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold"/>
+            <TextBox x:Name="TxbTbl2" HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" 
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold"/>
+            <TextBox x:Name="TxbTbl3" HorizontalAlignment="Left" Height="202" Margin="403,10,0,0" 
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold"/>
+            <TextBox x:Name="TxbTbl4" HorizontalAlignment="Left" Height="202" Margin="403,228,0,0"
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold"/>
             <Button x:Name="Btntbl1" Content="" HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl1_Click" />
             <Button x:Name="Btntbl2" Content="" HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl2_Click"/>
-            <Button x:Name="Btntbl3" Content="" HorizontalAlignment="Left" Height="202" Margin="403,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl3_Click"/>
+            <Button x:Name="Btntbl3" Content="" HorizontalAlignment="Left" Height="202" Margin="402,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="#00000000" Opacity="0" Click="Btntbl3_Click"/>
             <Button x:Name="Btntbl4" Content="" HorizontalAlignment="Left" Height="202" Margin="403,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl4_Click"/>
+            <Label Content="Table1" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table2" HorizontalAlignment="Left" Height="40" Margin="11,228,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table3" HorizontalAlignment="Left" Height="40" Margin="402,10,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table4" HorizontalAlignment="Left" Height="40" Margin="403,228,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label x:Name="Lbltbl1" HorizontalAlignment="Left" Height="40" Margin="224,10,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl2" HorizontalAlignment="Left" Height="40" Margin="225,228,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl3" HorizontalAlignment="Left" Height="40" Margin="616,10,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl4" HorizontalAlignment="Left" Height="40" Margin="616,228,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
         </Grid>
     </DockPanel>
 
