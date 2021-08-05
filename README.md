@@ -15,3 +15,10 @@
 ![image](https://user-images.githubusercontent.com/77951833/128293440-a0af0cc9-1f50-4c42-8619-f7d9ba9644cc.png)
 
 
+## 진행현황(최신순)  
+ordercode, menucode, amount를 DB로 보내서 값 받아오기  
+<kbd>![GOMCAM 20210805_1136270212](https://user-images.githubusercontent.com/73567433/128282450-f8da6211-973a-4bc8-ab30-672ee43c4fff.gif)</kbd>
+  
+
+ordercode 받아지는지 확인  
+<kbd>![GOMCAM 20210805_1015580214 (1) (1)](https://user-images.githubusercontent.com/73567433/128276530-10f15f94-dfa1-4475-b19d-ef8333d31189.gif)</kbd>
