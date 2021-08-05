@@ -8,4 +8,4 @@
 👦 김현수 : EntityFramework DB 연동, Data Select/Insert 테스트 (8/2), [주문 테스트](https://github.com/jacksimuse/Project_EATS/tree/main/OrderTest) (8/3)  
 🧔 성홍렬 : Serving Robot 설계 및 구현   
 👩‍🦰 안성주 :  [메뉴UI](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1) (8/3)    
-👩 최연성 :     
+👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5)   
