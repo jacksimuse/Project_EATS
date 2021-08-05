@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace kiosk1.View.table
+namespace kiosk1.View.select
 {
     /// <summary>
-    /// tableView.xaml에 대한 상호 작용 논리
+    /// menu3.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class tableView : Page
+    public partial class menu3 : Page
     {
-        public tableView()
+        public menu3()
         {
             InitializeComponent();
         }

@@ -13,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace kiosk1.View.Pay
+namespace kiosk1.View.Waiting
 {
     /// <summary>
-    /// payView.xaml에 대한 상호 작용 논리
+    /// Wait.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class payView : Page
+    public partial class Wait : Page
     {
-        public payView(string menu, int amount,  string price)
+        public Wait()
         {
             InitializeComponent();
-            Txtmenu.Text = menu;
-            Txtamount.Text = amount.ToString();
-            Txtprice.Text = price;
-
         }
     }
 }
