@@ -9,6 +9,8 @@ using System.Windows.Threading;
 using EATS_kitchen.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity.Migrations;
+using System;
 
 namespace EATS_kitchen
 {
@@ -32,6 +34,25 @@ namespace EATS_kitchen
             return list;
         }
 
+        internal static int SetOrderDetail(OrderDetailtbl item)
+        {
+            using (var ctx = new EATSEntities())
+            {
+                ctx.OrderDetailtbl.AddOrUpdate(item);
+                return ctx.SaveChanges(); // return 1 or 0
+            }
+        }
 
+        internal static Menutbl GetMenuInfo(OrderDetailtbl item)
+        {
+            Menutbl info;
+
+            using (var ctx = new EATSEntities())
+            {
+                info = ctx.Menutbl.Where(c => c.MenuCode.Equals(item.MenuCode)).FirstOrDefault();
+            }
+
+            return info;
+        }
     }
 }

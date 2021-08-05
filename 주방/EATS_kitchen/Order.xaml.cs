@@ -15,6 +15,7 @@ using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System.Windows.Threading;
 using System.Linq;
+using EATS_kitchen.Model;
 
 namespace EATS_kitchen
 {
@@ -90,25 +91,41 @@ namespace EATS_kitchen
                 var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message); // 데이터를 받을때 역 직렬화(DeserializeObject) <-> 보낼땐 직렬화(SerializeObject)
                 DateTime dt = DateTime.Now;
 
+                OrderDetailtbl item = new OrderDetailtbl()
+                {
+                    OrderCode = currentData["ordercode"].ToString(),
+                    MenuCode = currentData["menucode"].ToString(),
+                    Amount = int.Parse(currentData["amount"]),
+                    OrderComplete = false
+                };
+
+                // 1. DB에 주문내역을 저장
+                var result = Commons.SetOrderDetail(item);
+
+                // 2. DB상에 있는 메뉴를 불러옴
+                var menuinfo = Commons.GetMenuInfo(item);
+
+                // 3. 내용 출력
+
                 switch (currentData["table"].ToString())
                 {
                     case "1":
-                        GetOrderCode();
-                        TxbTbl1.Text = currentData["ordercode"].ToString();
+                        //GetOrderCode();
+                        TxbTbl1.Text = menuinfo.MenuName + "  " + item.Amount + "개";
                         Lbltbl1.Content = "주문시각  " + dt.ToString("t");
                         
                         break;
                     case "2":
-                        TxbTbl2.Text = currentData["ordercode"].ToString();
+                        TxbTbl2.Text = menuinfo.MenuName + "  " + item.Amount + "개";
                         Lbltbl2.Content = "주문시각  " + dt.ToString("t");
 
                         break;
                     case "3":
-                        TxbTbl3.Text = currentData["ordercode"].ToString();
+                        TxbTbl3.Text = menuinfo.MenuName + "  " + item.Amount + "개";
                         Lbltbl3.Content = "주문시각  " + dt.ToString("t");
                         break;
                     case "4":
-                        TxbTbl4.Text = currentData["ordercode"].ToString();
+                        TxbTbl4.Text = menuinfo.MenuName + "  " + item.Amount + "개";
                         Lbltbl4.Content = "주문시각  " + dt.ToString("t");
 
                         break;
@@ -119,17 +136,17 @@ namespace EATS_kitchen
 
         private void GetOrderCode()
         {
-            // select MenuCode from OrderDetailtbl where OrderCode ='20210802001';
-            var menucodes = Commons.GetDetail().Where(o => o.OrderCode.Equals("20210802001"))
+            //// select MenuCode from OrderDetailtbl where OrderCode ='20210802001';
+            //var menucodes = Commons.GetDetail().Where(o => o.OrderCode.Equals("20210802001"))
                 
-            if (menucodes == null)
-            {
-                Commons.ShowMessageAsync("오류", "값이 없습니다.");
-            }
-            else
-            {
-                Commons.ShowMessageAsync("찾았다", "없습니다.");
-            }
+            //if (menucodes == null)
+            //{
+            //    Commons.ShowMessageAsync("오류", "값이 없습니다.");
+            //}
+            //else
+            //{
+            //    Commons.ShowMessageAsync("찾았다", "없습니다.");
+            //}
         }
 
         private void Btntbl1_Click(object sender, RoutedEventArgs e)
