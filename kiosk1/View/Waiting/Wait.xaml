@@ -15,8 +15,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="번호를 입력하세요"/>
+        <StackPanel Grid.Row="0" Background="Beige">
+            <TextBlock x:Name="TxtNum" Text="번호를 입력하세요." 
+                       FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55" Background="Wheat"  />
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -25,8 +26,8 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="전송" Grid.Column="1" Height="100"
-                    HorizontalAlignment="Stretch" FontSize="16" FontWeight="Bold"
-                    Background="Beige" Margin="10" VerticalAlignment="Center">
+                    HorizontalAlignment="Stretch" FontSize="20" FontWeight="Bold"
+                    Background="Beige" Margin="10" VerticalAlignment="Center" Click="Button_Click_10">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -51,18 +52,18 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" Content="1" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="0" Grid.Column="1" Content="2" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="0" Grid.Column="2" Content="3" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="1" Grid.Column="0" Content="4" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="1" Grid.Column="1" Content="5" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="1" Grid.Column="2" Content="6" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="2" Grid.Column="0" Content="7" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="2" Grid.Column="1" Content="8" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="2" Grid.Column="2" Content="9" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="3" Grid.Column="0" Content="*" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="3" Grid.Column="1" Content="0" Background="Beige" FontSize="20" Margin="3"/>
-                <Button Grid.Row="3" Grid.Column="2" Content="#" Background="Beige" FontSize="20" Margin="3"/>
+                <Button  Grid.Row="0" Grid.Column="0" Content="1" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_1"/>
+                <Button  Grid.Row="0" Grid.Column="1" Content="2" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_2"/>
+                <Button  Grid.Row="0" Grid.Column="2" Content="3" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_3"/>
+                <Button  Grid.Row="1" Grid.Column="0" Content="4" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_4"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="5" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_5"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="6" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_6" />
+                <Button Grid.Row="2" Grid.Column="0" Content="7" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_7"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="8" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_8"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="9" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_9"/>
+                <Button Grid.Row="3" Grid.Column="0" Content="♥" Background="Beige" FontSize="20" Margin="3"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="0" Background="Beige" FontSize="20" Margin="3" Click="Button_Click_0"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="지움" Background="Beige" FontSize="20" Margin="3" Click="Button_Click"/>
             </Grid>
             
             

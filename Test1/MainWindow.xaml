@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        
         xmlns:local="clr-namespace:Test1"
         mc:Ignorable="d"
         Title="관리자 로그인" Height="327" Width="334"  Background="LightPink">
@@ -20,10 +21,11 @@
         <StackPanel Margin="20">
             <Label Content="LOGIN" FontSize="20" HorizontalAlignment="Center" />
             <Label Content="아이디" FontSize="16" />
-            <TextBox x:Name="TxtUserId" FontSize="14" Height="25" KeyDown="TxtUserId_KeyDown"/>
+            <TextBox x:Name="TxtUserId" FontSize="14" Height="25" KeyDown="TxtUserId_KeyDown" Text="{Binding Id , Mode=OneWay}"/>
             <Label Content="비밀번호" FontSize="16" />
-            <PasswordBox x:Name="TxtUserPassword" FontSize="14" Height="25" KeyDown="TxtUserPassword_KeyDown"/>
-            <Button x:Name="BtnLogin" Content="로그인" FontSize="16" Height="30" Width="100" Margin="20" />
+            <PasswordBox x:Name="TxtUserPassword" PasswordChar="*" 
+                         FontSize="14" Height="25" KeyDown="TxtUserPassword_KeyDown" MaxLength="8" />
+            <Button x:Name="BtnLogin" Content="로그인" FontSize="16" Height="30" Width="100" Margin="20" Click="BtnLogin_Click" />
 
         </StackPanel>
 
