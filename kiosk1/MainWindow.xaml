@@ -46,7 +46,7 @@ x:Class="kiosk1.MainWindow"
 
             <Button x:Name="Btntable"
                 Grid.Column="1"
-                Content="대기출력" FontSize="16"
+                Content="대기" FontSize="16"
                 Foreground="White" Background="PaleVioletRed"
                 Margin="5, 10" >
                 <Button.ContentTemplate>
