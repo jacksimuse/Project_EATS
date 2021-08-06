@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EATS_kitchen.Model;
+using kiosk1.View.Select;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,27 @@ namespace EATS_kitchen
     /// </summary>
     public partial class Activation : Page
     {
+        bool isClicked = false;
+
+         
+
         public Activation()
         {
             InitializeComponent();
+            ActiveControl.Content = new Menu1();
+        }
+
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+           // var save = Helper.Commons.SetMenuActive(active);
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
