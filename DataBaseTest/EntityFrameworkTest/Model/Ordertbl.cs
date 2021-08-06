@@ -25,6 +25,7 @@ namespace EntityFrameworkTest.Model
         public string CustomerNum { get; set; }
         public int TblNum { get; set; }
         public int OrderPrice { get; set; }
+        public bool OrderComplete { get; set; }
         public string OrderRemark { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:EATS_kitchen"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" Icon="kitchen.ico" ResizeMode="NoResize"
-        Loaded="MetroWindow_Loaded">
+        Loaded="MetroWindow_Loaded" Closing="MetroWindow_Closing">
     <DockPanel Background="White">
         <Grid DockPanel.Dock="Top" Height="70">
             <Grid.ColumnDefinitions>
