@@ -28,5 +28,18 @@ namespace kiosk1.View.Pay
             Txtprice.Text = price;
 
         }
+
+        private void Btncancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                Select.Menu1 menu1 = new Select.Menu1();
+                NavigationService.Navigate(menu1);
+            }
+        }
     }
 }

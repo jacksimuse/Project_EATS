@@ -170,6 +170,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\Waitnum.cs" />
     <Compile Include="View\Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
