@@ -34,15 +34,16 @@ namespace DeviceSubApp
             this.BtnSend1 = new System.Windows.Forms.Button();
             this.LblAlert = new System.Windows.Forms.Label();
             this.BtnSend3 = new System.Windows.Forms.Button();
-            this.BtnPause = new System.Windows.Forms.Button();
+            this.BtnBack = new System.Windows.Forms.Button();
             this.BtnStart = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
+            this.BtnPause = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnConnect
             // 
             this.BtnConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnConnect.Location = new System.Drawing.Point(154, 221);
+            this.BtnConnect.Location = new System.Drawing.Point(151, 231);
             this.BtnConnect.Name = "BtnConnect";
             this.BtnConnect.Size = new System.Drawing.Size(124, 29);
             this.BtnConnect.TabIndex = 6;
@@ -53,7 +54,7 @@ namespace DeviceSubApp
             // BtnDisconnect
             // 
             this.BtnDisconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnDisconnect.Location = new System.Drawing.Point(284, 221);
+            this.BtnDisconnect.Location = new System.Drawing.Point(281, 231);
             this.BtnDisconnect.Name = "BtnDisconnect";
             this.BtnDisconnect.Size = new System.Drawing.Size(124, 29);
             this.BtnDisconnect.TabIndex = 7;
@@ -64,7 +65,7 @@ namespace DeviceSubApp
             // BtnSend1
             // 
             this.BtnSend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnSend1.Location = new System.Drawing.Point(59, 64);
+            this.BtnSend1.Location = new System.Drawing.Point(56, 76);
             this.BtnSend1.Name = "BtnSend1";
             this.BtnSend1.Size = new System.Drawing.Size(142, 47);
             this.BtnSend1.TabIndex = 8;
@@ -76,7 +77,7 @@ namespace DeviceSubApp
             // 
             this.LblAlert.AutoSize = true;
             this.LblAlert.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.LblAlert.Location = new System.Drawing.Point(239, 19);
+            this.LblAlert.Location = new System.Drawing.Point(236, 9);
             this.LblAlert.Name = "LblAlert";
             this.LblAlert.Size = new System.Drawing.Size(92, 25);
             this.LblAlert.TabIndex = 10;
@@ -85,7 +86,7 @@ namespace DeviceSubApp
             // BtnSend3
             // 
             this.BtnSend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnSend3.Location = new System.Drawing.Point(355, 64);
+            this.BtnSend3.Location = new System.Drawing.Point(352, 76);
             this.BtnSend3.Name = "BtnSend3";
             this.BtnSend3.Size = new System.Drawing.Size(142, 47);
             this.BtnSend3.TabIndex = 12;
@@ -93,21 +94,21 @@ namespace DeviceSubApp
             this.BtnSend3.UseVisualStyleBackColor = true;
             this.BtnSend3.Click += new System.EventHandler(this.BtnSend3_Click);
             // 
-            // BtnPause
+            // BtnBack
             // 
-            this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnPause.Location = new System.Drawing.Point(136, 117);
-            this.BtnPause.Name = "BtnPause";
-            this.BtnPause.Size = new System.Drawing.Size(142, 47);
-            this.BtnPause.TabIndex = 13;
-            this.BtnPause.Text = "Back";
-            this.BtnPause.UseVisualStyleBackColor = true;
-            this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.BtnBack.Location = new System.Drawing.Point(204, 107);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(142, 47);
+            this.BtnBack.TabIndex = 13;
+            this.BtnBack.Text = "Back";
+            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // BtnStart
             // 
             this.BtnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnStart.Location = new System.Drawing.Point(207, 64);
+            this.BtnStart.Location = new System.Drawing.Point(204, 54);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(142, 47);
             this.BtnStart.TabIndex = 14;
@@ -118,7 +119,7 @@ namespace DeviceSubApp
             // BtnStop
             // 
             this.BtnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnStop.Location = new System.Drawing.Point(284, 117);
+            this.BtnStop.Location = new System.Drawing.Point(135, 169);
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.Size = new System.Drawing.Size(142, 47);
             this.BtnStop.TabIndex = 15;
@@ -126,14 +127,26 @@ namespace DeviceSubApp
             this.BtnStop.UseVisualStyleBackColor = true;
             this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
+            // BtnPause
+            // 
+            this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.BtnPause.Location = new System.Drawing.Point(283, 169);
+            this.BtnPause.Name = "BtnPause";
+            this.BtnPause.Size = new System.Drawing.Size(142, 47);
+            this.BtnPause.TabIndex = 15;
+            this.BtnPause.Text = "Pause";
+            this.BtnPause.UseVisualStyleBackColor = true;
+            this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 272);
+            this.Controls.Add(this.BtnPause);
             this.Controls.Add(this.BtnStop);
             this.Controls.Add(this.BtnStart);
-            this.Controls.Add(this.BtnPause);
+            this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.BtnSend3);
             this.Controls.Add(this.LblAlert);
             this.Controls.Add(this.BtnSend1);
@@ -156,9 +169,10 @@ namespace DeviceSubApp
         private System.Windows.Forms.Button BtnSend1;
         private System.Windows.Forms.Label LblAlert;
         private System.Windows.Forms.Button BtnSend3;
-        private System.Windows.Forms.Button BtnPause;
+        private System.Windows.Forms.Button BtnBack;
         private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.Button BtnStop;
+        private System.Windows.Forms.Button BtnPause;
     }
 }
 
