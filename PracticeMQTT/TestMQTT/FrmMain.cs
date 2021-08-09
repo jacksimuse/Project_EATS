@@ -23,6 +23,7 @@ namespace DeviceSubApp
         {
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.93");
             BtnStop.Enabled = false;
+            BtnBack.Enabled = false;
             BtnPause.Enabled = false;
             BtnSend1.Enabled = false;
             BtnSend3.Enabled = false;
@@ -51,6 +52,7 @@ namespace DeviceSubApp
             BtnSend3.Enabled = true;
             BtnStart.Enabled = true;
             BtnStop.Enabled = true;
+            BtnBack.Enabled = true;
             BtnPause.Enabled = true;
 
             LblAlert.Text = "CONNECTED!!";
@@ -71,7 +73,7 @@ namespace DeviceSubApp
             message = "l";
             // Publish
             Publish(message);
-            LblAlert.Text = "left";
+            LblAlert.Text = "Left";
         }
 
         private void BtnSend3_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace DeviceSubApp
             message = "r";
             // Publish
             Publish(message);
-            LblAlert.Text = "right";
+            LblAlert.Text = "Right";
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -92,7 +94,7 @@ namespace DeviceSubApp
             message = "s";
             // Publish
             Publish(message);
-            LblAlert.Text = "start";
+            LblAlert.Text = "Start";
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -108,10 +110,25 @@ namespace DeviceSubApp
             message = "t";
             // Publish
             Publish(message);
-            LblAlert.Text = "stop";
+            LblAlert.Text = "Stop";
+        }
+        private void BtnPause_Click(object sender, EventArgs e)
+        {
+            Reconnect();
+            /*BtnStop.Enabled = false;
+            BtnPause.Enabled = false;
+
+            BtnStart.Enabled = true;
+            BtnSend1.Enabled = true;
+            BtnSend3.Enabled = true;*/
+
+            message = "p";
+            // Publish
+            Publish(message);
+            LblAlert.Text = "Pause";
         }
 
-        private void BtnPause_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             Reconnect();
             message = "b";
@@ -142,5 +159,7 @@ namespace DeviceSubApp
                               0, // QoS level
                               true); // retained
         }
+
+        
     }
 }
