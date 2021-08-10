@@ -21,7 +21,7 @@ namespace kiosk1.View.Waiting
     /// </summary>
     public partial class Wait : Page
     {
-        List<Waitnum> waitnums = new List<Waitnum>();
+        // List<Waitnum> waitnums = new List<Waitnum>();
 
         string phoneNum = "010";
 
@@ -31,10 +31,10 @@ namespace kiosk1.View.Waiting
         {
             InitializeComponent();
             TxtNum.Text = phoneNum;
-            waitnums.Add(new Waitnum
+            /*waitnums.Add(new Waitnum
             {
                 num = 1
-            });
+            });*/
         }
 
 
