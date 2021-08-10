@@ -1,5 +1,5 @@
 ﻿using kiosk1.View.main;
-using kiosk1.View.select;
+
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace kiosk1
 {
@@ -30,15 +31,9 @@ namespace kiosk1
             InitializeComponent();
         }
 
-        private void MetroWindow_ContentRendered(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void MetroWindow_Activated(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Btnmain_Click(object sender, RoutedEventArgs e)
         {

@@ -29,7 +29,7 @@ namespace kiosk1.View.Select
             InitializeComponent();
 
             menuItems.Add(new MenuItems {
-                Name = "고기",
+                MenuName = "고기",
                 Price = 4000,
                 ImageSrc = @"D:\GitRepository\Project_EATS\kiosk1\meat.png"
             });

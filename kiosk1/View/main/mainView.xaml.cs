@@ -1,4 +1,4 @@
-﻿using kiosk1.View.select;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace kiosk1.View.main
 {
@@ -34,7 +35,7 @@ namespace kiosk1.View.main
             }
             else
             {
-                Select.Menu1 menu1 = new Select.Menu1();
+                var menu1 = new Select.MenuSelect();
                 NavigationService.Navigate(menu1);
             }
             
