@@ -35,9 +35,10 @@ ordercode 받아지는지 확인
 <kbd>![GOMCAM 20210805_1015580214 (1) (1)](https://user-images.githubusercontent.com/73567433/128276530-10f15f94-dfa1-4475-b19d-ef8333d31189.gif)</kbd>
 
 ## 팀원 역할 (자기가 맡은 파트 업데이트 해주세요)  
-🧓 최재훈 : 주방UI(기능 : 주문현황, 메뉴활성화) MQTT서버를 통해 주문 메시지 받기, 서빙로봇 출발시키기
-🧑 허재현 : 취업 완료 (2021.07.2x)       
+🧓 최재훈 : 주방UI(기능 : MQTT로 주문 코드받기, DB연동, 로봇에 메세지보내기) MQTT서버를 통해 주문 메시지 받기, 서빙로봇 출발시키기
 👦 김현수 : EntityFramework DB 연동, Data Select/Insert 테스트 (8/2), [주문 테스트](https://github.com/jacksimuse/Project_EATS/tree/main/OrderTest) (8/3)  
+🧑 허재현 : 자료 조사 및 프로젝트 방향 설정 ------ 취업 완료 (2021.07.2x)   
 🧔 성홍렬 : Serving Robot 설계 및 구현   
-👩‍🦰 안성주 :  [메뉴UI](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1) (8/3)    
-👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5)   
+👩‍🦰 안성주 :  [메뉴UI](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1) (8/3) 손님UI(대기번호 전송, 주문확인 결제창) , 관리자 로그인창 (8/05)       
+👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5) LINQ 및 mqtt를 이용한 json 메세지 처리 및 전반적인 피드백 제공 ------ 취업 완료 (2021.08.3x)   
+<br/>
