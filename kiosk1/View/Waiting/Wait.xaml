@@ -15,7 +15,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Background="Beige">
+        <StackPanel Grid.Row="0" Background="Beige" >
             <TextBlock x:Name="TxtNum" Text="번호를 입력하세요." 
                        FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55" Background="Wheat"  />
         </StackPanel>

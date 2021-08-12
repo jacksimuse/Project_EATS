@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:kiosk1.View.Pay"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
-      Title="payView" Background="Beige" >
+      Title="payView" Background="Beige" Loaded="Page_Loaded" Unloaded="Page_Unloaded" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -61,12 +61,18 @@
                     </Grid>
 
                 </Grid>
-                
-                <StackPanel Grid.Row="1" Orientation="Horizontal"  >
-                    <TextBlock x:Name="Txtmenu" Background="White" Width="150" Height="40"  VerticalAlignment="Stretch" />
-                    <TextBlock x:Name="Txtamount" Background="White" Width="150" />
-                    <TextBlock x:Name="Txtprice" Background="White" Width="150" />
-                </StackPanel>
+                <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <ListView Name="lsvOrder"  >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="170" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="170" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Price}" Width="170" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+
 
 
 
@@ -119,7 +125,8 @@
                     </Button.ContentTemplate>
                 </Button>
 
-                <Button Grid.Column="1" Content="현금" Margin="10" FontSize="20" Background="YellowGreen">
+                <Button x:Name="Btncash" Grid.Column="1" Content="현금" Margin="10" FontSize="20" 
+                        Click="Btncash_Click" Background="YellowGreen">
                     <Button.ContentTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

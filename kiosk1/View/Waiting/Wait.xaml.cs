@@ -25,8 +25,12 @@ namespace kiosk1.View.Waiting
 
         string phoneNum = "010";
 
-        int numlen;       
+        int numlen;
 
+
+       
+
+        
         public Wait()
         {
             InitializeComponent();
@@ -34,7 +38,11 @@ namespace kiosk1.View.Waiting
             waitnums.Add(new Waitnum
             {
                 num = 1
-            });
+            });*/
+
+            Logic.btncontrol btc = new Logic.btncontrol();
+            btc.BtnControl("Btntable");
+
         }
 
 
@@ -114,7 +122,20 @@ namespace kiosk1.View.Waiting
             else
             {
                 MessageBox.Show("메세지가 전송되었습니다.");
+
+                if (NavigationService.CanGoForward)
+                {
+                    NavigationService.GoForward();
+                }
+                else
+                {
+                    main.MainView mainview = new main.MainView();
+                    NavigationService.Navigate(mainview);
+                }
+
             }
         }
+
+     
     }
 }

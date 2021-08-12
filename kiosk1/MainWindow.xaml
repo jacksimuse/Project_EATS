@@ -33,7 +33,7 @@ x:Class="kiosk1.MainWindow"
                 Grid.Column="0"
                 Content="메인화면" FontSize="16"
                 Foreground="White" Background="#018D41"
-                Margin="5, 10" Click="Btnmain_Click">
+                Margin="5, 10" Click="Btnmain_Click" >
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -78,7 +78,7 @@ x:Class="kiosk1.MainWindow"
                 Grid.Column="3"
                 Content="결제" FontSize="16"
                 Foreground="White" Background="DimGray"
-                Margin="5, 10">
+                Margin="5, 10" Click="Btnpay_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using System.Reflection;
+using Application = System.Windows.Application;
 
 namespace kiosk1.View.main
 {
@@ -21,15 +24,20 @@ namespace kiosk1.View.main
     /// </summary>
     public partial class MainView : Page
     {
+
         public MainView()
         {
             InitializeComponent();
-        }
 
+            Logic.btncontrol btc = new Logic.btncontrol();
+            btc.BtnControl("Btnmain");
+        }
+       
         private void tableone_Click(object sender, RoutedEventArgs e)
         {
             if(NavigationService.CanGoForward)
             {
+                
                 NavigationService.GoForward();
             }
             else

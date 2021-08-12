@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:kiosk1.View.main"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
-      Title="MainView"  Background="Beige" >
+      Title="MainView"  Background="Beige">
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>

@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using kiosk1.View.Pay;
 
 namespace kiosk1
 {
@@ -23,22 +25,16 @@ namespace kiosk1
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
- 
 
-        public MainWindow()
+
+        public  MainWindow()
         {
             InitializeComponent();
         }
 
-        private void MetroWindow_ContentRendered(object sender, EventArgs e)
-        {
 
-        }
 
-        private void MetroWindow_Activated(object sender, EventArgs e)
-        {
 
-        }
 
         private void Btnmain_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +56,21 @@ namespace kiosk1
 
         private void Btnselect_Click(object sender, RoutedEventArgs e)
         {
-           
+
+        }
+
+        private void Btnpay_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new payView();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

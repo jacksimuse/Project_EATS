@@ -75,9 +75,9 @@ namespace kiosk1.View.Select
             }
             else
             {
-                Pay.payView pay1 = new Pay.payView(Txtmenu.Text.ToString(), int.Parse(NudAmount.Value.ToString()), Txtprice.Text.ToString());
+                //Pay.payView pay1 = new Pay.payView(Txtmenu.Text.ToString(), int.Parse(NudAmount.Value.ToString()), Txtprice.Text.ToString());
                 
-                NavigationService.Navigate(pay1);
+                //NavigationService.Navigate(pay1);
             }
         }
 
