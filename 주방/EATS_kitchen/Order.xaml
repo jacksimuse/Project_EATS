@@ -9,26 +9,95 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="Order">
 
-    <Grid Background="White">
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="10,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="10,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="343,44,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="314"/>
-        <TextBox HorizontalAlignment="Left" Height="178" Margin="343,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="314"/>
-        <Button Width="75" Height="30"
-                Content="운전중" HorizontalAlignment="Left" Background="Crimson"
-                Margin="668,10,0,0" VerticalAlignment="Top" 
-                FontSize="15">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" Margin="10, 0" />
 
-                    </StackPanel>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+    <DockPanel Background="White">
+        <Grid DockPanel.Dock="Top">
+            <Button x:Name="BtnDriving" Content="운행중" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,2" Background="Gray">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="5, 0" VerticalAlignment="Center"/>
+                            <iconPacks:PackIconJamIcons Kind="Car" Width="20" Height="20" Margin="5,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <mah:MetroProgressBar x:Name="PgbDriving" HorizontalAlignment="Right" Height="44" Margin="0,10,23,0" VerticalAlignment="Top" Width="648" Background="#1FFFFFFF"/>
+        </Grid>
+        <Grid>
+            <ListView Name="lsvTable1" Height="162" Margin="10,50,416,0" 
+                     VerticalAlignment="Top" Width="374" FontSize="20" FontWeight="Bold">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Name="lsvTable2" HorizontalAlignment="Left" Height="162" Margin="403,50,0,0" 
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Name="lsvTable3" HorizontalAlignment="Left" Height="162" Margin="11,268,0,0" 
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView Name="lsvTable4" HorizontalAlignment="Left" Height="162" Margin="403,268,0,0"
+                     VerticalAlignment="Top" Width="374" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                     FontSize="20" FontWeight="Bold">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            
+            <Button x:Name="Btntbl1" Content="" HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl1_Click" />
+            <Button x:Name="Btntbl3" Content="" HorizontalAlignment="Left" Height="202" Margin="11,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl3_Click"/>
+            <Button x:Name="Btntbl2" Content="" HorizontalAlignment="Left" Height="202" Margin="402,10,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="#00000000" Opacity="0" Click="Btntbl2_Click"/>
+            <Button x:Name="Btntbl4" Content="" HorizontalAlignment="Left" Height="202" Margin="403,228,0,0" VerticalAlignment="Top" Width="374" BorderBrush="#00000000" Background="White" Opacity="0" Click="Btntbl4_Click"/>
+            <Label Content="Table1" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table3" HorizontalAlignment="Left" Height="40" Margin="11,228,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table2" HorizontalAlignment="Left" Height="40" Margin="402,10,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label Content="Table4" HorizontalAlignment="Left" Height="40" Margin="403,228,0,0" VerticalAlignment="Top" Width="80" FontSize="20"/>
+            <Label x:Name="Lbltbl1" HorizontalAlignment="Left" Height="40" Margin="224,10,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl3" HorizontalAlignment="Left" Height="40" Margin="225,228,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl2" HorizontalAlignment="Left" Height="40" Margin="616,10,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+            <Label x:Name="Lbltbl4" HorizontalAlignment="Left" Height="40" Margin="616,228,0,0" VerticalAlignment="Top" Width="160" FontSize="15"/>
+        </Grid>
+    </DockPanel>
 
-        <mah:MetroProgressBar HorizontalAlignment="Left" Height="367" Margin="668,58,0,0" VerticalAlignment="Top" Width="72" Background="Green"/>
-
-    </Grid>
 </Page>
