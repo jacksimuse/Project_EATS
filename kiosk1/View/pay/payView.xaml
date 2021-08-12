@@ -7,17 +7,16 @@
       xmlns:local="clr-namespace:kiosk1.View.Pay"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
-      Title="payView" Background="Beige" >
+      Title="payView" Background="Beige" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="107*"/>
-            <RowDefinition Height="173*"/>
-            <RowDefinition Height="84*"/>
+            <RowDefinition Height="257*"/>
             <RowDefinition Height="86*"/>
 
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="95">
+        <Grid Grid.Row="0" Margin="0,6">
             <Label  Grid.Row="0" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" Content="결제창" FontSize="30"  Width="103" FontWeight="Bold" >
             </Label>
@@ -61,24 +60,28 @@
                     </Grid>
 
                 </Grid>
-                
-                <StackPanel Grid.Row="1" Orientation="Horizontal"  >
-                    <TextBlock x:Name="Txtmenu" Background="White" Width="150" Height="40"  VerticalAlignment="Stretch" />
-                    <TextBlock x:Name="Txtamount" Background="White" Width="150" />
-                    <TextBlock x:Name="Txtprice" Background="White" Width="150" />
-                </StackPanel>
+
+                <ListView Name="lsvOrder" Grid.Row="1" Margin="0,0,0,-216" Grid.RowSpan="4">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Amount}" Width="200" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Price}" Width="200" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
 
 
 
             </Grid>
-            
+
             <!--<StackPanel.DataContext>
                 <Binding Source="{StaticResource myDa}"
             </StackPanel.DataContext>-->
         </StackPanel>
         <!--총합계 금액-->
-        
+
 
 
         <Grid Grid.Row="3" >
@@ -119,7 +122,8 @@
                     </Button.ContentTemplate>
                 </Button>
 
-                <Button Grid.Column="1" Content="현금" Margin="10" FontSize="20" Background="YellowGreen">
+                <Button Grid.Column="1" Content="현금" Margin="10" FontSize="20" 
+                        Name="btnPayMoney" Click="btnPayMoney_Click" Background="YellowGreen">
                     <Button.ContentTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -132,9 +136,9 @@
                 </Button>
             </Grid>
 
-           
+
         </Grid>
-        
+
 
 
 

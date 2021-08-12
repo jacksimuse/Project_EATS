@@ -172,15 +172,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Button x:Name="Btncancel" Content="취소하기" FontSize="16" FontWeight="Black" Margin="10"></Button>
+                <Button x:Name="btnToMain" Content="처음으로" FontSize="16" FontWeight="Black" 
+                        Margin="10" Click="btnToMain_Click"></Button>
             </Grid>
 
             <Grid Grid.Column="1">
-                <Button x:Name="BtnOK" Content="결제하기" FontSize="16" FontWeight="Black" 
-                        Margin="10" Background="Red" Foreground="White"></Button>
+                <Button x:Name="btnCancel" Content="메뉴취소" FontSize="16" FontWeight="Black" 
+                        Margin="10" Click="btnCancel_Click"></Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button x:Name="btnCommit" Content="결제하기" FontSize="16" FontWeight="Black" 
+                        Margin="10" Background="Red" Foreground="White"
+                        Click="btnCommit_Click"></Button>
             </Grid>
 
 

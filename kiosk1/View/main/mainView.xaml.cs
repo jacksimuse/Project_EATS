@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using kiosk1.View.Select;
+using kiosk1.Model;
 
 namespace kiosk1.View.main
 {
@@ -35,25 +37,49 @@ namespace kiosk1.View.main
             }
             else
             {
-                var menu1 = new Select.MenuSelect();
+                MenuSelect menu1 = new MenuSelect(1, OrderCheck(1));
                 NavigationService.Navigate(menu1);
             }
             
         }
 
+        
+
         private void tabletwo_Click(object sender, RoutedEventArgs e)
         {
-
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MenuSelect menu2 = new MenuSelect(2, OrderCheck(2));
+                NavigationService.Navigate(menu2);
+            }
         }
-
         private void tablethree_Click(object sender, RoutedEventArgs e)
         {
-
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MenuSelect menu3 = new MenuSelect(3, OrderCheck(3));
+                NavigationService.Navigate(menu3);
+            }
         }
-
         private void tablefour_Click(object sender, RoutedEventArgs e)
         {
-
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MenuSelect menu4 = new MenuSelect(4, OrderCheck(4));
+                NavigationService.Navigate(menu4);
+            }
         }
 
         private void Btnwait_Click(object sender, RoutedEventArgs e)
@@ -66,6 +92,28 @@ namespace kiosk1.View.main
             {
                 Waiting.Wait wait1 = new Waiting.Wait();
                 NavigationService.Navigate(wait1);
+            }
+        }
+
+        private int OrderCheck(int tblum)
+        {
+            // 1. 테이블이 현재 사용 중인가?
+            // 2. 오늘의 첫 주문인가? 
+            using (EATSEntities db = new EATSEntities())
+            {
+                int orderNum;
+                // var lastOrder = db.Ordertbl.OrderByDescending
+                var lastOrder = db.Ordertbl.OrderByDescending(u => u.OrderCode).Take(1).ToList()[0].OrderCode;
+
+                if (lastOrder.Substring(0, 8) != DateTime.Today.ToString("yyyyMMdd"))
+                {
+                    orderNum = 1;
+                }
+                else
+                {
+                    orderNum = int.Parse(lastOrder.Substring(8)) + 1;
+                }
+                return orderNum;
             }
         }
     }
