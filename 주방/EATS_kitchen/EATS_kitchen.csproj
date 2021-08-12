@@ -160,6 +160,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -178,7 +179,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\MenuItem.cs" />
+    <Compile Include="Model\MenuItems.cs" />
     <Compile Include="Select\Menu1.xaml.cs">
       <DependentUpon>Menu1.xaml</DependentUpon>
     </Compile>

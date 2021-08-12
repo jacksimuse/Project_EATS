@@ -9,7 +9,7 @@
     x:Class="EATS_kitchen.Order"
     mc:Ignorable="d" 
     d:DesignHeight="530" d:DesignWidth="800"
-    Title="Order" Unloaded="Page_Unloaded">
+    Title="Order" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
 
 
     <DockPanel Background="White">

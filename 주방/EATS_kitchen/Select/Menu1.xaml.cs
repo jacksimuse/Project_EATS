@@ -35,11 +35,11 @@ namespace kiosk1.View.Select
             InitializeComponent();
 
             
-            menuItems.Add(new MenuItems {
+            /*menuItems.Add(new MenuItems {
                 Name = "삼겹살",
                 Price = 4000,
                 ImageSrc = @"D:\GitRepository\Project_EATS\kiosk1\meat.png"
-            });
+            });*/
 
             //if (menuName[i].Activation == true)
             //{

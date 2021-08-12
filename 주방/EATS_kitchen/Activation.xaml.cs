@@ -22,7 +22,7 @@ namespace EATS_kitchen
     /// </summary>
     public partial class Activation : Page
     {
-        bool isClicked = false;
+        // bool isClicked = false;
 
          
 
