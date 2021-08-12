@@ -94,23 +94,7 @@
                     <Button  Grid.Row="0" Grid.Column="0" x:Name="tableone" Content="1" 
                 FontSize="20" Margin="10" Click="tableone_Click" Background="#018D41">
 
-                        <!--<Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Background" Value="#018D41" />
-                                <Style.Triggers>
-                                    <Trigger Property="IsPressed" Value="true">
-                                        <Setter Property="Background" Value="red" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>-->
+                        
 
                     </Button>
 

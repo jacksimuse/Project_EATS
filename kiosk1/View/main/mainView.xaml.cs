@@ -119,10 +119,17 @@ namespace kiosk1.View.main
                 }
             }
         }
-
         private void tablefour_Click(object sender, RoutedEventArgs e)
         {
-
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MenuSelect menu4 = new MenuSelect(4, OrderCheck(4));
+                NavigationService.Navigate(menu4);
+            }
         }
 
         private void Btnwait_Click(object sender, RoutedEventArgs e)
@@ -135,6 +142,28 @@ namespace kiosk1.View.main
             {
                 Waiting.Wait wait1 = new Waiting.Wait();
                 NavigationService.Navigate(wait1);
+            }
+        }
+
+        private int OrderCheck(int tblum)
+        {
+            // 1. 테이블이 현재 사용 중인가?
+            // 2. 오늘의 첫 주문인가? 
+            using (EATSEntities db = new EATSEntities())
+            {
+                int orderNum;
+                // var lastOrder = db.Ordertbl.OrderByDescending
+                var lastOrder = db.Ordertbl.OrderByDescending(u => u.OrderCode).Take(1).ToList()[0].OrderCode;
+
+                if (lastOrder.Substring(0, 8) != DateTime.Today.ToString("yyyyMMdd"))
+                {
+                    orderNum = 1;
+                }
+                else
+                {
+                    orderNum = int.Parse(lastOrder.Substring(8)) + 1;
+                }
+                return orderNum;
             }
         }
     }

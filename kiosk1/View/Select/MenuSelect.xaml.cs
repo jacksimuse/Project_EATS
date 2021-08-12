@@ -1,4 +1,6 @@
 ﻿using kiosk1.Model;
+using kiosk1.View.main;
+using kiosk1.View.Pay;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -22,15 +24,21 @@ namespace kiosk1.View.Select
     /// </summary>
     public partial class MenuSelect : Page
     {
+        private int tableNum = 0;
+        private int orderCode = 0;
         private Tables table = new Tables();
-        public MenuSelect()
+        
+        public MenuSelect(int tblNum, int orderNum)
         {
             InitializeComponent();
-            MenuLoad("R");
+            tableNum = tblNum;
+            orderCode = orderNum;
         }
 
-        
-
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MenuLoad("R");
+        }
         private void Meat_Selected(object sender, RoutedEventArgs e)
         {
             MenuLoad("R");
@@ -53,19 +61,13 @@ namespace kiosk1.View.Select
             // this.DataContext = menus;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            MenuLoad("M");
-        }
+        
 
         private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Menutbl menu = lsvMenu.SelectedItem as Menutbl;
             AddSelectedMenu(menu);
             SetLsvOrderItem();
-
-            
-            
 
         }
 
@@ -109,6 +111,52 @@ namespace kiosk1.View.Select
             nudSelection.Minimum = 0;
 
             
+        }
+
+        private void btnToMain_Click(object sender, RoutedEventArgs e)
+        {
+            // 처음 화면으로 
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MainView mainView = new MainView();
+                NavigationService.Navigate(mainView);
+            }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItems menuitem = lsvOrder.SelectedItem as MenuItems;
+                int index = table.MenuList.FindIndex(x => x.MenuName == menuitem.MenuName);
+                table.MenuList.RemoveAt(index);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("음식을 선택하세요.", "오류");
+                
+            }
+            finally
+            {
+                SetLsvOrderItem();
+            }
+        }
+
+        private void btnCommit_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                payView pay = new payView(tableNum, table.MenuList, orderCode);
+                NavigationService.Navigate(pay);
+            }
         }
     }
 }

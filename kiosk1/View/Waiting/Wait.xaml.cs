@@ -25,7 +25,7 @@ namespace kiosk1.View.Waiting
 
         string phoneNum = "010";
 
-        int numlen;       
+        
 
         public Wait()
         {

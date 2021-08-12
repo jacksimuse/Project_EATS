@@ -1,5 +1,5 @@
 ﻿using kiosk1.View.main;
-
+using kiosk1.View.Pay;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
+
 
 namespace kiosk1
 {
@@ -31,9 +31,9 @@ namespace kiosk1
             InitializeComponent();
         }
 
-       
 
-       
+
+
 
         private void Btnmain_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +44,6 @@ namespace kiosk1
             }
             catch (Exception)
             {
-
                 throw;
             }
             
@@ -52,10 +51,11 @@ namespace kiosk1
 
 
         }
-
         private void Btnselect_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
+
+        
     }
 }
