@@ -19,9 +19,7 @@
                 <ColumnDefinition Width="46*"/>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
-            <Label Content="주방" 
-               FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Margin="20,0" Width="110"/>
-            <Button x:Name="BtnOrder" Grid.Column="1"
+            <Button x:Name="BtnOrder" Grid.Column="0"
                     Content="주문현황" FontSize="23" 
                     Foreground="White" Background="LightBlue"
                     Margin="5, 5"
@@ -42,10 +40,30 @@
                 </Button.Template>
                 
             </Button>
-            <Button x:Name="BtnActivation" Grid.Column="2"
+            <Button x:Name="BtnActivation" Grid.Column="1"
                     Content="활성/비활성" FontSize="18" 
                     Foreground="White" Background="RoyalBlue"
                     Margin="5,5"
+                    Click="BtnActivation_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="RoyalBlue" RadiusX="20" RadiusY="20" Stroke="Blue"/>
+                            <Label Content="{TemplateBinding Content}"
+                                   Foreground="White"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="5, 0"/>
+                            <iconPacks:PackIconUnicons Kind="BoltAlt" Width="20" Height="30" Margin="0, 1, 6, 0"
+                                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="BtnConnection" Grid.Column="2"
+                    Content="연결 상태" FontSize="18" 
+                    Foreground="White" Background="RoyalBlue"
+                    Margin="5,5" HorizontalContentAlignment="Center"
                     Click="BtnActivation_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
