@@ -28,10 +28,10 @@ namespace EATS_kitchen
         MqttClient client;
         
         delegate void UpdateTextCallback(string message);
-        List<MenuItems> menuTable1 = new List<MenuItems>();
-        List<MenuItems> menuTable2 = new List<MenuItems>();
-        List<MenuItems> menuTable3 = new List<MenuItems>();
-        List<MenuItems> menuTable4 = new List<MenuItems>();
+        List<MenuInfo> menuTable1 = new List<MenuInfo>();
+        List<MenuInfo> menuTable2 = new List<MenuInfo>();
+        List<MenuInfo> menuTable3 = new List<MenuInfo>();
+        List<MenuInfo> menuTable4 = new List<MenuInfo>();
 
         string message = "나는 전설이다.";
         string topic = "EATS/ORDER/";
@@ -95,10 +95,10 @@ namespace EATS_kitchen
                 using (EATSEntities db = new EATSEntities())
                 {
                     List<OrderDetailtbl> orderDetailList = db.OrderDetailtbl.Where(o => o.OrderCode.Equals(orderCode) && !o.OrderComplete).ToList();
-                    List<MenuItems> orderList = new List<MenuItems>();
+                    List<MenuInfo> orderList = new List<MenuInfo>();
                     foreach (var item in orderDetailList)
                     {
-                        var order = new MenuItems()
+                        var order = new MenuInfo()
                         {
                             OrderIdx = item.idx,
                             OrderCode = orderCode,
@@ -285,7 +285,7 @@ namespace EATS_kitchen
         {
             using (EATSEntities db = new EATSEntities())
             {
-                List<MenuItems> orderList = new List<MenuItems>();
+                List<MenuInfo> orderList = new List<MenuInfo>();
                 switch (index)
                 {
                     case 1:

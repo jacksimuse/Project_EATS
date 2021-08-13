@@ -37,7 +37,7 @@
           <Property Name="CustomerNum" Type="int" Nullable="false" />
           <Property Name="TblNum" Type="int" Nullable="false" />
           <Property Name="OrderPrice" Type="int" Nullable="false" />
-          <Property Name="OrderComplete" Type="bit" Nullable="false" />
+          <Property Name="TableInUse" Type="bit" Nullable="false" />
           <Property Name="OrderRemark" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Usertbl">
@@ -121,7 +121,7 @@
           <Property Name="CustomerNum" Type="Int32" Nullable="false" />
           <Property Name="TblNum" Type="Int32" Nullable="false" />
           <Property Name="OrderPrice" Type="Int32" Nullable="false" />
-          <Property Name="OrderComplete" Type="Boolean" Nullable="false" />
+          <Property Name="TableInUse" Type="Boolean" Nullable="false" />
           <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetailtbl" Relationship="EATSModel.FK_OrderDetailtbl_Ordertbl" FromRole="Ordertbl" ToRole="OrderDetailtbl" />
         </EntityType>
@@ -181,7 +181,7 @@
             <EntityTypeMapping TypeName="EATSModel.Ordertbl">
               <MappingFragment StoreEntitySet="Ordertbl">
                 <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
-                <ScalarProperty Name="OrderComplete" ColumnName="OrderComplete" />
+                <ScalarProperty Name="TableInUse" ColumnName="TableInUse" />
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="TblNum" ColumnName="TblNum" />
                 <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />

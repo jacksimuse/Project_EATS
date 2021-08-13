@@ -1,4 +1,5 @@
-﻿using kiosk1.Model;
+﻿using EATS_kitchen.Model;
+using kiosk1.Model;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;

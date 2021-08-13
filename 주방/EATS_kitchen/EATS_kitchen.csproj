@@ -179,15 +179,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\DataAccess.cs" />
+    <Compile Include="Model\MenuInfo.cs" />
     <Compile Include="Model\MenuItems.cs" />
-    <Compile Include="Select\Menu1.xaml.cs">
-      <DependentUpon>Menu1.xaml</DependentUpon>
+    <Compile Include="Model\Tables.cs" />
+    <Compile Include="View\main\mainView.xaml.cs">
+      <DependentUpon>mainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Select\Menu2.xaml.cs">
-      <DependentUpon>Menu2.xaml</DependentUpon>
+    <Compile Include="View\pay\payView.xaml.cs">
+      <DependentUpon>payView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Select\Menu3.xaml.cs">
-      <DependentUpon>Menu3.xaml</DependentUpon>
+    <Compile Include="View\Select\MenuSelect.xaml.cs">
+      <DependentUpon>MenuSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\table\tableView.xaml.cs">
+      <DependentUpon>tableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Waiting\Wait.xaml.cs">
+      <DependentUpon>Wait.xaml</DependentUpon>
     </Compile>
     <Page Include="Activation.xaml">
       <SubType>Designer</SubType>
@@ -213,15 +222,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Select\Menu1.xaml">
+    <Page Include="View\main\mainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Select\Menu2.xaml">
+    <Page Include="View\pay\payView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Select\Menu3.xaml">
+    <Page Include="View\Select\MenuSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\table\tableView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Waiting\Wait.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -306,6 +323,7 @@
     <Resource Include="image\안창살.jpg" />
     <Resource Include="image\차슈라멘.jpg" />
     <Resource Include="image\콜라.jpg" />
+    <Resource Include="image\재료소진.jpg" />
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EATS.Context.cs</LastGenOutput>
