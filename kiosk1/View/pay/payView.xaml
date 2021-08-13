@@ -17,7 +17,7 @@
 
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Height="95">
-        <Label  Grid.Row="0" HorizontalAlignment="Center" 
+            <Label  Grid.Row="0" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" Content="결제창" FontSize="30"  Width="103" FontWeight="Bold" >
             </Label>
             <Image Source="D:\GitRepository\Project_EATS\kiosk1\pay.png"  Width="82" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="102,10,0,10" RenderTransformOrigin="-2.05,0.506"  ></Image>

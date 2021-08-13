@@ -106,8 +106,8 @@ namespace kiosk1.View.Pay
             {
                 MessageBox.Show(ex.Message);
                 
+            }
         }
-    }
 
         private void MessagePublish(string orderCode)
         {
@@ -139,19 +139,20 @@ namespace kiosk1.View.Pay
                 var menus = DataAccess.GetMenu();
                 if (db.Ordertbl.Count(o => o.OrderCode.Equals(orderCode)) == 0)
                 {
-                    var order = new Ordertbl()
-                    {
-                        OrderCode = orderCode,
-                        OrderTime = DateTime.Now,
-                        CustomerNum = 0,
-                        TblNum = TableNum,
-                        OrderPrice = 0, // TODO : 계산식 추가
+                var order = new Ordertbl()
+                {
+                    OrderCode = orderCode,
+                    OrderTime = DateTime.Now,
+                    CustomerNum = 0,
+                    TblNum = TableNum,
+                    OrderPrice = 0, // TODO : 계산식 추가
                         TableInUse = true,
-                        OrderRemark = null // TODO : 주문 특이사항 이후 추가 
-                    };
-                    db.Ordertbl.Add(order);
+                    OrderRemark = null // TODO : 주문 특이사항 이후 추가 
+                };
+
+                db.Ordertbl.Add(order);
                 }
-                
+
                 foreach (var item in menuList)
                 {
                     var orderDetail = new OrderDetailtbl()

@@ -28,19 +28,23 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
         <Button x:Name="Btnwait" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
                     Content="대기 하기 (문자 전송)" 
                     Background="White" Foreground="Black" FontSize="30" Click="Btnwait_Click">
-            <Button.ContentTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
                         <iconpacks:PackIconFontAwesome Kind="MobileAltSolid" Width="20" Height="40" />
-                    </StackPanel>
-                </DataTemplate>
-            </Button.ContentTemplate>
-        </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
         <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"
                 Content="추가 주문하기" 
                 Background="White" Foreground="Black" FontSize="30" >
@@ -56,13 +60,13 @@
 
         <Grid Name="grdOrder" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
                       Background="White">
-            <Label Content="주문하기" 
+                    <Label Content="주문하기" 
                              FontSize="35
                            " HorizontalAlignment="Center" Margin="122,23,134,118" FontWeight="Bold" Width="149" />
             <Label Content="테이블을 선택해주세요." 
                         FontSize="30" HorizontalAlignment="Center" Margin="37,125,30,6" FontWeight="Bold" Width="338" />
 
-        </Grid>
+                </Grid>
 
         <!--버튼 영역 시작-->
         <Button Grid.Row="5" Grid.Column="1" x:Name="btnTable1" Content="1" 
@@ -75,7 +79,9 @@
                 FontSize="40" Click="btnTable4_Click" Background="#018D41"></Button>
         <!--버튼 영역 끝-->
 
-        
+            </Grid>
+
+        </Grid>
     </Grid>
 
 </Page>

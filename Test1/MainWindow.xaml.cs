@@ -41,7 +41,7 @@ namespace Test1
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+           
             if(string.IsNullOrEmpty(TxtUserId.Text) || string.IsNullOrEmpty(TxtUserPassword.Password))
             {
                 MessageBox.Show(this, "아이디/패스워드를 입력하세요! ");

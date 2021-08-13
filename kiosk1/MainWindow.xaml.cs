@@ -46,7 +46,7 @@ namespace kiosk1
             {
                 throw;
             }
-            
+
 
 
 
