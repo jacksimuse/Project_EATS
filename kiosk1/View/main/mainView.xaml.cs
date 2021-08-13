@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using kiosk1.View.Select;
 using kiosk1.Model;
 using System.Windows.Forms;
+
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace kiosk1.View.main
@@ -41,7 +42,7 @@ namespace kiosk1.View.main
                 
                 // 사용 중 변경
                 foreach (var item in useTable)
-            {
+                {
                     switch (item.TblNum)
                     {
                         case 1:
@@ -61,13 +62,13 @@ namespace kiosk1.View.main
                             btnTable4.Content = "4";
                             break;
 
-            }
+                    }
                 }
             
                 if (useTable.Count == 4)
                 {
                     grdOrder.Visibility = Visibility.Hidden;
-        }
+                }
 
             }
         }
@@ -108,16 +109,16 @@ namespace kiosk1.View.main
             // 1. 테이블이 현재 사용 중인가?
             // 2. 오늘의 첫 주문인가? 
             using (EATSEntities db = new EATSEntities())
-        {
+            {
                 var lastOrder = db.Ordertbl.OrderByDescending(u => u.OrderCode).Take(1).ToList()[0].OrderCode;
                 var tableInUse = db.Ordertbl.OrderByDescending(o => o.OrderCode).Where(o => o.TblNum.Equals(tblNum)).Take(1).ToList()[0];
                 if (lastOrder.Substring(0, 8) != DateTime.Today.ToString("yyyyMMdd"))
-            {
+                {
                     return 1;
-            }
+                }
 
-            else
-            {
+                else
+                {
                     return int.Parse(lastOrder.Substring(8)) + 1;
                 }
             }
@@ -127,7 +128,7 @@ namespace kiosk1.View.main
         {
             bool flagInUse = false;
             switch (tblNum)
-        {
+            {
                 case 1:
                     flagInUse = btnTable1.Background == Brushes.Gray;
                     break;
@@ -147,23 +148,21 @@ namespace kiosk1.View.main
             }
             else
             {
-                Waiting.Wait wait1 = new Waiting.Wait();
-                NavigationService.Navigate(wait1);
-            }
-        }
-
                 if (flagInUse)
-            {
+                {
                     DialogResult dialogResult = MessageBox.Show("추가 주문 하시겠습니까?", "주문", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.No)
-                {
+                    {
                         return;
-                }
-                   
+                    }
+
                 }
                 MenuSelect menuSelect = new MenuSelect(tblNum, OrderCheck(tblNum));
                 NavigationService.Navigate(menuSelect);
             }
         }
+
+                
+      
     }
 }

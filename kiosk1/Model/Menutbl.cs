@@ -7,11 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-<<<<<<< HEAD:DataBaseTest/DataView/Model/Menutbl.cs
-namespace DataView.Model
-=======
+
 namespace kiosk1.Model
->>>>>>> f545dee6ffa0cb6fe9f40929ca8ac731137ef9a4:kiosk1/Model/Menutbl.cs
+
 {
     using System;
     using System.Collections.Generic;
