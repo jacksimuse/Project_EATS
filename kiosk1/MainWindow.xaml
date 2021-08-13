@@ -10,7 +10,7 @@
     xmlns:local="clr-namespace:kiosk1"
     mc:Ignorable="d"
     Title="Mainkiosk" Height="800" Width="600" Background="White"
-    WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen" Loaded="MetroWindow_Loaded" Closed="MetroWindow_Closed">
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
             <iconpacks:PackIconMaterial Kind="Store" Margin="5, 10" Foreground="White"/>

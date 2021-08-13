@@ -78,7 +78,8 @@ namespace kiosk1.View.Select
             MenuItems menu = lsvMenu.SelectedItem as MenuItems;
             //List<Menutbl> menu = new List<Menutbl>(); 
             //menu = Logic.DataAccess.GetMenu();
-            AddSelectedMenu(menu);
+            if (menu != null) 
+                AddSelectedMenu(menu);
             SetLsvOrderItem();
 
         }

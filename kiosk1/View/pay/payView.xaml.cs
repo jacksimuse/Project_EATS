@@ -105,7 +105,6 @@ namespace kiosk1.View.Pay
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
             }
         }
 
@@ -167,9 +166,9 @@ namespace kiosk1.View.Pay
 
                 if (db.SaveChanges() > 0)
                 {
-                    MessageBox.Show("DB 저장 성공", "Complete");
+                    MessageBox.Show("주문 완료", "Complete");
                 }
-                else MessageBox.Show("DB 저장 실패", "Fail");
+                else MessageBox.Show("주문 실패, 관리자에게 문의!", "Fail");
             }
         }
 

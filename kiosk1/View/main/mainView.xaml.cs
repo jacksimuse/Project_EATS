@@ -31,12 +31,18 @@ namespace kiosk1.View.main
     /// </summary>
     public partial class MainView : Page
     {
-        MqttClient client ;
+        MqttClient client;
         string topic = "EATS/TABLE/";
 
         public MainView()
         {
             InitializeComponent();
+        }
+
+        public MainView(MqttClient client)
+        {
+            InitializeComponent();
+            this.client = client;
         }
 
 
@@ -188,10 +194,8 @@ namespace kiosk1.View.main
         private void MqttConnection()
         {
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
-
-#pragma warning disable CS0618
             client = new MqttClient(brokerAddress);
-#pragma warning restore CS0618
+
             client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
             if (!client.IsConnected)
                 client.Connect("Kiosk Main");
