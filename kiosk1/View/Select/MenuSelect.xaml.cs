@@ -1,4 +1,5 @@
-﻿using kiosk1.Model;
+﻿
+using kiosk1.Model;
 using kiosk1.View.main;
 using kiosk1.View.Pay;
 using MahApps.Metro.Controls;

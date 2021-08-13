@@ -147,19 +147,14 @@ namespace kiosk1.View.main
             }
             else
             {
-                Waiting.Wait wait1 = new Waiting.Wait();
-                NavigationService.Navigate(wait1);
-            }
-        }
-
                 if (flagInUse)
-            {
+                {
                     DialogResult dialogResult = MessageBox.Show("추가 주문 하시겠습니까?", "주문", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.No)
-                {
+                    {
                         return;
-                }
-                   
+                    }
+
                 }
                 MenuSelect menuSelect = new MenuSelect(tblNum, OrderCheck(tblNum));
                 NavigationService.Navigate(menuSelect);
