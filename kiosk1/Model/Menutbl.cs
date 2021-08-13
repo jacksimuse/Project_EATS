@@ -21,5 +21,6 @@ namespace kiosk1.Model
         public bool Activation { get; set; }
         public Nullable<System.DateTime> RegisterDate { get; set; }
         public string Description { get; set; }
+        public string ImageName { get; set; }
     }
 }

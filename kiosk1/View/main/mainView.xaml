@@ -7,116 +7,75 @@
       xmlns:local="clr-namespace:kiosk1.View.main"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="450"
-      Title="MainView"  Background="Beige" >
+      Title="MainView"  Background="Beige" Loaded="Page_Loaded">
 
-    <Grid Margin="10">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="92*"/>
-            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="65*"/>
-            <RowDefinition Height="296"/>
-            <RowDefinition Height="69*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-
-        </Grid>
-
-
-
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Row="1" x:Name="Btnwait" Grid.Column="0" 
-                    Content="대기하기" Margin="10"
+        <Button x:Name="Btnwait" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
+                    Content="대기 하기 (문자 전송)" 
                     Background="White" Foreground="Black" FontSize="30" Click="Btnwait_Click">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
-                            <iconpacks:Material Kind="ChairSchool" Width="20" Height="40"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
+                        <iconpacks:PackIconFontAwesome Kind="MobileAltSolid" Width="20" Height="40" />
+                    </StackPanel>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"
+                Content="추가 주문하기" 
+                Background="White" Foreground="Black" FontSize="30" >
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
+                        <iconpacks:PackIconFontAwesome Kind="HandPointDownRegular" Width="20" Height="40" Margin="0, 0, 10, 0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
 
-            <Button x:Name="Btnorder" Grid.Column="1" 
-                    Content="주문하기" Margin="10"
-                    Background="LightGray" Foreground="White" FontSize="30">
-                <Button.ContentTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" Margin="10, 0" VerticalAlignment="Bottom"/>
-                            <iconpacks:Material Kind="OrderNumericAscending" Width="20" Height="40"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </Button.ContentTemplate>
-            </Button>
-
-            <Grid Grid.Column="1"  >
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <!--주문하기-->
-
-                <Grid Grid.Row="0" Margin="10" Background="White">
-                    <Label Content="주문하기" 
-                             FontSize="30" HorizontalAlignment="Center" Margin="12,44,13,23" FontWeight="Bold" />
-                    <Border >
-                        <Border BorderBrush="Black" BorderThickness="1"/>
-                    </Border>
+        <Grid Name="grdOrder" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                      Background="White">
+            <Label Content="주문하기" 
+                             FontSize="35
+                           " HorizontalAlignment="Center" Margin="122,23,134,118" FontWeight="Bold" Width="149" />
+            <Label Content="테이블을 선택해주세요." 
+                        FontSize="30" HorizontalAlignment="Center" Margin="37,125,30,6" FontWeight="Bold" Width="338" />
 
         </Grid>
 
+        <!--버튼 영역 시작-->
+        <Button Grid.Row="5" Grid.Column="1" x:Name="btnTable1" Content="1" 
+                FontSize="40" Click="btnTable1_Click" Background="#018D41" />
+        <Button Grid.Row="5" Grid.Column="3" x:Name="btnTable2" Content="2" 
+                FontSize="40" Click="btnTable2_Click" Background="#018D41"></Button>
+        <Button Grid.Row="7" Grid.Column="1" x:Name="btnTable3" Content="3" 
+                FontSize="40" Click="btnTable3_Click" Background="#018D41"></Button>
+        <Button Grid.Row="7" Grid.Column="3" x:Name="btnTable4" Content="4" 
+                FontSize="40" Click="btnTable4_Click" Background="#018D41"></Button>
+        <!--버튼 영역 끝-->
 
-                <Grid Grid.Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <!--1번 버튼-->
-                    <Button  Grid.Row="0" Grid.Column="0" x:Name="tableone" Content="1" 
-                FontSize="20" Margin="10" Click="tableone_Click" Background="#018D41">
-
-                        
-
-                    </Button>
-
-
-                    <Button Grid.Row="0" Grid.Column="1"
-            x:Name="tabletwo" Content="2"
-                FontSize="20" Margin="10" Background="#018D41" Click="tabletwo_Click"></Button>
-                    <Button Grid.Column="0" Grid.Row="1"  
-                x:Name="tablethree" Content="3"
-                FontSize="20" Margin="10" Background="#018D41" Click="tablethree_Click"></Button>
-                    <Button Grid.Column="1" Grid.Row="1"
-                x:Name="tablefour" Content="4"
-                FontSize="20" Margin="10" Background="#018D41" Click="tablefour_Click"></Button>
-
-                </Grid>
-
-                <Frame x:Name="ActiveControl" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2">
-                </Frame>
-
-            </Grid>
-
-        </Grid>
+        
     </Grid>
 
 </Page>

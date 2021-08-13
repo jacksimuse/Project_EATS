@@ -303,6 +303,12 @@
     <Resource Include="pay.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\no_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EATS.Context.cs</LastGenOutput>
@@ -313,10 +319,6 @@
       <DependentUpon>EATS.edmx</DependentUpon>
       <LastGenOutput>EATS.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\no_image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />

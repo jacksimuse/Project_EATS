@@ -146,6 +146,7 @@ namespace kiosk1.View.Pay
                         CustomerNum = 0,
                         TblNum = TableNum,
                         OrderPrice = 0, // TODO : 계산식 추가
+                        TableInUse = true,
                         OrderRemark = null // TODO : 주문 특이사항 이후 추가 
                     };
                     db.Ordertbl.Add(order);

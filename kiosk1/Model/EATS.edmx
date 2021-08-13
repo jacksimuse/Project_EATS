@@ -16,6 +16,7 @@
           <Property Name="Activation" Type="bit" Nullable="false" />
           <Property Name="RegisterDate" Type="datetime" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImageName" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -36,7 +37,7 @@
           <Property Name="CustomerNum" Type="int" Nullable="false" />
           <Property Name="TblNum" Type="int" Nullable="false" />
           <Property Name="OrderPrice" Type="int" Nullable="false" />
-          <Property Name="OrderComplete" Type="bit" Nullable="false" />
+          <Property Name="TableInUse" Type="bit" Nullable="false" />
           <Property Name="OrderRemark" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Usertbl">
@@ -89,6 +90,7 @@
           <Property Name="Activation" Type="Boolean" Nullable="false" />
           <Property Name="RegisterDate" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -110,7 +112,7 @@
           <Property Name="CustomerNum" Type="Int32" Nullable="false" />
           <Property Name="TblNum" Type="Int32" Nullable="false" />
           <Property Name="OrderPrice" Type="Int32" Nullable="false" />
-          <Property Name="OrderComplete" Type="Boolean" Nullable="false" />
+          <Property Name="TableInUse" Type="Boolean" Nullable="false" />
           <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetailtbl" Relationship="Self.FK_OrderDetailtbl_Ordertbl" FromRole="Ordertbl" ToRole="OrderDetailtbl" />
         </EntityType>
@@ -161,6 +163,7 @@
                 <ScalarProperty Name="Activation" ColumnName="Activation" />
                 <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -183,7 +186,7 @@
                 <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
                 <ScalarProperty Name="TblNum" ColumnName="TblNum" />
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="OrderComplete" ColumnName="OrderComplete" />
+                <ScalarProperty Name="TableInUse" ColumnName="TableInUse" />
                 <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
               </MappingFragment>
             </EntityTypeMapping>
