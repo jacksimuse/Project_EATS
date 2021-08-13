@@ -34,12 +34,6 @@ namespace kiosk1.View.Select
         {
             InitializeComponent();
 
-            
-            menuItems.Add(new MenuItems {
-                Name = "삼겹살",
-                Price = 4000,
-                ImageSrc = @"D:\GitRepository\Project_EATS\kiosk1\meat.png"
-            });
 
             //if (menuName[i].Activation == true)
             //{
@@ -53,23 +47,7 @@ namespace kiosk1.View.Select
             //    BtnMenu1Sub.Text = "재료 소진";
             //    isClicked = true;
             //}
-
-            temp = BtnMenu1Sub.Text;
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            
         }
 
 
@@ -89,37 +67,66 @@ namespace kiosk1.View.Select
                     }
                     i++;
                 }
-                BtnMenu1.Background = Brushes.White;
-                BtnMenu1Sub.Text = "삼겹살 / 4000원";
+                //BtnMenu1.Background = Brushes.White;
+                //BtnMenu1Sub.Text = "삼겹살 / 4000원";
                 isClicked = false;
             }
             else
             {
                 
-                while (true)
-                {
-                    if (menuName[i].MenuName == BtnMenu1Sub.Text)
-                    {
-                        menuName[i].Activation = false;
-                        var result = Commons.SetMenuActive(menuName[i]);
-                        break;
-                    }
-                    i++;
-                }
-                BtnMenu1.Background = Brushes.Gray;
-                BtnMenu1Sub.Text = "재료 소진";
-                isClicked = true;
+                //while (true)
+                //{
+                //    if (menuName[i].MenuName == BtnMenu1Sub.Text)
+                //    {
+                //        menuName[i].Activation = false;
+                //        var result = Commons.SetMenuActive(menuName[i]);
+                //        break;
+                //    }
+                //    i++;
+                //}
+                //BtnMenu1.Background = Brushes.Gray;
+                //BtnMenu1Sub.Text = "재료 소진";
+                //isClicked = true;
             }
             
         }
 
         private void NudAmount_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            var temp = BtnMenu1Sub.Text.Split('/');
-            int price = int.Parse(temp[1].Trim().Substring(0, temp[1].IndexOf('원')-1));
+           // var temp = BtnMenu1Sub.Text.Split('/');
+            //int price = int.Parse(temp[1].Trim().Substring(0, temp[1].IndexOf('원')-1));
             //int amount = int.Parse(NudAmount.Value.ToString());
 
             //Txtprice.Text = ((int)NudAmount.Value * price) + "원";
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            
+
+        }
+
+
+        private void LbiMain_Selected(object sender, RoutedEventArgs e)
+        {
+            isValidCheck();
+        }
+
+        private void LbiSide_Selected(object sender, RoutedEventArgs e)
+        {
+            isValidCheck();
+        }
+
+        private void LbiBeverage_Selected(object sender, RoutedEventArgs e)
+        {
+            isValidCheck();
+        }
+
+        private void isValidCheck()
+        {
+            
+            
         }
     }
 }

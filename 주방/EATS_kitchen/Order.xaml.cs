@@ -40,7 +40,7 @@ namespace EATS_kitchen
         {
             InitializeComponent();
 
-            IPAddress brokerAddress = IPAddress.Parse("210.119.12.93");
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.86");
             client = new MqttClient(brokerAddress);
             client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
             client.Connect(thisId);

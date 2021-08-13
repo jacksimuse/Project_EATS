@@ -16,6 +16,7 @@
           <Property Name="Activation" Type="bit" Nullable="false" />
           <Property Name="RegisterDate" Type="datetime" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ImageName" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -98,6 +99,7 @@
           <Property Name="Activation" Type="Boolean" Nullable="false" />
           <Property Name="RegisterDate" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -153,6 +155,7 @@
           <EntitySetMapping Name="Menutbl">
             <EntityTypeMapping TypeName="EATSModel.Menutbl">
               <MappingFragment StoreEntitySet="Menutbl">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
                 <ScalarProperty Name="Activation" ColumnName="Activation" />

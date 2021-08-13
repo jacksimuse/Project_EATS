@@ -6,20 +6,20 @@
       xmlns:local="clr-namespace:kiosk1.View.Select" 
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="450"
-      Title="Menu1">
+      d:DesignHeight="389" d:DesignWidth="675"
+      Title="Menu1" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="49*"/>
             <RowDefinition Height= "180*"/>
-            
+
         </Grid.RowDefinitions>
 
-        <ListBox  Grid.Row="0" x:Name="lbCategory" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" Height="47">
+        <ListBox Grid.Row="0" x:Name="lbCategory" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" Height="47">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal" />
+                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemContainerStyle>
@@ -36,7 +36,7 @@
                                     <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"></ContentPresenter>
                                     </Border>
-                                    <Border x:Name="UnderBd" Margin="18,0,18,0" VerticalAlignment="Bottom" BorderBrush="Transparent" BorderThickness="2"></Border>
+                                    <Border x:Name="UnderBd" Margin="18,0,18,0" VerticalAlignment="Bottom" BorderBrush="Transparent" BorderThickness="2" ></Border>
                                 </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsSelected" Value="true">
@@ -53,33 +53,37 @@
                 </Style>
 
             </ListBox.ItemContainerStyle>
-            <ListBoxItem>고기</ListBoxItem>
-
-
-            <ListBoxItem>식사류</ListBoxItem>
-            <ListBoxItem>음료</ListBoxItem>
+            <ListBoxItem x:Name="LbiMain" Selected="LbiMain_Selected">고기</ListBoxItem>
+            <ListBoxItem x:Name="LbiSide" Selected="LbiSide_Selected">식사류</ListBoxItem>
+            <ListBoxItem x:Name="LbiBeverage" Selected="LbiBeverage_Selected">음료</ListBoxItem>
 
         </ListBox>
 
         <Grid Grid.Row="1" Background="Beige" Margin="0, 10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="67*"/>
 
-                <RowDefinition Height="69*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="225"/>
-            </Grid.ColumnDefinitions>
+            <ListView Name="lsvMenu" MouseLeftButtonUp="lsvMenu_MouseLeftButtonUp"
+                SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" RenderTransformOrigin="0.41,0.445" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
-            <Button x:Name="BtnMenu1" Grid.Column="0" Grid.Row="0" Click="BtnMenu1_Click" >
-                <ContentControl>
-                    <StackPanel x:Name="BtnMenuCon" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left">
-                        <Image Source="D:\GitRepository\Project_EATS\kiosk1\meat.png" Margin="0,0,5,0" Width="80" Height="67" />
-                        <TextBlock x:Name="BtnMenu1Sub" Text="목살" VerticalAlignment="Center"  Width="Auto" />
-                    </StackPanel>
-                </ContentControl>
-            </Button>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="{Binding ImageSrc}"
+                                    Width="200" Height="200" Margin="5"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Name="txtMenuName" Width="125" Height="30" Text="{Binding Path=MenuName, Mode=TwoWay}"/>
+                                <TextBox Name="txtPrice" Width="125" Height="30" Text="{Binding Path=Price, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
 
         </Grid>
 
