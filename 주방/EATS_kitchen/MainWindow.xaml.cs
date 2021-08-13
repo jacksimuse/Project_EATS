@@ -1,10 +1,13 @@
-﻿using MahApps.Metro.Controls;
+﻿using EATS_kitchen.Model;
+using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Threading;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
@@ -16,18 +19,16 @@ namespace EATS_kitchen
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        MqttClient client;
+        readonly IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
+
         public MainWindow()
         {
             InitializeComponent();
 
         }
 
-        private void InitializeMqtt()
-        {
-            
-        }
-
-        private  void BtnOrder_Click(object sender, RoutedEventArgs e)
+        private void BtnOrder_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -71,12 +72,91 @@ namespace EATS_kitchen
 
         private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //client.Disconnect();
+            if (client.IsConnected) client.Disconnect();
             await Helper.Commons.ShowMessageAsync("영업", "종료합니다");
         }
-        private void UpdateText(string message)
+        
+        private void btnTable1_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            int num = 1;
+            // 0. 메시지박스로 질문
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(num.ToString() + "번 테이블에 손님이 없나요?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+
+            // 1. Ordertbl.TableInUse 갱신 
+            TableSetEmpty(num);
+
+            // 2. 새로고침 메시지 전송 
+            RefreshMessagePublish();
+        }
+        private void RefreshMessagePublish()
+        {
+            try
+            {
+                client = new MqttClient(brokerAddress);
+                if (!client.IsConnected) client.Connect("Kitchen");
+                var message = Encoding.UTF8.GetBytes("Refresh");
+                string topic = "EATS/TABLE/";
+
+                client.Publish(topic, message, 1, true);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnTable2_Click(object sender, RoutedEventArgs e)
+        {
+            int num = 2;
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(num.ToString() + "번 테이블에 손님이 없나요?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            TableSetEmpty(num);
+            RefreshMessagePublish();
+        }
+        private void btnTable3_Click(object sender, RoutedEventArgs e)
+        {
+            int num = 3;
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(num.ToString() + "번 테이블에 손님이 없나요?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            TableSetEmpty(num);
+            RefreshMessagePublish();
+        }
+        private void btnTable4_Click(object sender, RoutedEventArgs e)
+        {
+            int num = 4;
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show(num.ToString() + "번 테이블에 손님이 없나요?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            TableSetEmpty(num);
+            RefreshMessagePublish();
+        }
+
+        private void TableSetEmpty(int tblNum)
+        {
+            using (EATSEntities db = new EATSEntities())
+            {
+                // 사용중인 테이블 0으로 만들기 (단 하나)
+                Ordertbl useTable = db.Ordertbl.Where(o => o.TableInUse && o.TblNum == tblNum).FirstOrDefault();
+                if (useTable != null)
+                    useTable.TableInUse = false;
+                if (db.SaveChanges() > 0)
+                {
+                    System.Windows.MessageBox.Show("DB 저장 성공");
+                }
+                else System.Windows.MessageBox.Show("해당 테이블은 이미 비어있습니다.");
+            }
         }
     }
 }

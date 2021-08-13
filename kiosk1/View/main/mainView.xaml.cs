@@ -16,8 +16,13 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using kiosk1.View.Select;
 using kiosk1.Model;
-using System.Windows.Forms;
+
+
 using MessageBox = System.Windows.Forms.MessageBox;
+using System.Net;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Windows.Threading;
 
 namespace kiosk1.View.main
 {
@@ -26,6 +31,9 @@ namespace kiosk1.View.main
     /// </summary>
     public partial class MainView : Page
     {
+        MqttClient client ;
+        string topic = "EATS/TABLE/";
+
         public MainView()
         {
             InitializeComponent();
@@ -34,43 +42,21 @@ namespace kiosk1.View.main
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (EATSEntities db = new EATSEntities())
-            {
-                // 사용 중인 테이블 목록 
-                var useTable = db.Ordertbl.Where(o => o.TableInUse).ToList();
-                
-                // 사용 중 변경
-                foreach (var item in useTable)
-            {
-                    switch (item.TblNum)
-                    {
-                        case 1:
-                            btnTable1.Background = Brushes.Gray;
-                            btnTable1.Content = "1";
-                            break;
-                        case 2:
-                            btnTable2.Background = Brushes.Gray;
-                            btnTable2.Content = "2";
-                            break;
-                        case 3:
-                            btnTable3.Background = Brushes.Gray;
-                            btnTable3.Content = "3";
-                            break;
-                        case 4:
-                            btnTable4.Background = Brushes.Gray;
-                            btnTable4.Content = "4";
-                            break;
+            // 테이블 사용 여부 표시 
+            TableInUse();
+            // Mqtt 클라이언트 연결 
+            MqttConnection();
+        }
+       
 
-            }
-                }
-            
-                if (useTable.Count == 4)
-                {
-                    grdOrder.Visibility = Visibility.Hidden;
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+            {
+                TableInUse();
+            }));
         }
 
-            }
-        }
         private void Btnwait_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoForward)
@@ -108,16 +94,16 @@ namespace kiosk1.View.main
             // 1. 테이블이 현재 사용 중인가?
             // 2. 오늘의 첫 주문인가? 
             using (EATSEntities db = new EATSEntities())
-        {
+            {
                 var lastOrder = db.Ordertbl.OrderByDescending(u => u.OrderCode).Take(1).ToList()[0].OrderCode;
                 var tableInUse = db.Ordertbl.OrderByDescending(o => o.OrderCode).Where(o => o.TblNum.Equals(tblNum)).Take(1).ToList()[0];
                 if (lastOrder.Substring(0, 8) != DateTime.Today.ToString("yyyyMMdd"))
-            {
+                {
                     return 1;
-            }
+                }
 
-            else
-            {
+                else
+                {
                     return int.Parse(lastOrder.Substring(8)) + 1;
                 }
             }
@@ -127,7 +113,7 @@ namespace kiosk1.View.main
         {
             bool flagInUse = false;
             switch (tblNum)
-        {
+            {
                 case 1:
                     flagInUse = btnTable1.Background == Brushes.Gray;
                     break;
@@ -160,5 +146,59 @@ namespace kiosk1.View.main
                 NavigationService.Navigate(menuSelect);
             }
         }
+        private void TableInUse()
+        {
+            using (EATSEntities db = new EATSEntities())
+            {
+                // 사용 중인 테이블 목록 
+                var useTable = db.Ordertbl.Where(o => o.TableInUse).ToList();
+
+                btnTable1.Background = Brushes.GreenYellow;
+                btnTable2.Background = Brushes.GreenYellow;
+                btnTable3.Background = Brushes.GreenYellow;
+                btnTable4.Background = Brushes.GreenYellow;
+                // 사용 중 변경
+                foreach (var item in useTable)
+                {
+                    switch (item.TblNum)
+                    {
+                        case 1:
+                            btnTable1.Background = Brushes.Gray;
+                            break;
+                        case 2:
+                            btnTable2.Background = Brushes.Gray;
+                            break;
+                        case 3:
+                            btnTable3.Background = Brushes.Gray;
+                            break;
+                        case 4:
+                            btnTable4.Background = Brushes.Gray;
+                            break;
+
+                    }
+                }
+
+                if (useTable.Count == 4)
+                {
+                    grdOrder.Visibility = Visibility.Hidden;
+                }
+                else grdOrder.Visibility = Visibility.Visible;
+            }
+        }
+        private void MqttConnection()
+        {
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
+
+#pragma warning disable CS0618
+            client = new MqttClient(brokerAddress);
+#pragma warning restore CS0618
+            client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+            if (!client.IsConnected)
+                client.Connect("Kiosk Main");
+            client.Subscribe(new string[] { topic },
+                new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
+        }
+
+        
     }
 }

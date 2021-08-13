@@ -64,13 +64,13 @@
 
         <!--버튼 영역 시작-->
         <Button Grid.Row="5" Grid.Column="1" x:Name="btnTable1" Content="1" 
-                FontSize="40" Click="btnTable1_Click" Background="#018D41" />
+                FontSize="40" Click="btnTable1_Click" Background="GreenYellow" />
         <Button Grid.Row="5" Grid.Column="3" x:Name="btnTable2" Content="2" 
-                FontSize="40" Click="btnTable2_Click" Background="#018D41"></Button>
+                FontSize="40" Click="btnTable2_Click" Background="GreenYellow"></Button>
         <Button Grid.Row="7" Grid.Column="1" x:Name="btnTable3" Content="3" 
-                FontSize="40" Click="btnTable3_Click" Background="#018D41"></Button>
+                FontSize="40" Click="btnTable3_Click" Background="GreenYellow"></Button>
         <Button Grid.Row="7" Grid.Column="3" x:Name="btnTable4" Content="4" 
-                FontSize="40" Click="btnTable4_Click" Background="#018D41"></Button>
+                FontSize="40" Click="btnTable4_Click" Background="GreenYellow"></Button>
         <!--버튼 영역 끝-->
 
 

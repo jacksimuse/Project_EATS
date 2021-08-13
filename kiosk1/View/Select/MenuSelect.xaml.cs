@@ -57,16 +57,27 @@ namespace kiosk1.View.Select
 
         private void MenuLoad(string menuKey)
         {
+            lsvMenu.Items.Clear();
             var menus = Logic.DataAccess.GetMenu().Where(m => m.MenuCode.Substring(0,1).Equals(menuKey)).ToList();
-            lsvMenu.ItemsSource = menus;
-            // this.DataContext = menus;
+            foreach (var item in menus)
+            {
+                MenuItems menuItems = new MenuItems()
+                {
+                    MenuName = item.MenuName,
+                    Price = item.Price,
+                    ImageSrc = "D:/GitRepository/Project_EATS/kiosk1/Image/" + item.ImageName + ".jpg"
+                };
+                lsvMenu.Items.Add(menuItems);
+            }
         }
 
         
 
         private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Menutbl menu = lsvMenu.SelectedItem as Menutbl;
+            MenuItems menu = lsvMenu.SelectedItem as MenuItems;
+            //List<Menutbl> menu = new List<Menutbl>(); 
+            //menu = Logic.DataAccess.GetMenu();
             AddSelectedMenu(menu);
             SetLsvOrderItem();
 
@@ -82,7 +93,7 @@ namespace kiosk1.View.Select
             lsvOrder.ItemsSource = table.MenuList;
         }
 
-        private void AddSelectedMenu(Menutbl menu)
+        private void AddSelectedMenu(MenuItems menu)
         {
             var menuName = menu.MenuName;
             var price = menu.Price;
@@ -110,8 +121,6 @@ namespace kiosk1.View.Select
             var nudSelection = new NumericUpDown();
             nudSelection.Value = 1;
             nudSelection.Minimum = 0;
-
-            
         }
 
         private void btnToMain_Click(object sender, RoutedEventArgs e)
@@ -155,6 +164,11 @@ namespace kiosk1.View.Select
             }
             else
             {
+                if (table.MenuList.Count == 0)
+                {
+                    MessageBox.Show("메뉴를 선택해주세요");
+                    return;
+                }
                 payView pay = new payView(tableNum, table.MenuList, orderCode);
                 NavigationService.Navigate(pay);
             }
