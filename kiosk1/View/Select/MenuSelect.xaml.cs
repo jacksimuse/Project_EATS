@@ -1,4 +1,5 @@
-﻿using kiosk1.Model;
+﻿
+using kiosk1.Model;
 using kiosk1.View.main;
 using kiosk1.View.Pay;
 using MahApps.Metro.Controls;
@@ -77,7 +78,8 @@ namespace kiosk1.View.Select
             MenuItems menu = lsvMenu.SelectedItem as MenuItems;
             //List<Menutbl> menu = new List<Menutbl>(); 
             //menu = Logic.DataAccess.GetMenu();
-            AddSelectedMenu(menu);
+            if (menu != null) 
+                AddSelectedMenu(menu);
             SetLsvOrderItem();
 
         }
@@ -163,6 +165,11 @@ namespace kiosk1.View.Select
             }
             else
             {
+                if (table.MenuList.Count == 0)
+                {
+                    MessageBox.Show("메뉴를 선택해주세요");
+                    return;
+                }
                 payView pay = new payView(tableNum, table.MenuList, orderCode);
                 NavigationService.Navigate(pay);
             }

@@ -60,26 +60,30 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="BtnConnection" Grid.Column="2"
-                    Content="연결 상태" FontSize="18" 
-                    Foreground="White" Background="RoyalBlue"
-                    Margin="5,5" HorizontalContentAlignment="Center"
-                    Click="BtnActivation_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Rectangle Fill="RoyalBlue" RadiusX="20" RadiusY="20" Stroke="Blue"/>
-                            <Label Content="{TemplateBinding Content}"
-                                   Foreground="White"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   Margin="5, 0"/>
-                            <iconPacks:PackIconUnicons Kind="BoltAlt" Width="20" Height="30" Margin="0, 1, 6, 0"
-                                                           HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Name="btnTable1" Grid.Column="0" Grid.Row="0"
+                        Background="DarkRed" Foreground="WhiteSmoke" 
+                        Content="1" FontSize="15" Click="btnTable1_Click"/>
+                <Button Name="btnTable2" Grid.Column="1" Grid.Row="0"
+                        Background="DarkRed" Foreground="WhiteSmoke" 
+                        Content="2" FontSize="15" Click="btnTable2_Click"/>
+                <Button Name="btnTable3" Grid.Column="0" Grid.Row="1"
+                        Background="DarkRed" Foreground="WhiteSmoke" 
+                        Content="3" FontSize="15" Click="btnTable3_Click"/>
+                <Button Name="btnTable4" Grid.Column="1" Grid.Row="1"
+                        Background="DarkRed" Foreground="WhiteSmoke" 
+                        Content="4" FontSize="15" Click="btnTable4_Click"/>
+
+            </Grid>
             <Label x:Name="LblDatetime" Content="현재시간 HH:mm:ss" Grid.Column="4"
                    FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Height="38" Margin="53,17,18,15" Width="229"/>
         </Grid>

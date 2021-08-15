@@ -117,8 +117,10 @@
                                     <Image Source="{Binding ImageSrc}"
                                     Width="250" Height="200" Margin="5"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBox Name="txtMenuName" Width="125" Height="30" Text="{Binding Path=MenuName, Mode=TwoWay}"/>
-                                        <TextBox Name="txtPrice" Width="125" Height="30" Text="{Binding Path=Price, Mode=TwoWay}"/>
+                                        <TextBox Name="txtMenuName" Width="125" Height="30" 
+                                                 IsReadOnly="True" Text="{Binding Path=MenuName, Mode=TwoWay}"/>
+                                        <TextBox Name="txtPrice" Width="125" Height="30" 
+                                                 IsReadOnly="True" Text="{Binding Path=Price, Mode=TwoWay}"/>
                                     </StackPanel>
                             </StackPanel>
                         </DataTemplate>
