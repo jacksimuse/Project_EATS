@@ -91,9 +91,7 @@ namespace kiosk1.View.Pay
             ReturnToMain();
         }
 
-        
-        
-
+        [Obsolete]
         private void MqttConnection()
         {
             try

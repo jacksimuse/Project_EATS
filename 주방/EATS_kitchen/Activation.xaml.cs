@@ -1,7 +1,7 @@
 ﻿using EATS_kitchen.Helper;
 using EATS_kitchen.Model;
 using kiosk1.Model;
-using kiosk1.View.Select;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,32 +75,39 @@ namespace EATS_kitchen
         {
             // TODO Activation 확인해서 메뉴 띄우기
             lsvMenu.Items.Clear();
-            var menus = kiosk1.Logic.DataAccess.GetMenu().Where(m => m.MenuCode.Substring(0, 1).Equals(menuKey)).ToList();
-            foreach (var item in menus)
+            using (EATSEntities db = new EATSEntities())
             {
-                if (item.Activation == true)
+                var menus = db.Menutbl.Where(m => m.MenuCode.Substring(0, 1).Equals(menuKey)).ToList();
+                foreach (var item in menus)
                 {
-                    MenuItems menuItems = new MenuItems()
+                    if (item.Activation)
                     {
-                        MenuCode = item.MenuCode,
-                        MenuName = item.MenuName,
-                        Price = item.Price,
-                        ImageSrc = "D:/GitRepository/Project_EATS/kiosk1/Image/" + item.ImageName + ".jpg"
-                    };
-                    lsvMenu.Items.Add(menuItems);
-                }
-                else if (item.Activation == false)
-                {
-                    MenuItems menuItems = new MenuItems()
+                        MenuItems menuItems = new MenuItems()
+                        {
+                            MenuCode = item.MenuCode,
+                            MenuName = item.MenuName,
+                            Price = item.Price,
+                            ImageSrc = "D:/GitRepository/Project_EATS/kiosk1/Image/" + item.ImageName + ".jpg"
+                        };
+                        lsvMenu.Items.Add(menuItems);
+                    }
+                    else if (!item.Activation)
                     {
-                        MenuCode = item.MenuCode,
-                        ImageSrc = "D:/GitRepository/Project_EATS/주방/EATS_kitchen/image/재료소진.jpg",
-                        MenuName = item.MenuName + " 재료소진",
-                        Price = 0,
-                    };
-                    lsvMenu.Items.Add(menuItems);
+                        MenuItems menuItems = new MenuItems()
+                        {
+                            MenuCode = item.MenuCode,
+                            ImageSrc = "D:/GitRepository/Project_EATS/주방/EATS_kitchen/image/재료소진.jpg",
+                            MenuName = item.MenuName + " 재료소진",
+                            Price = 0,
+                        };
+                        lsvMenu.Items.Add(menuItems);
+                    }
                 }
             }
+            
+
+            
+            
         }
 
         private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

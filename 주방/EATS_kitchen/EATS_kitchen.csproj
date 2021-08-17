@@ -194,21 +194,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EATS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MenuInfo.cs" />
     <Compile Include="Model\MenuItems.cs" />
-    <Compile Include="Select\Menu1.xaml.cs">
-      <DependentUpon>Menu1.xaml</DependentUpon>
+    <Compile Include="Model\Menutbl.cs">
+      <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\pay\payView.xaml.cs">
-      <DependentUpon>payView.xaml</DependentUpon>
+    <Compile Include="Model\OrderDetailtbl.cs">
+      <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\Select\MenuSelect.xaml.cs">
-      <DependentUpon>MenuSelect.xaml</DependentUpon>
+    <Compile Include="Model\Ordertbl.cs">
+      <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\table\tableView.xaml.cs">
-      <DependentUpon>tableView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Waiting\Wait.xaml.cs">
-      <DependentUpon>Wait.xaml</DependentUpon>
+    <Compile Include="Model\Tables.cs" />
+    <Compile Include="Model\Usertbl.cs">
+      <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
     <Page Include="Activation.xaml">
       <SubType>Designer</SubType>
@@ -233,26 +232,6 @@
     <Page Include="Order.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\main\mainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\pay\payView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Select\MenuSelect.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\table\tableView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Waiting\Wait.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -308,16 +287,21 @@
     <Resource Include="image\안창살.jpg" />
     <Resource Include="image\차슈라멘.jpg" />
     <Resource Include="image\콜라.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EATS.Context.cs</LastGenOutput>
       <DependentUpon>EATS.edmx</DependentUpon>
+      <LastGenOutput>EATS.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\EATS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EATS.edmx</DependentUpon>
       <LastGenOutput>EATS.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

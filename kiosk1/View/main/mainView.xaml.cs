@@ -39,13 +39,6 @@ namespace kiosk1.View.main
             InitializeComponent();
         }
 
-        public MainView(MqttClient client)
-        {
-            InitializeComponent();
-            this.client = client;
-        }
-
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // 테이블 사용 여부 표시 
@@ -62,7 +55,6 @@ namespace kiosk1.View.main
                 TableInUse();
             }));
         }
-
         private void Btnwait_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoForward)
@@ -114,7 +106,6 @@ namespace kiosk1.View.main
                 }
             }
         }
-
         private void TableSelect(int tblNum)
         {
             bool flagInUse = false;
@@ -191,6 +182,7 @@ namespace kiosk1.View.main
                 else grdOrder.Visibility = Visibility.Visible;
             }
         }
+
         private void MqttConnection()
         {
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
@@ -202,7 +194,5 @@ namespace kiosk1.View.main
             client.Subscribe(new string[] { topic },
                 new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
         }
-
-        
     }
 }

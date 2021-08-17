@@ -113,25 +113,25 @@ namespace EATS_kitchen
                     if (tblNum == 1)
                     {
                         menuTable1 = orderList;
-                        Lbltbl1.Content = DateTime.Now.ToString();
+                        Lbltbl1.Content = DateTime.Now.ToString("HH:mm:ss");
                         lsvTable1.ItemsSource = orderList;
                     }
                     else if (tblNum == 2)
                     {
                         menuTable2 = orderList;
-                        Lbltbl2.Content = DateTime.Now.ToString();
+                        Lbltbl2.Content = DateTime.Now.ToString("HH:mm:ss");
                         lsvTable2.ItemsSource = orderList;
                     }
                     else if (tblNum == 3)
                     {
                         menuTable3 = orderList;
-                        Lbltbl3.Content = DateTime.Now.ToString();
+                        Lbltbl3.Content = DateTime.Now.ToString("HH:mm:ss");
                         lsvTable3.ItemsSource = orderList;
                     }
                     else if (tblNum == 4)
                     {
                         menuTable4 = orderList;
-                        Lbltbl4.Content = DateTime.Now.ToString();
+                        Lbltbl4.Content = DateTime.Now.ToString("HH:mm:ss");
                         lsvTable4.ItemsSource = orderList;
                     }
                 

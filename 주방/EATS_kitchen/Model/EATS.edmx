@@ -188,12 +188,6 @@
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="TableInUse" ColumnName="TableInUse" />
                 <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
-                <ScalarProperty Name="OrderComplete" ColumnName="OrderComplete" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="TblNum" ColumnName="TblNum" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
-                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
-                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
