@@ -17,6 +17,7 @@ using System.Windows.Threading;
 using System.Linq;
 using EATS_kitchen.Model;
 using kiosk1.Model;
+using Newtonsoft.Json.Linq;
 
 namespace EATS_kitchen
 {
@@ -33,8 +34,10 @@ namespace EATS_kitchen
         List<MenuInfo> menuTable3 = new List<MenuInfo>();
         List<MenuInfo> menuTable4 = new List<MenuInfo>();
 
-        string message = "나는 전설이다.";
-        string topic = "EATS/ORDER/";
+        string message = ""; // 자동차에게 보내는 메시지 
+
+
+        string topic = "EATS/TABLE/";
         BackgroundWorker _worker = null;
 
         bool isClicked = false;
@@ -49,96 +52,71 @@ namespace EATS_kitchen
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             MqttConnection();
+            UpdateOrder();
         }
 
-        private void MqttConnection()
+        private void OrderLoad()
         {
-            IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
-            #pragma warning disable CS0618 
-            client = new MqttClient(brokerAddress);
-            #pragma warning restore CS0618 
-            client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
-            if (!client.IsConnected) 
-                client.Connect("Kitchen1");
-            client.Subscribe(new string[] { topic },
-                new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
+            using (EATSEntities db = new EATSEntities())
+            {
+                var table = new List<MenuInfo>();
+                var menuList = db.Menutbl.ToList();
+                var orderList = db.Ordertbl.Where(o => o.TableInUse).ToList();
+                foreach (var order in orderList)
+                {
+                    switch (order.TblNum)
+                    {
+                        case 1:
+                            table = menuTable1;
+                            break;
+                        case 2:
+                            table = menuTable2;
+                            break;
+                        case 3:
+                            table = menuTable3;
+                            break;
+                        case 4:
+                            table = menuTable4;
+                            break;
+                    }
+                    var orderDetailList = db.OrderDetailtbl.Where(d => d.OrderCode == order.OrderCode && !d.OrderComplete).ToList();
+                    foreach (var orderDetail in orderDetailList)
+                    {
+                        var newOrder = new MenuInfo()
+                        {
+                            OrderIdx = orderDetail.idx,
+                            
+                        };
+                    }
+                }
+            }
+        }
 
+        private void OrderPrint(Ordertbl ordertbl) 
+        {
             
         }
 
         private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             var message = Encoding.UTF8.GetString(e.Message);
-            if (message == "나는 전설이다.") 
+            
+            var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+            if (currentData["MessageType"] == "Order")
             {
-                
-            }
-            else
-            {
-                var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
                 string orderCode = currentData["OrderCode"];
                 int tblNum = int.Parse(currentData["TableNum"]);
 
-                // 주문 갱신 (가장 최근 4개 주문) 
-                UpdateOrder(orderCode, tblNum);
-            } 
+                
+                UpdateOrder();
+            }
             // var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message); // 데이터를 받을때 역 직렬화(DeserializeObject) <-> 보낼땐 직렬화(SerializeObject)
         }
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             client.Disconnect();
         }
-        private void UpdateOrder(string orderCode, int tblNum)
-        {
-            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
-            {
-                using (EATSEntities db = new EATSEntities())
-                {
-                    List<OrderDetailtbl> orderDetailList = db.OrderDetailtbl.Where(o => o.OrderCode.Equals(orderCode) && !o.OrderComplete).ToList();
-                    List<MenuInfo> orderList = new List<MenuInfo>();
-                    foreach (var item in orderDetailList)
-                    {
-                        var order = new MenuInfo()
-                        {
-                            OrderIdx = item.idx,
-                            OrderCode = orderCode,
-                            MenuName = db.Menutbl.FirstOrDefault(m => m.MenuCode.Equals(item.MenuCode)).MenuName,
-                            Amount = item.Amount,
-                            OrderComplete = item.OrderComplete
-                        };
-                        
-                        orderList.Add(order);
-                    }
-
-                    if (tblNum == 1)
-                    {
-                        menuTable1 = orderList;
-                        Lbltbl1.Content = DateTime.Now.ToString("HH:mm:ss");
-                        lsvTable1.ItemsSource = orderList;
-                    }
-                    else if (tblNum == 2)
-                    {
-                        menuTable2 = orderList;
-                        Lbltbl2.Content = DateTime.Now.ToString("HH:mm:ss");
-                        lsvTable2.ItemsSource = orderList;
-                    }
-                    else if (tblNum == 3)
-                    {
-                        menuTable3 = orderList;
-                        Lbltbl3.Content = DateTime.Now.ToString("HH:mm:ss");
-                        lsvTable3.ItemsSource = orderList;
-                    }
-                    else if (tblNum == 4)
-                    {
-                        menuTable4 = orderList;
-                        Lbltbl4.Content = DateTime.Now.ToString("HH:mm:ss");
-                        lsvTable4.ItemsSource = orderList;
-                    }
-                
-                };
-            }));
-
-        }
+        
 
         private void Btntbl1_Click(object sender, RoutedEventArgs e)
         {
@@ -156,7 +134,7 @@ namespace EATS_kitchen
                 lsvTable1.ItemsSource = new List<MenuItems>();
 
                 // 자동차에 보내는 메시지
-                Publish(message);
+                PublishMessageToCar(1);
             }
         }
         private void Btntbl2_Click(object sender, RoutedEventArgs e)
@@ -173,7 +151,7 @@ namespace EATS_kitchen
                 Lbltbl2.Content = "";
                 lsvTable2.ItemsSource = new List<MenuItems>();
 
-                Publish(message);
+                PublishMessageToCar(2);
             }
         }
         private void Btntbl3_Click(object sender, RoutedEventArgs e)
@@ -189,7 +167,7 @@ namespace EATS_kitchen
                 OrderDetailDBUpdate(3);
                 Lbltbl3.Content = "";
                 lsvTable3.ItemsSource = new List<MenuItems>();
-                Publish(message);
+                PublishMessageToCar(3);
             }
         }
         private void Btntbl4_Click(object sender, RoutedEventArgs e)
@@ -205,12 +183,86 @@ namespace EATS_kitchen
                 OrderDetailDBUpdate(4);
                 Lbltbl4.Content = "";
                 lsvTable4.ItemsSource = new List<MenuItems>();
-                Publish(message);
+                PublishMessageToCar(4);
             }
         }
 
 
 
+
+
+        private void UpdateOrder()
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+            {
+                using (EATSEntities db = new EATSEntities())
+                {
+                    var orderList = db.Ordertbl.Where(o => o.TableInUse).ToList();
+                    foreach (var order in orderList)
+                    {
+                        int tblNum = order.TblNum;
+                        List<MenuInfo> orderInfo = new List<MenuInfo>();
+                        List<OrderDetailtbl> orderDetailList = db.OrderDetailtbl.Where(o => o.OrderCode.Equals(order.OrderCode) && !o.OrderComplete).ToList();
+                        foreach (var item in orderDetailList)
+                        {
+                            
+                            var info = new MenuInfo()
+                            {
+                                OrderIdx = item.idx,
+                                OrderCode = item.OrderCode,
+                                MenuName = db.Menutbl.FirstOrDefault(m => m.MenuCode.Equals(item.MenuCode)).MenuName,
+                                Amount = item.Amount,
+                                OrderComplete = item.OrderComplete
+                            };
+
+                            orderInfo.Add(info);
+                        }
+
+                        if (tblNum == 1)
+                        {
+                            menuTable1 = orderInfo;
+                            Lbltbl1.Content = DateTime.Now.ToString("HH:mm:ss");
+                            lsvTable1.ItemsSource = orderInfo;
+                        }
+                        else if (tblNum == 2)
+                        {
+                            menuTable2 = orderInfo;
+                            Lbltbl2.Content = DateTime.Now.ToString("HH:mm:ss");
+                            lsvTable2.ItemsSource = orderInfo;
+                        }
+                        else if (tblNum == 3)
+                        {
+                            menuTable3 = orderInfo;
+                            Lbltbl3.Content = DateTime.Now.ToString("HH:mm:ss");
+                            lsvTable3.ItemsSource = orderInfo;
+                        }
+                        else if (tblNum == 4)
+                        {
+                            menuTable4 = orderInfo;
+                            Lbltbl4.Content = DateTime.Now.ToString("HH:mm:ss");
+                            lsvTable4.ItemsSource = orderInfo;
+                        }
+                    }
+                    
+                    
+                    
+
+                    
+
+                };
+            }));
+
+        }
+        private void PublishMessageToCar(int tblNum)
+        {
+            JObject orderJson = new JObject()
+            {
+                new JProperty("MessageType", "CarOrder"),
+                new JProperty("TableNum", tblNum.ToString()),
+                new JProperty("OrderTime", DateTime.Now.ToString())
+            };
+            Publish(orderJson.ToString());
+        }
         private async void Progressing()
         {
             if (isUsing)
@@ -235,7 +287,6 @@ namespace EATS_kitchen
                 BtnDriving.Background = Brushes.Gold;
             }
         }
-
         private void _worker_DoWork(object sender, DoWorkEventArgs e)
         {
             for (int i = 0; i < 100; i++)
@@ -244,7 +295,6 @@ namespace EATS_kitchen
                 Thread.Sleep(100);  // 0.1초
             }
         }
-
         private void _worker_ProgressCahnged(object sender, ProgressChangedEventArgs e)
         {
             PgbDriving.Value = e.ProgressPercentage;
@@ -310,7 +360,20 @@ namespace EATS_kitchen
                 db.SaveChanges();
             }
         }
+        private void MqttConnection()
+        {
+            IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
+#pragma warning disable CS0618
+            client = new MqttClient(brokerAddress);
+#pragma warning restore CS0618
+            client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+            if (!client.IsConnected)
+                client.Connect("Kitchen1");
+            client.Subscribe(new string[] { topic },
+                new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
 
+
+        }
     }
 }
 

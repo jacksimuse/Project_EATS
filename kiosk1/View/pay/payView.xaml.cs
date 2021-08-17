@@ -112,13 +112,14 @@ namespace kiosk1.View.Pay
             {
                 JObject orderJson = new JObject()
                 {
-                new JProperty("OrderCode", orderCode),
-                new JProperty("TableNum", TableNum),
-                new JProperty("OrderTime", DateTime.Now.ToString())
+                    new JProperty("MessageType", "Order"),
+                    new JProperty("OrderCode", orderCode),
+                    new JProperty("TableNum", TableNum),
+                    new JProperty("OrderTime", DateTime.Now.ToString())
                 };
 
                 var message = Encoding.UTF8.GetBytes(orderJson.ToString());
-                string topic = "EATS/ORDER/";
+                string topic = "EATS/TABLE/";
                 
                 client.Publish(topic, message, 1, false);
             }
@@ -143,7 +144,7 @@ namespace kiosk1.View.Pay
                     CustomerNum = 0,
                     TblNum = TableNum,
                     OrderPrice = 0, // TODO : 계산식 추가
-                        TableInUse = true,
+                    TableInUse = true,
                     OrderRemark = null // TODO : 주문 특이사항 이후 추가 
                 };
 

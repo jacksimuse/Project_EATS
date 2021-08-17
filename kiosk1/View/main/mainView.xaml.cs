@@ -23,6 +23,7 @@ using System.Net;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System.Windows.Threading;
+using Newtonsoft.Json;
 
 namespace kiosk1.View.main
 {
@@ -52,9 +53,28 @@ namespace kiosk1.View.main
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
             {
+                var message = Encoding.UTF8.GetString(e.Message);
+                var currentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+                if (currentData["MessageType"] == "TableSet")
+                {
+                    int tblNum = int.Parse(currentData["TableNumber"]);
+                    TableSetEmpty(tblNum);
+                }
                 TableInUse();
             }));
         }
+
+        private void TableSetEmpty(int tblNum)
+        {
+            using (EATSEntities db = new EATSEntities())
+            {
+                Ordertbl useTable = db.Ordertbl.Where(o => o.TableInUse && o.TblNum == tblNum).FirstOrDefault(); 
+                if (useTable != null)
+                    useTable.TableInUse = false;
+                db.SaveChanges();
+            }
+        }
+
         private void Btnwait_Click(object sender, RoutedEventArgs e)
         {
             if (NavigationService.CanGoForward)
@@ -73,9 +93,9 @@ namespace kiosk1.View.main
             
         }
         private void btnTable2_Click(object sender, RoutedEventArgs e)
-            {
+        {
             TableSelect(2);
-            }
+        }
         private void btnTable3_Click(object sender, RoutedEventArgs e)
             {
             TableSelect(3);

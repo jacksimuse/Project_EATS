@@ -1,6 +1,7 @@
 ﻿using EATS_kitchen.Model;
 using MahApps.Metro.Controls;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,21 +88,32 @@ namespace EATS_kitchen
             }
 
             // 1. Ordertbl.TableInUse 갱신 
-            TableSetEmpty(num);
+            // TableSetEmpty(num);
 
             // 2. 새로고침 메시지 전송 
-            RefreshMessagePublish();
+            RefreshMessagePublish(num);
         }
-        private void RefreshMessagePublish()
+
+        private void RefreshMessagePublish(int tblNum)
         {
             try
             {
                 client = new MqttClient(brokerAddress);
                 if (!client.IsConnected) client.Connect("Kitchen");
-                var message = Encoding.UTF8.GetBytes("Refresh");
+                
+
+                JObject refreshJson = new JObject(
+                        new JProperty("MessageType", "TableSet"),
+                        new JProperty("CLient_ID", "TableClient"),
+                        new JProperty("TableNumber", tblNum.ToString()),
+                        new JProperty("Pub_Message_Time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff"))
+                        );
+                
+                var message = Encoding.UTF8.GetBytes(refreshJson.ToString());
                 string topic = "EATS/TABLE/";
 
-                client.Publish(topic, message, 1, true);
+                client.Publish(topic, message, 2, true);
+                System.Windows.MessageBox.Show("메시지 전송 성공");
             }
             catch (Exception ex)
             {
@@ -117,8 +129,8 @@ namespace EATS_kitchen
             {
                 return;
             }
-            TableSetEmpty(num);
-            RefreshMessagePublish();
+            // TableSetEmpty(num);
+            RefreshMessagePublish(num);
         }
         private void btnTable3_Click(object sender, RoutedEventArgs e)
         {
@@ -128,8 +140,8 @@ namespace EATS_kitchen
             {
                 return;
             }
-            TableSetEmpty(num);
-            RefreshMessagePublish();
+            // TableSetEmpty(num);
+            RefreshMessagePublish(num);
         }
         private void btnTable4_Click(object sender, RoutedEventArgs e)
         {
@@ -139,8 +151,8 @@ namespace EATS_kitchen
             {
                 return;
             }
-            TableSetEmpty(num);
-            RefreshMessagePublish();
+            // TableSetEmpty(num);
+            RefreshMessagePublish(num);
         }
 
         private void TableSetEmpty(int tblNum)
