@@ -33,6 +33,7 @@ namespace kiosk1.View.Pay
         public int OrderNum { get; set; }
 
         MqttClient client;
+        int totalPrice = 0;
         readonly IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
 
         public payView(int tableNum, List<MenuItems> menus, int orderNum)
@@ -46,8 +47,23 @@ namespace kiosk1.View.Pay
         {
             lsvOrder.ItemsSource = menuList;
             MqttConnection();
+            PayMoneyCalc();
         }
+        private void btnPayMoney_Click(object sender, RoutedEventArgs e)
+        {
+            // mqtt 메시지 전송, DB 저장, 메인화면으로 
+            // 1. 오더코드 생성 
+            string orderCode = DateTime.Today.ToString("yyyyMMdd") + OrderNum.ToString("D3");
 
+            // 2. DB에 주문 내역 추가 
+            SaveOrderToDB(orderCode);
+
+            // 3. MQTT 메시지 전송 
+            MessagePublish(orderCode);
+
+            // 메인화면으로 
+            ReturnToMain();
+        }
         private void Btncancel_Click(object sender, RoutedEventArgs e)
         {
             ReturnToMain();
@@ -74,24 +90,15 @@ namespace kiosk1.View.Pay
                 NavigationService.Navigate(main);
             }
         }
-
-        private void btnPayMoney_Click(object sender, RoutedEventArgs e)
+        private void PayMoneyCalc()
         {
-            // mqtt 메시지 전송, DB 저장, 메인화면으로 
-            // 1. 오더코드 생성 
-            string orderCode = DateTime.Today.ToString("yyyyMMdd") + OrderNum.ToString("D3");
+            foreach (var item in menuList)
+            {
+                totalPrice += item.Price * item.Amount;
+            }
 
-            // 2. DB에 주문 내역 추가 
-            SaveOrderToDB(orderCode);
-
-            // 3. MQTT 메시지 전송 
-            MessagePublish(orderCode);
-
-            // 메인화면으로 
-            ReturnToMain();
+            lblPayMoney.Content = "결제 금액 : " + totalPrice.ToString("N0") + "원";
         }
-
-        [Obsolete]
         private void MqttConnection()
         {
             try
@@ -105,7 +112,6 @@ namespace kiosk1.View.Pay
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void MessagePublish(string orderCode)
         {
             try
@@ -129,7 +135,6 @@ namespace kiosk1.View.Pay
             }
             
         }
-
         private void SaveOrderToDB(string orderCode)
         {
             using (EATSEntities db = new EATSEntities())
@@ -143,7 +148,7 @@ namespace kiosk1.View.Pay
                     OrderTime = DateTime.Now,
                     CustomerNum = 0,
                     TblNum = TableNum,
-                    OrderPrice = 0, // TODO : 계산식 추가
+                    OrderPrice = totalPrice, // TODO : 계산식 추가
                     TableInUse = true,
                     OrderRemark = null // TODO : 주문 특이사항 이후 추가 
                 };

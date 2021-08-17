@@ -61,7 +61,7 @@
 
                 </Grid>
 
-                <ListView Name="lsvOrder" Grid.Row="1" Margin="0,0,0,-216" Grid.RowSpan="4">
+                <ListView Name="lsvOrder" Grid.Row="1" Margin="0,0,0,-182" Grid.RowSpan="4">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding MenuName}" Width="200" />
@@ -70,7 +70,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
+                <Label Grid.Row="4" Name="lblPayMoney" HorizontalAlignment="Right" Content="결제 금액 : " 
+                       FontSize="15" FontWeight="bold" Margin="0,190,0,-212" Width="178"/>
 
 
 
