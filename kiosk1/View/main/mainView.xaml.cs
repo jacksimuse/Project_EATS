@@ -40,6 +40,8 @@ namespace kiosk1.View.main
             InitializeComponent();
         }
 
+        #region EventHandler
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // 테이블 사용 여부 표시 
@@ -48,7 +50,9 @@ namespace kiosk1.View.main
             MqttConnection();
         }
        
-
+        /// <summary>
+        /// MQTT 메시지 수신 이벤트 핸들러
+        /// </summary>
         private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
@@ -62,17 +66,6 @@ namespace kiosk1.View.main
                 }
                 TableInUse();
             }));
-        }
-
-        private void TableSetEmpty(int tblNum)
-        {
-            using (EATSEntities db = new EATSEntities())
-            {
-                Ordertbl useTable = db.Ordertbl.Where(o => o.TableInUse && o.TblNum == tblNum).FirstOrDefault(); 
-                if (useTable != null)
-                    useTable.TableInUse = false;
-                db.SaveChanges();
-            }
         }
 
         private void Btnwait_Click(object sender, RoutedEventArgs e)
@@ -105,8 +98,31 @@ namespace kiosk1.View.main
             TableSelect(4);
         }
 
+        #endregion
 
 
+        #region CustomMethod
+
+        /// <summary>
+        /// DB에 테이블 현재 사용 여부를 갱신
+        /// </summary>
+        /// <param name="tblNum">테이블 번호</param>
+        private void TableSetEmpty(int tblNum)
+        {
+            using (EATSEntities db = new EATSEntities())
+            {
+                Ordertbl useTable = db.Ordertbl.Where(o => o.TableInUse && o.TblNum == tblNum).FirstOrDefault();
+                if (useTable != null)
+                    useTable.TableInUse = false;
+                db.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// 가장 최신 주문을 불러와서 테이블 사용 여부 체크
+        /// </summary>
+        /// <param name="tblNum">테이블 번호</param>
+        /// <returns>주문 번호</returns>
         private int OrderCheck(int tblNum)
         {
             // 1. 테이블이 현재 사용 중인가?
@@ -126,6 +142,11 @@ namespace kiosk1.View.main
                 }
             }
         }
+
+        /// <summary>
+        /// 테이블 선택 시 메뉴 선택 창으로 이동
+        /// </summary>
+        /// <param name="tblNum">테이블 번호</param>
         private void TableSelect(int tblNum)
         {
             bool flagInUse = false;
@@ -163,6 +184,10 @@ namespace kiosk1.View.main
                 NavigationService.Navigate(menuSelect);
             }
         }
+
+        /// <summary>
+        /// 현재 사용 중인 테이블 목록 갱신, 표시 
+        /// </summary>
         private void TableInUse()
         {
             using (EATSEntities db = new EATSEntities())
@@ -203,6 +228,9 @@ namespace kiosk1.View.main
             }
         }
 
+        /// <summary>
+        /// Mqtt 프로토콜 연결
+        /// </summary>
         private void MqttConnection()
         {
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
@@ -214,5 +242,8 @@ namespace kiosk1.View.main
             client.Subscribe(new string[] { topic },
                 new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
         }
+
+        #endregion
+
     }
 }

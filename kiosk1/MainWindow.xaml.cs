@@ -53,7 +53,6 @@ namespace kiosk1
             client = new MqttClient(brokerAddress);
 #pragma warning restore CS0618
         }
-
         private void Btnmain_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -74,7 +73,6 @@ namespace kiosk1
         {
 
         }
-
         private void MetroWindow_Closed(object sender, EventArgs e)
         {
             if (client.IsConnected)

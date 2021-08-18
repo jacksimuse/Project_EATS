@@ -349,6 +349,9 @@
     <Resource Include="Image\콜라.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\고로케.JPG" />
+    <Resource Include="Image\새우튀김.JPG" />
+    <Resource Include="Image\치킨.JPG" />
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EATS.Context.cs</LastGenOutput>

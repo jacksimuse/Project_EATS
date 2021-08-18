@@ -43,7 +43,6 @@ namespace EATS_kitchen
         bool isClicked = false;
         bool isUsing = false;
 
-
         public Order()
         {
             InitializeComponent();
@@ -55,47 +54,7 @@ namespace EATS_kitchen
             UpdateOrder();
         }
 
-        private void OrderLoad()
-        {
-            using (EATSEntities db = new EATSEntities())
-            {
-                var table = new List<MenuInfo>();
-                var menuList = db.Menutbl.ToList();
-                var orderList = db.Ordertbl.Where(o => o.TableInUse).ToList();
-                foreach (var order in orderList)
-                {
-                    switch (order.TblNum)
-                    {
-                        case 1:
-                            table = menuTable1;
-                            break;
-                        case 2:
-                            table = menuTable2;
-                            break;
-                        case 3:
-                            table = menuTable3;
-                            break;
-                        case 4:
-                            table = menuTable4;
-                            break;
-                    }
-                    var orderDetailList = db.OrderDetailtbl.Where(d => d.OrderCode == order.OrderCode && !d.OrderComplete).ToList();
-                    foreach (var orderDetail in orderDetailList)
-                    {
-                        var newOrder = new MenuInfo()
-                        {
-                            OrderIdx = orderDetail.idx,
-                            
-                        };
-                    }
-                }
-            }
-        }
-
-        private void OrderPrint(Ordertbl ordertbl) 
-        {
-            
-        }
+        
 
         private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
@@ -116,8 +75,6 @@ namespace EATS_kitchen
         {
             client.Disconnect();
         }
-        
-
         private void Btntbl1_Click(object sender, RoutedEventArgs e)
         {
             if (!lsvTable1.HasItems)
@@ -188,9 +145,9 @@ namespace EATS_kitchen
         }
 
 
-
-
-
+        /// <summary>
+        /// 화면에 주문 목록 출력 갱신 
+        /// </summary>
         private void UpdateOrder()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
@@ -253,6 +210,11 @@ namespace EATS_kitchen
             }));
 
         }
+
+        /// <summary>
+        /// 서빙로봇에게 메시지 전송 
+        /// </summary>
+        /// <param name="tblNum">테이블 번호</param>
         private void PublishMessageToCar(int tblNum)
         {
             JObject orderJson = new JObject()
@@ -263,6 +225,8 @@ namespace EATS_kitchen
             };
             Publish(orderJson.ToString());
         }
+
+        #region ProgressCar (서빙 시간 계산)
         private async void Progressing()
         {
             if (isUsing)
@@ -316,21 +280,14 @@ namespace EATS_kitchen
             PgbDriving.Minimum = 0;
 
         }
-        private void Publish(string message)
-        {
-            client.Publish(topic,
-                                Encoding.UTF8.GetBytes(message),
-                                1,
-                                false);
-        }
+        #endregion
+
 
         
-
-
         /// <summary>
-        /// 메뉴 별 서빙 완료 여부 갱신 
+        /// 주문 메뉴 별 서빙 완료 여부 갱신 
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">테이블 번호</param>
         private void OrderDetailDBUpdate(int index)
         {
             using (EATSEntities db = new EATSEntities())
@@ -360,6 +317,10 @@ namespace EATS_kitchen
                 db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Mqtt 연결
+        /// </summary>
         private void MqttConnection()
         {
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.96");
@@ -374,6 +335,19 @@ namespace EATS_kitchen
 
 
         }
+        
+        /// <summary>
+        /// Mqtt 메시지 전송
+        /// </summary>
+        /// <param name="message"></param>
+        private void Publish(string message)
+        {
+            client.Publish(topic,
+                                Encoding.UTF8.GetBytes(message),
+                                1,
+                                false);
+        }
+
     }
 }
 

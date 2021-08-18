@@ -54,9 +54,9 @@
             </ListBox>
             
             <Grid>
-                <ScrollViewer >
+                <ScrollViewer Margin="0,0,-103,0" >
                     <ListView Name="lsvMenu" MouseLeftButtonUp="lsvMenu_MouseLeftButtonUp" 
-                    SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="341" Width="675">
+                    SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="341" Width="779">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel />
@@ -80,7 +80,5 @@
                 </Grid>
             </StackPanel>
         </Grid>
-        <Button x:Name="BtnSave" Content="저장" HorizontalAlignment="Left" Height="50" Margin="704,41,0,0" VerticalAlignment="Top" Width="84" FontSize="30" Click="BtnSave_Click"/>
-        <Button x:Name="BtnCancel" Content="취소" HorizontalAlignment="Left" Height="50" Margin="704,114,0,0" VerticalAlignment="Top" Width="84" FontSize="25" Click="BtnCancel_Click"/>
     </Grid>
 </Page>

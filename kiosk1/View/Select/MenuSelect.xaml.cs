@@ -36,6 +36,8 @@ namespace kiosk1.View.Select
             orderCode = orderNum;
         }
 
+        #region EventHandler
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             MenuLoad("R");
@@ -44,21 +46,113 @@ namespace kiosk1.View.Select
         {
             MenuLoad("R");
         }
-
         private void Side_Selected(object sender, RoutedEventArgs e)
         {
             MenuLoad("S");
         }
-
         private void Beverage_Selected(object sender, RoutedEventArgs e)
         {
             MenuLoad("B");
         }
+        private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MenuItems menu = lsvMenu.SelectedItem as MenuItems;
+            //List<Menutbl> menu = new List<Menutbl>(); 
+            //menu = Logic.DataAccess.GetMenu();
+            if (menu != null) 
+                AddSelectedMenu(menu);
+            SetLsvOrderItem();
 
+        }
+        private void lsvOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // MessageBox.Show("선택");
+            var nudSelection = new NumericUpDown();
+            nudSelection.Value = 1;
+            nudSelection.Minimum = 0;
+        }
+        private void btnToMain_Click(object sender, RoutedEventArgs e)
+        {
+            // 처음 화면으로 
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                MainView mainView = new MainView();
+                NavigationService.Navigate(mainView);
+            }
+        }
+        
+        /// <summary>
+        /// 선택 메뉴 취소
+        /// </summary>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItems menuitem = lsvOrder.SelectedItem as MenuItems;
+                int index = table.MenuList.FindIndex(x => x.MenuName == menuitem.MenuName);
+                table.MenuList.RemoveAt(index);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("음식을 선택하세요.", "오류");
+
+            }
+            finally
+            {
+                SetLsvOrderItem();
+            }
+        }
+
+        /// <summary>
+        /// 메뉴 선택 완료 및 결제 창으로 이동
+        /// </summary>
+        private void btnCommit_Click(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoForward)
+            {
+                NavigationService.GoForward();
+            }
+            else
+            {
+                if (table.MenuList.Count == 0)
+                {
+                    MessageBox.Show("메뉴를 선택해주세요");
+                    return;
+                }
+                payView pay = new payView(tableNum, table.MenuList, orderCode);
+                NavigationService.Navigate(pay);
+            }
+        }
+
+        #endregion
+
+
+
+
+        #region CustomMethod
+
+        /// <summary>
+        /// 주문 리스트 갱신
+        /// </summary>
+        private void SetLsvOrderItem()
+        {
+            lsvOrder.ItemsSource = null;
+            // TODO : 총 가격 계산 
+            lsvOrder.ItemsSource = table.MenuList;
+        }
+
+        /// <summary>
+        /// 카테고리 별 메뉴 목록 출력
+        /// </summary>
+        /// <param name="menuKey">메뉴 카테고리</param>
         private void MenuLoad(string menuKey)
         {
             lsvMenu.Items.Clear();
-            var menus = Logic.DataAccess.GetMenu().Where(m => m.MenuCode.Substring(0,1).Equals(menuKey)).ToList();
+            var menus = Logic.DataAccess.GetMenu().Where(m => m.MenuCode.Substring(0, 1).Equals(menuKey) && m.Activation).ToList();
             foreach (var item in menus)
             {
                 MenuItems menuItems = new MenuItems()
@@ -71,29 +165,10 @@ namespace kiosk1.View.Select
             }
         }
 
-        
-
-        private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            MenuItems menu = lsvMenu.SelectedItem as MenuItems;
-            //List<Menutbl> menu = new List<Menutbl>(); 
-            //menu = Logic.DataAccess.GetMenu();
-            if (menu != null) 
-                AddSelectedMenu(menu);
-            SetLsvOrderItem();
-
-        }
-
         /// <summary>
-        /// 주문 리스트 갱신
+        /// 선택한 메뉴를 주문 리스트에 추가
         /// </summary>
-        private void SetLsvOrderItem()
-        {
-            lsvOrder.ItemsSource = null;
-            // TODO : 총 가격 계산 
-            lsvOrder.ItemsSource = table.MenuList;
-        }
-
+        /// <param name="menu">선택한 메뉴</param>
         private void AddSelectedMenu(MenuItems menu)
         {
             var menuName = menu.MenuName;
@@ -116,63 +191,10 @@ namespace kiosk1.View.Select
             }
         }
 
-        private void lsvOrder_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // MessageBox.Show("선택");
-            var nudSelection = new NumericUpDown();
-            nudSelection.Value = 1;
-            nudSelection.Minimum = 0;
-        }
+        #endregion
 
-        private void btnToMain_Click(object sender, RoutedEventArgs e)
-        {
-            // 처음 화면으로 
-            if (NavigationService.CanGoForward)
-            {
-                NavigationService.GoForward();
-            }
-            else
-            {
-                MainView mainView = new MainView();
-                NavigationService.Navigate(mainView);
-            }
-        }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MenuItems menuitem = lsvOrder.SelectedItem as MenuItems;
-                int index = table.MenuList.FindIndex(x => x.MenuName == menuitem.MenuName);
-                table.MenuList.RemoveAt(index);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("음식을 선택하세요.", "오류");
-                
-            }
-            finally
-            {
-                SetLsvOrderItem();
-            }
-        }
 
-        private void btnCommit_Click(object sender, RoutedEventArgs e)
-        {
-            if (NavigationService.CanGoForward)
-            {
-                NavigationService.GoForward();
-            }
-            else
-            {
-                if (table.MenuList.Count == 0)
-                {
-                    MessageBox.Show("메뉴를 선택해주세요");
-                    return;
-                }
-                payView pay = new payView(tableNum, table.MenuList, orderCode);
-                NavigationService.Navigate(pay);
-            }
-        }
+
     }
 }

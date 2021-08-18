@@ -41,7 +41,6 @@ namespace EATS_kitchen
                 throw;
             }
         }
-
         private void BtnActivation_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -53,7 +52,6 @@ namespace EATS_kitchen
                 throw;
             }
         }
-
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -64,19 +62,15 @@ namespace EATS_kitchen
 
             
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             LblDatetime.Content = DateTime.Now.ToString("yy년MM월dd일 HH:mm:ss");
         }
-
-
         private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (client.IsConnected) client.Disconnect();
             await Helper.Commons.ShowMessageAsync("영업", "종료합니다");
         }
-        
         private void btnTable1_Click(object sender, RoutedEventArgs e)
         {
             int num = 1;
@@ -93,34 +87,6 @@ namespace EATS_kitchen
             // 2. 새로고침 메시지 전송 
             RefreshMessagePublish(num);
         }
-
-        private void RefreshMessagePublish(int tblNum)
-        {
-            try
-            {
-                client = new MqttClient(brokerAddress);
-                if (!client.IsConnected) client.Connect("Kitchen");
-                
-
-                JObject refreshJson = new JObject(
-                        new JProperty("MessageType", "TableSet"),
-                        new JProperty("CLient_ID", "TableClient"),
-                        new JProperty("TableNumber", tblNum.ToString()),
-                        new JProperty("Pub_Message_Time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff"))
-                        );
-                
-                var message = Encoding.UTF8.GetBytes(refreshJson.ToString());
-                string topic = "EATS/TABLE/";
-
-                client.Publish(topic, message, 2, true);
-                System.Windows.MessageBox.Show("메시지 전송 성공");
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(ex.Message);
-            }
-        }
-
         private void btnTable2_Click(object sender, RoutedEventArgs e)
         {
             int num = 2;
@@ -155,20 +121,38 @@ namespace EATS_kitchen
             RefreshMessagePublish(num);
         }
 
-        private void TableSetEmpty(int tblNum)
+
+        /// <summary>
+        /// 테이블 사용 여부 갱신 메시지 전송
+        /// </summary>
+        /// <param name="tblNum">테이블 번호</param>
+        private void RefreshMessagePublish(int tblNum)
         {
-            using (EATSEntities db = new EATSEntities())
+            try
             {
-                // 사용중인 테이블 0으로 만들기 (단 하나)
-                Ordertbl useTable = db.Ordertbl.Where(o => o.TableInUse && o.TblNum == tblNum).FirstOrDefault();
-                if (useTable != null)
-                    useTable.TableInUse = false;
-                if (db.SaveChanges() > 0)
-                {
-                    System.Windows.MessageBox.Show("DB 저장 성공");
-                }
-                else System.Windows.MessageBox.Show("해당 테이블은 이미 비어있습니다.");
+                client = new MqttClient(brokerAddress);
+                if (!client.IsConnected) client.Connect("Kitchen");
+
+
+                JObject refreshJson = new JObject(
+                        new JProperty("MessageType", "TableSet"),
+                        new JProperty("CLient_ID", "TableClient"),
+                        new JProperty("TableNumber", tblNum.ToString()),
+                        new JProperty("Pub_Message_Time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff"))
+                        );
+
+                var message = Encoding.UTF8.GetBytes(refreshJson.ToString());
+                string topic = "EATS/TABLE/";
+
+                client.Publish(topic, message, 2, true);
+                System.Windows.MessageBox.Show("메시지 전송 성공");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 }

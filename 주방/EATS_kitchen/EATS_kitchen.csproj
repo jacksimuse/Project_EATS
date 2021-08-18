@@ -289,6 +289,9 @@
     <Resource Include="image\콜라.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="image\고로케.JPG" />
+    <Resource Include="image\새우튀김.JPG" />
+    <Resource Include="image\치킨.JPG" />
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EATS.edmx</DependentUpon>

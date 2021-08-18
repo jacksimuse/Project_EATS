@@ -26,26 +26,10 @@ namespace EATS_kitchen
     /// </summary>
     public partial class Activation : Page
     {
-        bool isClicked = false;
-
-        public static string menuKey;
-        
-
+        private string menuKey = "";
         public Activation()
         {
             InitializeComponent();
-            
-        }
-
-
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -58,22 +42,67 @@ namespace EATS_kitchen
             menuKey = "R";
             MenuLoad();
         }
-
         private void Side_Selected(object sender, RoutedEventArgs e)
         {
             menuKey = "S";
             MenuLoad();
         }
-
         private void Beverage_Selected(object sender, RoutedEventArgs e)
         {
             menuKey = "B";
             MenuLoad();
         }
+        private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            // TODO  활성 비활성 flag완성하기
+            var menus = Commons.GetMenu();
+            var selectedMenu = menus.Where(m => m.MenuCode.Equals((lsvMenu.SelectedItem as MenuItems).MenuCode)).FirstOrDefault();
 
+            if (selectedMenu.Activation == true)
+            {
+                DialogResult dialogResult = MessageBox.Show("메뉴 비활성 하시겠습니까?", "비활성", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+                var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
+                saveActivation.Activation = false;
+                Commons.SetMenuActive(saveActivation);
+                lsvMenu.Items.Clear();
+
+                MenuLoad();
+            }
+            else if (selectedMenu.Activation == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("메뉴 활성 하시겠습니까?", "활성", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+                var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
+                saveActivation.Activation = true;
+                Commons.SetMenuActive(saveActivation);
+                lsvMenu.Items.Clear();
+
+                MenuLoad();
+            }
+
+            //var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
+            //saveActivation.Activation = false;
+            //Commons.SetMenuActive(saveActivation);
+            //lsvMenu.Items.Clear();
+
+            //MenuLoad();
+
+        }
+
+
+        /// <summary>
+        /// 메뉴 목록 출력  
+        /// </summary>
         private void MenuLoad()
         {
-            // TODO Activation 확인해서 메뉴 띄우기
+            
             lsvMenu.Items.Clear();
             using (EATSEntities db = new EATSEntities())
             {
@@ -110,48 +139,6 @@ namespace EATS_kitchen
             
         }
 
-        private void lsvMenu_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            // TODO  활성 비활성 flag완성하기
-            var menus = Commons.GetMenu();
-            var selectedMenu = menus.Where(m => m.MenuCode.Equals((lsvMenu.SelectedItem as MenuItems).MenuCode)).FirstOrDefault();
-            
-            if (selectedMenu.Activation == true)
-            {
-                DialogResult dialogResult = MessageBox.Show("메뉴 비활성 하시겠습니까?", "비활성", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-                var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
-                saveActivation.Activation = false;
-                Commons.SetMenuActive(saveActivation);
-                lsvMenu.Items.Clear();
-
-                MenuLoad();
-            }
-            else if (selectedMenu.Activation == false)
-            {
-                DialogResult dialogResult = MessageBox.Show("메뉴 활성 하시겠습니까?", "활성", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-                var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
-                saveActivation.Activation = true;
-                Commons.SetMenuActive(saveActivation);
-                lsvMenu.Items.Clear();
-
-                MenuLoad();
-            }
-            
-            //var saveActivation = menus.FirstOrDefault(m => m.MenuName == selectedMenu.MenuName);
-            //saveActivation.Activation = false;
-            //Commons.SetMenuActive(saveActivation);
-            //lsvMenu.Items.Clear();
-            
-            //MenuLoad();
-            
-        }
+        
     }
 }

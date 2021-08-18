@@ -43,6 +43,9 @@ namespace kiosk1.View.Pay
             menuList = menus;
             OrderNum = orderNum;    
         }
+
+        #region EventHandler
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             lsvOrder.ItemsSource = menuList;
@@ -74,6 +77,13 @@ namespace kiosk1.View.Pay
             client.Disconnect();
         }
 
+        #endregion
+
+
+
+
+
+        #region CustomMethod
 
         /// <summary>
         /// 메인 화면으로 
@@ -90,6 +100,10 @@ namespace kiosk1.View.Pay
                 NavigationService.Navigate(main);
             }
         }
+
+        /// <summary>
+        /// 메뉴 총 가격 계산
+        /// </summary>
         private void PayMoneyCalc()
         {
             foreach (var item in menuList)
@@ -99,6 +113,10 @@ namespace kiosk1.View.Pay
 
             lblPayMoney.Content = "결제 금액 : " + totalPrice.ToString("N0") + "원";
         }
+
+        /// <summary>
+        /// Mqtt 프로토콜 연결
+        /// </summary>
         private void MqttConnection()
         {
             try
@@ -112,6 +130,11 @@ namespace kiosk1.View.Pay
                 MessageBox.Show(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Mqtt 메시지 전송
+        /// </summary>
+        /// <param name="orderCode">고유 주문 번호</param>
         private void MessagePublish(string orderCode)
         {
             try
@@ -135,6 +158,11 @@ namespace kiosk1.View.Pay
             }
             
         }
+
+        /// <summary>
+        /// DB에 주문 내역 저장
+        /// </summary>
+        /// <param name="orderCode">고유 주문 번호</param>
         private void SaveOrderToDB(string orderCode)
         {
             using (EATSEntities db = new EATSEntities())
@@ -176,8 +204,9 @@ namespace kiosk1.View.Pay
             }
         }
 
-        
+        #endregion
 
-        
+
+
     }
 }
