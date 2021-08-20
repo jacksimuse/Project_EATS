@@ -78,6 +78,7 @@ pd.start(40)
 h = 100         # High
 r = 40          # Low
 sec = 0.00001   # second
+flag = 0
 
 ### 초음파 센서 이용한 방해물 감지 메서드
 def ultra():
@@ -136,6 +137,73 @@ def set_right():
     GPIO.output(mpin6, True)
     GPIO.output(mpin7, False)
     GPIO.output(mpin8, True)
+
+### 짧은 후진
+def set_temp_back():
+    t_end = time.time() + 2
+    setOg()
+    while time.time() < t_end:
+        GPIO.output(mpin1, True)                                       # 전진 운전
+        GPIO.output(mpin2, False)
+        GPIO.output(mpin3, True)
+        GPIO.output(mpin4, False)
+        GPIO.output(mpin5, True)
+        GPIO.output(mpin6, False)
+        GPIO.output(mpin7, False)
+        GPIO.output(mpin8, True)
+    stop()
+	
+### 짧은 전진
+def set_temp_forward():
+    setOg()
+    while True:
+        if (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):
+            break
+        elif (GPIO.input(pin) == False) or (GPIO.input(pin2) == False):
+            GPIO.output(mpin1, False)                                       # 전진 운전
+            GPIO.output(mpin2, True)
+            GPIO.output(mpin3, False)
+            GPIO.output(mpin4, True)
+            GPIO.output(mpin5, False)
+            GPIO.output(mpin6, True)
+            GPIO.output(mpin7, True)
+            GPIO.output(mpin8, False)
+            time.sleep(0.00001)
+    stop()
+	
+### 짧은 좌회전
+def set_temp_left():
+    pa.ChangeDutyCycle(h)
+    pb.ChangeDutyCycle(h)
+    pc.ChangeDutyCycle(h)
+    pd.ChangeDutyCycle(h)
+    t_end = time.time() + 0.8
+    while time.time() < t_end:
+        GPIO.output(mpin1, True)    # 좌회전시 a와 c는 역방향 회전, b와 d는 정방향 회전
+        GPIO.output(mpin2, False)
+        GPIO.output(mpin3, False)
+        GPIO.output(mpin4, True)
+        GPIO.output(mpin5, True)
+        GPIO.output(mpin6, False)
+        GPIO.output(mpin7, True)
+        GPIO.output(mpin8, False)
+
+### 짧은 우회전
+def set_temp_right():
+    pa.ChangeDutyCycle(h)
+    pb.ChangeDutyCycle(h)
+    pc.ChangeDutyCycle(h)
+    pd.ChangeDutyCycle(h)
+    t_end = time.time() + 0.8
+    while time.time() < t_end:
+        GPIO.output(mpin1, False)    # 우회전시 a와 c는 정방향 회전, b와 d는 역방향 회전
+        GPIO.output(mpin2, True)
+        GPIO.output(mpin3, True)
+        GPIO.output(mpin4, False)
+        GPIO.output(mpin5, False)
+        GPIO.output(mpin6, True)
+        GPIO.output(mpin7, False)
+        GPIO.output(mpin8, True)
 
 ### 라인트레이스를 통한 전진/좌회전/우회전
 def set_start():
@@ -209,8 +277,27 @@ def stop():
 # 		time.sleep(1)
 # 	event_pause.clear()
 
+### 서빙 후 정위치로 세팅
+def set_table_position():
+    global flag
+    set_position()
+    set_start()
+
+    if flag == 1:
+        set_position()
+        set_temp_back()
+    elif flag == 2:
+        set_temp_forward()
+        set_temp_left()
+    elif flag == 3:
+        set_temp_forward()
+        set_temp_right()
+    elif flag == 4:
+        pass
+
 ### mqtt이용한 통신 메서드(서버로부터 publish message를 받을 때 호출되는 콜백)
 def on_message(client, userdata, message):
+    global flag
     # Topic에 연결하여 메세지를 수신한다(Subscribe).
     topic=str(message.topic)                        
     message = str(message.payload.decode("utf-8"))
@@ -220,17 +307,22 @@ def on_message(client, userdata, message):
     if message == 's':          # 전진
         set_start()
     elif message == 'b':        # 복귀
-        set_position()
-        set_start()
-        set_position()
+        set_table_position()
+        flag = 0
     elif message == 't':        # 정지
         stop()
-    # elif message == 'p':      # 일시정지
-    #     pause()
-    elif message == 'l':        # 좌회전
-        set_left()
-    elif message == 'r':        # 우회전
-        set_right()
+    elif message == '1':        # 1번 테이블
+        flag = 1
+        set_start()
+    elif message == '2':        # 2번 테이블
+        flag = 2
+        set_start()
+    elif message == '3':        # 3번 테이블
+        flag = 3
+        set_start()
+    # elif message == '4':        # 4번 테이블
+    #     flag = 4
+    #     set_start()
     else: pass
 
 ### mqtt 통신 위한 객체 생성 및 설정

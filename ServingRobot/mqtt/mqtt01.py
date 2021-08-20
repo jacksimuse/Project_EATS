@@ -6,7 +6,7 @@ import signal
 import os
 import time
 
-pin = 4         # 라인 근접 센서
+pin = 4        # 라인 근접 센서
 mpin1 = 20      # 앞 왼 바퀴1
 mpin2 = 21      # 앞 왼 바퀴2
 mpin3 = 6       # 앞 오 바퀴1
