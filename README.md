@@ -2,8 +2,8 @@
 EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 <br/>
 
-#### 로봇동작코드[.py 👈](https://github.com/HongryeolSeong/StudyRaspberryPi21/blob/main/Linetrace/mqtt/mqtt06.py)
-#### 프로젝트적용코드[.py 👈](https://github.com/HongryeolSeong/StudyRaspberryPi21/blob/main/Linetrace/mqtt/mqtt07.py)
+#### 로봇동작코드[.py 👈](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/mqtt/mqtt06.py)
+#### 프로젝트적용코드[.py 👈](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/mqtt/mqtt07.py)
 <br/>
 <br/>
 
