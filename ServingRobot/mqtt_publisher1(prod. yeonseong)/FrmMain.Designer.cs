@@ -37,7 +37,7 @@ namespace DeviceSubApp
             this.BtnBack = new System.Windows.Forms.Button();
             this.BtnStart = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnPause = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnConnect
@@ -65,11 +65,11 @@ namespace DeviceSubApp
             // BtnSend1
             // 
             this.BtnSend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnSend1.Location = new System.Drawing.Point(133, 54);
+            this.BtnSend1.Location = new System.Drawing.Point(56, 76);
             this.BtnSend1.Name = "BtnSend1";
             this.BtnSend1.Size = new System.Drawing.Size(142, 47);
             this.BtnSend1.TabIndex = 8;
-            this.BtnSend1.Text = "1";
+            this.BtnSend1.Text = "Left";
             this.BtnSend1.UseVisualStyleBackColor = true;
             this.BtnSend1.Click += new System.EventHandler(this.BtnSend1_Click);
             // 
@@ -86,18 +86,18 @@ namespace DeviceSubApp
             // BtnSend3
             // 
             this.BtnSend3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnSend3.Location = new System.Drawing.Point(291, 118);
+            this.BtnSend3.Location = new System.Drawing.Point(352, 76);
             this.BtnSend3.Name = "BtnSend3";
             this.BtnSend3.Size = new System.Drawing.Size(142, 47);
             this.BtnSend3.TabIndex = 12;
-            this.BtnSend3.Text = "4";
+            this.BtnSend3.Text = "Right";
             this.BtnSend3.UseVisualStyleBackColor = true;
             this.BtnSend3.Click += new System.EventHandler(this.BtnSend3_Click);
             // 
             // BtnBack
             // 
             this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnBack.Location = new System.Drawing.Point(291, 178);
+            this.BtnBack.Location = new System.Drawing.Point(204, 107);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(142, 47);
             this.BtnBack.TabIndex = 13;
@@ -108,18 +108,18 @@ namespace DeviceSubApp
             // BtnStart
             // 
             this.BtnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnStart.Location = new System.Drawing.Point(291, 54);
+            this.BtnStart.Location = new System.Drawing.Point(204, 54);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(142, 47);
             this.BtnStart.TabIndex = 14;
-            this.BtnStart.Text = "2";
+            this.BtnStart.Text = "Start";
             this.BtnStart.UseVisualStyleBackColor = true;
             this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // BtnStop
             // 
             this.BtnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.BtnStop.Location = new System.Drawing.Point(133, 178);
+            this.BtnStop.Location = new System.Drawing.Point(135, 169);
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.Size = new System.Drawing.Size(142, 47);
             this.BtnStop.TabIndex = 15;
@@ -127,26 +127,26 @@ namespace DeviceSubApp
             this.BtnStop.UseVisualStyleBackColor = true;
             this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
-            // button1
+            // BtnPause
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.button1.Location = new System.Drawing.Point(133, 118);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 47);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "3";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.BtnPause.Location = new System.Drawing.Point(283, 169);
+            this.BtnPause.Name = "BtnPause";
+            this.BtnPause.Size = new System.Drawing.Size(142, 47);
+            this.BtnPause.TabIndex = 15;
+            this.BtnPause.Text = "Pause";
+            this.BtnPause.UseVisualStyleBackColor = true;
+            this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 272);
+            this.Controls.Add(this.BtnPause);
             this.Controls.Add(this.BtnStop);
             this.Controls.Add(this.BtnStart);
             this.Controls.Add(this.BtnBack);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnSend3);
             this.Controls.Add(this.LblAlert);
             this.Controls.Add(this.BtnSend1);
@@ -172,7 +172,7 @@ namespace DeviceSubApp
         private System.Windows.Forms.Button BtnBack;
         private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.Button BtnStop;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnPause;
     }
 }
 

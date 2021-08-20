@@ -24,9 +24,9 @@ namespace DeviceSubApp
             IPAddress brokerAddress = IPAddress.Parse("210.119.12.93");
             BtnStop.Enabled = false;
             BtnBack.Enabled = false;
-            BtnPause.Enabled = false;
             BtnSend1.Enabled = false;
             BtnSend3.Enabled = false;
+            button1.Enabled = false;
             BtnStart.Enabled = false;
             BtnDisconnect.Enabled = false;
 
@@ -51,9 +51,9 @@ namespace DeviceSubApp
             BtnSend1.Enabled = true;
             BtnSend3.Enabled = true;
             BtnStart.Enabled = true;
+            button1.Enabled = true;
             BtnStop.Enabled = true;
             BtnBack.Enabled = true;
-            BtnPause.Enabled = true;
 
             LblAlert.Text = "CONNECTED!!";
         }
@@ -70,20 +70,10 @@ namespace DeviceSubApp
         {
             Reconnect();
             //BtnSend1.Enabled = false;
-            message = "l";
+            message = "1";
             // Publish
             Publish(message);
-            LblAlert.Text = "Left";
-        }
-
-        private void BtnSend3_Click(object sender, EventArgs e)
-        {
-            Reconnect();
-            //BtnSend3.Enabled = false;
-            message = "r";
-            // Publish
-            Publish(message);
-            LblAlert.Text = "Right";
+            LblAlert.Text = "1번테이블";
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -91,10 +81,31 @@ namespace DeviceSubApp
             Reconnect();
             //BtnStart.Enabled = false;
 
-            message = "s";
+            message = "2";
             // Publish
             Publish(message);
-            LblAlert.Text = "Start";
+            LblAlert.Text = "2번테이블";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Reconnect();
+            //BtnStart.Enabled = false;
+
+            message = "3";
+            // Publish
+            Publish(message);
+            LblAlert.Text = "3번테이블";
+        }
+
+        private void BtnSend3_Click(object sender, EventArgs e)
+        {
+            Reconnect();
+            //BtnSend3.Enabled = false;
+            message = "4";
+            // Publish
+            Publish(message);
+            LblAlert.Text = "4번테이블";
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -111,21 +122,6 @@ namespace DeviceSubApp
             // Publish
             Publish(message);
             LblAlert.Text = "Stop";
-        }
-        private void BtnPause_Click(object sender, EventArgs e)
-        {
-            Reconnect();
-            /*BtnStop.Enabled = false;
-            BtnPause.Enabled = false;
-
-            BtnStart.Enabled = true;
-            BtnSend1.Enabled = true;
-            BtnSend3.Enabled = true;*/
-
-            message = "p";
-            // Publish
-            Publish(message);
-            LblAlert.Text = "Pause";
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -159,7 +155,5 @@ namespace DeviceSubApp
                               0, // QoS level
                               true); // retained
         }
-
-        
     }
 }
