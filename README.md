@@ -26,8 +26,8 @@
 ![image](https://user-images.githubusercontent.com/77951828/129824169-c7b0b9f1-1eef-45de-a90c-6634a9772298.png)
 
 ## 3. 구현 (2021-08-02 ~ 2021-08-20)
-### 3-1. 주문용 키오스크
-### 3-2. 주방용 UI
+### 3-1. [주문용 키오스크](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1)
+### 3-2. [주방UI](https://github.com/jacksimuse/Project_EATS/tree/jacksim)
 ### 3-3. [서빙 로봇 제작](https://github.com/jacksimuse/Project_EATS/tree/hongryeol)
 
 ## 4. 발전 방향 및 개선 방안 
@@ -36,10 +36,10 @@
 - OpenCV를 활용한 시각 정보 활용 자율 주행 기능  
 
 ## 팀원 역할 (자기가 맡은 파트 업데이트 해주세요)  
-🧓 최재훈 : 주방UI(기능 : MQTT로 주문 코드받기, DB연동, 로봇에 메세지보내기) MQTT서버를 통해 주문 메시지 받기, 서빙로봇 출발시키기
+🧓 최재훈 : 주방UI(MQTT로 주문 코드받기, DB연동, 로봇에 메세지보내기) MQTT서버를 통해 주문 메시지 받기, 서빙로봇 출발시키기  
 👦 김현수 : EntityFramework DB 연동, Data Select/Insert 테스트 (8/2), [주문 테스트](https://github.com/jacksimuse/Project_EATS/tree/main/OrderTest) (8/3)  
 🧑 허재현 : 자료 조사 및 프로젝트 방향 설정 ------ 취업 완료 (2021.07.2x)   
 🧔 성홍렬 : Serving Robot 설계 및 구현   
-👩‍🦰 안성주 :  [메뉴UI](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1) (8/3) 손님UI(대기번호 전송, 주문확인 결제창) , 관리자 로그인창 (8/05)       
+👩‍🦰 안성주 :  메뉴UI (8/3) 손님UI(대기번호 전송, 주문확인 결제창) , 관리자 로그인창 (8/05)       
 👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5) LINQ 및 mqtt를 이용한 json 메세지 처리 및 전반적인 피드백 제공 ------ 취업 완료 (2021.08.3x)   
 <br/>
