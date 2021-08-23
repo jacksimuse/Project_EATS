@@ -27,7 +27,7 @@
 
 ## 3. 구현 (2021-08-02 ~ 2021-08-20)
 ### 3-1. [주문용 키오스크](https://github.com/jacksimuse/Project_EATS/tree/main/kiosk1)
-### 3-2. [주방UI](https://github.com/jacksimuse/Project_EATS/tree/jacksim)
+### 3-2. [주방UI](https://github.com/jacksimuse/Project_EATS/tree/main/%EC%A3%BC%EB%B0%A9/EATS_kitchen)
 ### 3-3. [서빙 로봇 제작](https://github.com/jacksimuse/Project_EATS/tree/hongryeol)
 
 ## 4. 발전 방향 및 개선 방안 
