@@ -1,7 +1,7 @@
 # 주문용 키오스크 (.NET Framework WPF 기반, RDBMS(MS-SQL) 연동, MQTT Protocol 활용 통신 기능) 
 
 ## 초기 화면
-- 매장 내 사용 중인 테이블과 사용 가능한 테이블 표시 
+- 매장 내 사용 중인 테이블과 사용 가능한 테이블 표시    
 ![image](https://user-images.githubusercontent.com/77951828/130381657-972d4ffa-e78e-429f-8854-16ecf4a1dbe9.png)   
 
 - 모든 테이블 만석 시 대기 문자 전송 화면과 (미구현) 테이블 별 추가 주문 기능 
