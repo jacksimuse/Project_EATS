@@ -15,7 +15,7 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 
 ![drive](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/1.gif)
 <br/>
-###### 서빙로봇의 기본 동작인 전진, 후진, 좌회전, 우회전을 구현하였습니다. <br/> 서빙이 완료되면 다시 해당 라인을 따라 주방으로 복귀합니다.
+###### 서빙로봇의 기본 동작인 전진, 후진, 좌회전, 우회전을 구현하였습니다.
 
 <br/>
 <br/>
@@ -27,7 +27,7 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 
 ![linetrace](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/2.gif)
 <br/>
-###### 라인트레이스를 통해 로봇은 검은색 라인을 따라 해당 테이블로 서빙하게 됩니다.
+###### 라인트레이스를 통해 로봇은 검은색 라인을 따라 해당 테이블로 서빙하게 됩니다. <br/> 서빙이 완료되면 다시 해당 라인을 따라 주방으로 복귀합니다.
 
 <br/>
 <br/>
