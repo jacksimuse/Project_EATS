@@ -24,5 +24,3 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 ---
 <img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/ultra.png" width="200" height="150"/>
 <br/>
->>>>>>> 880725db3da8cc8aadf95d78f2af0d66e443d7d3
-<br/>
