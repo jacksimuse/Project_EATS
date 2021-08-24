@@ -212,9 +212,6 @@
       <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tables.cs" />
-    <Compile Include="Model\Usertbl.cs">
-      <DependentUpon>EATS.tt</DependentUpon>
-    </Compile>
     <Compile Include="View\Select\MenuSelect.xaml.cs">
       <DependentUpon>MenuSelect.xaml</DependentUpon>
     </Compile>
@@ -290,7 +287,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="soup.png" />
   </ItemGroup>
@@ -352,20 +348,22 @@
     <Resource Include="Image\고로케.JPG" />
     <Resource Include="Image\새우튀김.JPG" />
     <Resource Include="Image\치킨.JPG" />
+    <Resource Include="Resources\no_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EATS.Context.cs</LastGenOutput>
       <DependentUpon>EATS.edmx</DependentUpon>
+      <LastGenOutput>EATS.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\EATS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EATS.edmx</DependentUpon>
       <LastGenOutput>EATS.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\no_image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />

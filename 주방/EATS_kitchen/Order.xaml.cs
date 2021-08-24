@@ -178,25 +178,25 @@ namespace EATS_kitchen
                         if (tblNum == 1)
                         {
                             menuTable1 = orderInfo;
-                            Lbltbl1.Content = DateTime.Now.ToString("HH:mm:ss");
+                            Lbltbl1.Content = order.OrderTime.ToShortTimeString();
                             lsvTable1.ItemsSource = orderInfo;
                         }
                         else if (tblNum == 2)
                         {
                             menuTable2 = orderInfo;
-                            Lbltbl2.Content = DateTime.Now.ToString("HH:mm:ss");
+                            Lbltbl2.Content = order.OrderTime.ToShortTimeString();
                             lsvTable2.ItemsSource = orderInfo;
                         }
                         else if (tblNum == 3)
                         {
                             menuTable3 = orderInfo;
-                            Lbltbl3.Content = DateTime.Now.ToString("HH:mm:ss");
+                            Lbltbl3.Content = order.OrderTime.ToShortTimeString();
                             lsvTable3.ItemsSource = orderInfo;
                         }
                         else if (tblNum == 4)
                         {
                             menuTable4 = orderInfo;
-                            Lbltbl4.Content = DateTime.Now.ToString("HH:mm:ss");
+                            Lbltbl4.Content = order.OrderTime.ToShortTimeString();
                             lsvTable4.ItemsSource = orderInfo;
                         }
                     }

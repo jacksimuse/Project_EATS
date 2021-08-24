@@ -206,9 +206,6 @@
       <DependentUpon>EATS.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Tables.cs" />
-    <Compile Include="Model\Usertbl.cs">
-      <DependentUpon>EATS.tt</DependentUpon>
-    </Compile>
     <Page Include="Activation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -292,6 +289,11 @@
     <Resource Include="image\고로케.JPG" />
     <Resource Include="image\새우튀김.JPG" />
     <Resource Include="image\치킨.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\EATS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EATS.edmx</DependentUpon>
@@ -302,9 +304,6 @@
       <DependentUpon>EATS.edmx</DependentUpon>
       <LastGenOutput>EATS.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

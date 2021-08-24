@@ -4,11 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="617b3515cafd4d50919e21780983b5b9" Name="Diagram1">
+      <Diagram DiagramId="d829ea3621bd4c7fa70c5ba899c09694" Name="Diagram1">
         <EntityTypeShape EntityType="EATSModel.Menutbl" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EATSModel.OrderDetailtbl" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EATSModel.OrderDetailtbl" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EATSModel.Ordertbl" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="EATSModel.Usertbl" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="EATSModel.FK_OrderDetailtbl_Ordertbl" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

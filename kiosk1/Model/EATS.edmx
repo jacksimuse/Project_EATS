@@ -16,7 +16,7 @@
           <Property Name="Activation" Type="bit" Nullable="false" />
           <Property Name="RegisterDate" Type="datetime" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="ImageName" Type="varchar(max)" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -34,20 +34,10 @@
           </Key>
           <Property Name="OrderCode" Type="varchar" MaxLength="11" Nullable="false" />
           <Property Name="OrderTime" Type="datetime" Nullable="false" />
-          <Property Name="CustomerNum" Type="int" Nullable="false" />
           <Property Name="TblNum" Type="int" Nullable="false" />
           <Property Name="OrderPrice" Type="int" Nullable="false" />
           <Property Name="TableInUse" Type="bit" Nullable="false" />
           <Property Name="OrderRemark" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="Usertbl">
-          <Key>
-            <PropertyRef Name="Idx" />
-          </Key>
-          <Property Name="Idx" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <!--생성 중 오류 발생:
 경고 6035: 관계의 기본 측에 있는 테이블의 키 일부가 아닌 열이 'FK_OrderDetailtbl_Menutbl' 관계에 있습니다. 관계가 제외되었습니다.
@@ -68,7 +58,6 @@
           <EntitySet Name="Menutbl" EntityType="Self.Menutbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetailtbl" EntityType="Self.OrderDetailtbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ordertbl" EntityType="Self.Ordertbl" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usertbl" EntityType="Self.Usertbl" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_OrderDetailtbl_Ordertbl" Association="Self.FK_OrderDetailtbl_Ordertbl">
             <End Role="Ordertbl" EntitySet="Ordertbl" />
             <End Role="OrderDetailtbl" EntitySet="OrderDetailtbl" />
@@ -90,7 +79,7 @@
           <Property Name="Activation" Type="Boolean" Nullable="false" />
           <Property Name="RegisterDate" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderDetailtbl">
           <Key>
@@ -109,21 +98,11 @@
           </Key>
           <Property Name="OrderCode" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CustomerNum" Type="Int32" Nullable="false" />
           <Property Name="TblNum" Type="Int32" Nullable="false" />
           <Property Name="OrderPrice" Type="Int32" Nullable="false" />
           <Property Name="TableInUse" Type="Boolean" Nullable="false" />
           <Property Name="OrderRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetailtbl" Relationship="Self.FK_OrderDetailtbl_Ordertbl" FromRole="Ordertbl" ToRole="OrderDetailtbl" />
-        </EntityType>
-        <EntityType Name="Usertbl">
-          <Key>
-            <PropertyRef Name="Idx" />
-          </Key>
-          <Property Name="Idx" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_OrderDetailtbl_Ordertbl">
           <End Role="Ordertbl" Type="Self.Ordertbl" Multiplicity="1" />
@@ -141,7 +120,6 @@
           <EntitySet Name="Menutbl" EntityType="Self.Menutbl" />
           <EntitySet Name="OrderDetailtbl" EntityType="Self.OrderDetailtbl" />
           <EntitySet Name="Ordertbl" EntityType="Self.Ordertbl" />
-          <EntitySet Name="Usertbl" EntityType="Self.Usertbl" />
           <AssociationSet Name="FK_OrderDetailtbl_Ordertbl" Association="Self.FK_OrderDetailtbl_Ordertbl">
             <End Role="Ordertbl" EntitySet="Ordertbl" />
             <End Role="OrderDetailtbl" EntitySet="OrderDetailtbl" />
@@ -183,21 +161,10 @@
               <MappingFragment StoreEntitySet="Ordertbl">
                 <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
                 <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
                 <ScalarProperty Name="TblNum" ColumnName="TblNum" />
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="TableInUse" ColumnName="TableInUse" />
                 <ScalarProperty Name="OrderRemark" ColumnName="OrderRemark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usertbl">
-            <EntityTypeMapping TypeName="EATSModel.Usertbl">
-              <MappingFragment StoreEntitySet="Usertbl">
-                <ScalarProperty Name="Idx" ColumnName="Idx" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

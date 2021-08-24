@@ -87,7 +87,7 @@ namespace kiosk1.View.Select
         
         /// <summary>
         /// 선택 메뉴 취소
-        /// </summary>
+        /// </summary>d
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             try

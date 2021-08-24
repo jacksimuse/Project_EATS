@@ -174,7 +174,6 @@ namespace kiosk1.View.Pay
                 {
                     OrderCode = orderCode,
                     OrderTime = DateTime.Now,
-                    CustomerNum = 0,
                     TblNum = TableNum,
                     OrderPrice = totalPrice, // TODO : 계산식 추가
                     TableInUse = true,

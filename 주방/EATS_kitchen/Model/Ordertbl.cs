@@ -22,7 +22,6 @@ namespace EATS_kitchen.Model
     
         public string OrderCode { get; set; }
         public System.DateTime OrderTime { get; set; }
-        public int CustomerNum { get; set; }
         public int TblNum { get; set; }
         public int OrderPrice { get; set; }
         public bool TableInUse { get; set; }

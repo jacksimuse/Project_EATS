@@ -7,9 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace kiosk1.Model
-
 {
     using System;
     using System.Collections.Generic;
