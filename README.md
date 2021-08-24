@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EATS (Enterprise Automation Table-serving System) 프로젝트 
 - 개요 : 인건비 부담과 혼밥, 혼술이 유행하며 1인 소자본 소규모 창업이 증가함에 따라 1인 운영이 가능한 자동화 시스템 필요성 제시    
 현재 상용화되고 있는 서빙 로봇과 연계하여 활용 가능한 키오스크와 주방용 UI 제작 
@@ -44,4 +45,32 @@
 🧔 성홍렬 : Serving Robot 설계 및 구현   
 👩‍🦰 안성주 :  메뉴UI (8/3) 손님UI(대기번호 전송, 주문확인 결제창) , 관리자 로그인창 (8/05)       
 👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5) LINQ 및 mqtt를 이용한 json 메세지 처리 및 전반적인 피드백 제공 ------ 취업 완료 (2021.08.3x)   
+=======
+# 서빙 로봇 구현
+EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
+<br/>
+
+#### 로봇동작코드[.py 👈](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/mqtt/mqtt06.py)
+#### 프로젝트적용코드[.py 👈](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/mqtt/mqtt07.py)
+<br/>
+<br/>
+
+## 사용된 장치 및 센서
+### DC모터x4 및 모터드라이버 모듈x2
+---
+<img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/moterset.png" width="800" height="280"/>
+<br/>
+<br/>
+
+### 라인트레이서 센서
+---
+<img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/line.png" width="180" height="260"/>
+<br/>
+<br/>
+
+### 초음파 센서
+---
+<img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/ultra.png" width="200" height="150"/>
+<br/>
+>>>>>>> 880725db3da8cc8aadf95d78f2af0d66e443d7d3
 <br/>
