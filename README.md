@@ -10,7 +10,7 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 ## 사용된 장치 및 센서
 ### DC모터x4 및 모터드라이버 모듈x2
 ---
-<img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/moterset.png" width="800" height="280"/>
+<img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/moterset.png" width="600" height="200"/>
 <br/>
 
 ![drive](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/1.gif)
