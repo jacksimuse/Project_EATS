@@ -12,7 +12,9 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 ---
 <img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/moterset.png" width="800" height="280"/>
 <br/>
+
 ![drive](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/1.gif)
+
 <br/>
 <br/>
 
@@ -20,7 +22,9 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 ---
 <img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/line.png" width="180" height="260"/>
 <br/>
+
 ![linetrace](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/2.gif)
+
 <br/>
 <br/>
 
@@ -28,5 +32,7 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 ---
 <img src ="https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/ultra.png" width="200" height="150"/>
 <br/>
+
 ![ultra](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/3.gif)
+
 <br/>
