@@ -78,7 +78,7 @@ pd.start(40)
 h = 100         # High
 r = 40          # Low
 sec = 0.00001   # second
-flag = 0
+flag = 0        # 테이블별 작업을 위한 플래그
 
 ### 초음파 센서 이용한 방해물 감지 메서드
 def ultra():
@@ -140,10 +140,10 @@ def set_right():
 
 ### 짧은 후진
 def set_temp_back():
-    t_end = time.time() + 2
+    t_end = time.time() + 1.5
     setOg()
     while time.time() < t_end:
-        GPIO.output(mpin1, True)                                       # 전진 운전
+        GPIO.output(mpin1, True)
         GPIO.output(mpin2, False)
         GPIO.output(mpin3, True)
         GPIO.output(mpin4, False)
@@ -152,15 +152,32 @@ def set_temp_back():
         GPIO.output(mpin7, False)
         GPIO.output(mpin8, True)
     stop()
+
+### 짧은 전진1(특정 시간동안 전진 수행)
+def set_temp_forward1():
+    pa.ChangeDutyCycle(h)
+    pb.ChangeDutyCycle(h)
+    pc.ChangeDutyCycle(h)
+    pd.ChangeDutyCycle(h)
+    t_end = time.time() + 0.7
+    while time.time() < t_end:
+        GPIO.output(mpin1, False)
+        GPIO.output(mpin2, True)
+        GPIO.output(mpin3, False)
+        GPIO.output(mpin4, True)
+        GPIO.output(mpin5, False)
+        GPIO.output(mpin6, True)
+        GPIO.output(mpin7, True)
+        GPIO.output(mpin8, False)
 	
-### 짧은 전진
-def set_temp_forward():
+### 짧은 전진2(전진 수행하다 라인을 만나면 종료)
+def set_temp_forward2():
     setOg()
     while True:
         if (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):
             break
         elif (GPIO.input(pin) == False) or (GPIO.input(pin2) == False):
-            GPIO.output(mpin1, False)                                       # 전진 운전
+            GPIO.output(mpin1, False)
             GPIO.output(mpin2, True)
             GPIO.output(mpin3, False)
             GPIO.output(mpin4, True)
@@ -168,10 +185,10 @@ def set_temp_forward():
             GPIO.output(mpin6, True)
             GPIO.output(mpin7, True)
             GPIO.output(mpin8, False)
-            time.sleep(0.00001)
+            time.sleep(sec)
     stop()
 	
-### 짧은 좌회전
+### 짧은 좌회전(특정 시간동안 좌회전 수행)
 def set_temp_left():
     pa.ChangeDutyCycle(h)
     pb.ChangeDutyCycle(h)
@@ -179,7 +196,7 @@ def set_temp_left():
     pd.ChangeDutyCycle(h)
     t_end = time.time() + 0.8
     while time.time() < t_end:
-        GPIO.output(mpin1, True)    # 좌회전시 a와 c는 역방향 회전, b와 d는 정방향 회전
+        GPIO.output(mpin1, True)
         GPIO.output(mpin2, False)
         GPIO.output(mpin3, False)
         GPIO.output(mpin4, True)
@@ -187,16 +204,17 @@ def set_temp_left():
         GPIO.output(mpin6, False)
         GPIO.output(mpin7, True)
         GPIO.output(mpin8, False)
+    stop()
 
-### 짧은 우회전
+### 짧은 우회전(특정 시간동안 우회전 수행)
 def set_temp_right():
     pa.ChangeDutyCycle(h)
     pb.ChangeDutyCycle(h)
     pc.ChangeDutyCycle(h)
     pd.ChangeDutyCycle(h)
-    t_end = time.time() + 0.8
+    t_end = time.time() + 1
     while time.time() < t_end:
-        GPIO.output(mpin1, False)    # 우회전시 a와 c는 정방향 회전, b와 d는 역방향 회전
+        GPIO.output(mpin1, False)
         GPIO.output(mpin2, True)
         GPIO.output(mpin3, True)
         GPIO.output(mpin4, False)
@@ -204,6 +222,7 @@ def set_temp_right():
         GPIO.output(mpin6, True)
         GPIO.output(mpin7, False)
         GPIO.output(mpin8, True)
+    stop()
 
 ### 라인트레이스를 통한 전진/좌회전/우회전
 def set_start():
@@ -220,36 +239,48 @@ def set_start():
         #         time.sleep(1)
 
         # 초음파 센서로 방해물 감지
-        # distance = ultra()
-        # if distance < 60:
-        #     stop()
-        if (GPIO.input(pin) == False) and (GPIO.input(pin2) == False):    # 근접센서1 on, 근접센서2 on
-            #print("no path")
-            stop()                                                          # RC카 멈춘 후
-            break                                                           # 라인트레이스 구동 종료
-        elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):      # 근접센서1 off, 근접센서2 off
-            #print("path")
-            setOg()
-            GPIO.output(mpin1, False)                                       # 전진 운전
-            GPIO.output(mpin2, True)
-            GPIO.output(mpin3, False)
-            GPIO.output(mpin4, True)
-            GPIO.output(mpin5, False)
-            GPIO.output(mpin6, True)
-            GPIO.output(mpin7, True)
-            GPIO.output(mpin8, False)
-            time.sleep(0.00001)
-        elif (GPIO.input(pin) == False) and (GPIO.input(pin2) == True):     # 근접센서1 on, 근접센서2 off
-            #print("right")
-            set_right()                                                     # 우회전 운전
-            time.sleep(sec)
-        elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == False):     # 근접센서1 off, 근접센서2 on
-            #print("left")
-            set_left()                                                      # 좌회전 운전
-            time.sleep(sec)
-        
-### 경로가 끝난 지점에서 다시 운전하기 위해 180도 회전
+        distance = ultra()
+        if distance < 30:
+            stop()
+        elif distance >= 30:
+            if (GPIO.input(pin) == False) and (GPIO.input(pin2) == False):      # 근접센서1 on, 근접센서2 on
+                #print("no path")
+                stop()                                                          # RC카 멈춘 후
+                break                                                           # 라인트레이스 구동 종료
+            elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):      # 근접센서1 off, 근접센서2 off
+                #print("path")
+                setOg()
+                GPIO.output(mpin1, False)                                       # 전진 운전
+                GPIO.output(mpin2, True)
+                GPIO.output(mpin3, False)
+                GPIO.output(mpin4, True)
+                GPIO.output(mpin5, False)
+                GPIO.output(mpin6, True)
+                GPIO.output(mpin7, True)
+                GPIO.output(mpin8, False)
+                time.sleep(0.00001)
+            elif (GPIO.input(pin) == False) and (GPIO.input(pin2) == True):     # 근접센서1 on, 근접센서2 off
+                #print("right")
+                set_right()                                                     # 우회전 운전
+                time.sleep(sec)
+            elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == False):     # 근접센서1 off, 근접센서2 on
+                #print("left")
+                set_left()                                                      # 좌회전 운전
+                time.sleep(sec)
+                
+### 제자리 회전1(특정 시간동안 제자리 회전 수행)  
 def set_position():
+    pa.ChangeDutyCycle(h)
+    pb.ChangeDutyCycle(h)
+    pc.ChangeDutyCycle(h)
+    pd.ChangeDutyCycle(h)
+    t_end = time.time() + 1.5
+    while time.time() < t_end:
+        set_left()
+    stop()
+        
+### 제자리 회전2(라인을 만날 때 까지 수행)
+def set_position2():
     while True:
         if (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):        # 핀이 둘 다 off일 시 = 경로에 위치할 시
             break                                                           # 제자리 좌회전 종료
@@ -280,17 +311,17 @@ def stop():
 ### 서빙 후 정위치로 세팅
 def set_table_position():
     global flag
-    set_position()
+    set_position2()
     set_start()
 
     if flag == 1:
         set_position()
         set_temp_back()
     elif flag == 2:
-        set_temp_forward()
+        set_temp_forward1()
         set_temp_left()
     elif flag == 3:
-        set_temp_forward()
+        set_temp_forward1()
         set_temp_right()
     elif flag == 4:
         pass
@@ -307,18 +338,27 @@ def on_message(client, userdata, message):
     if message == 's':          # 전진
         set_start()
     elif message == 'b':        # 복귀
+        #set_position()
         set_table_position()
         flag = 0
     elif message == 't':        # 정지
         stop()
     elif message == '1':        # 1번 테이블
         flag = 1
+        set_temp_forward2()
+        time.sleep(0.2)
         set_start()
     elif message == '2':        # 2번 테이블
         flag = 2
+        set_temp_left()
+        set_temp_forward2()
+        time.sleep(0.2)
         set_start()
     elif message == '3':        # 3번 테이블
         flag = 3
+        set_temp_right()
+        set_temp_forward2()
+        time.sleep(0.2)
         set_start()
     # elif message == '4':        # 4번 테이블
     #     flag = 4

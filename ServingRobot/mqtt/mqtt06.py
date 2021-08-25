@@ -76,7 +76,7 @@ pd.start(40)
 
 ### PWM 값 및 time.sleep()의 시간 변수 설정
 h = 100         # High
-r = 40          # Low
+r = 60          # Low
 sec = 0.00001   # second
 
 ### 초음파 센서 이용한 방해물 감지 메서드
@@ -95,9 +95,9 @@ def ultra():
 
         rtTotime = stop - start         # 초음파 송수신 완료 시간
         distance = rtTotime * 34000 / 2 # 탐지된 물체와의 거리
-        print("distance : %.2fcm" % distance)
+        #print("distance : %.2fcm" % distance)
 
-        time.sleep(0.1)
+        time.sleep(sec)
         return distance
 
 ### 코너링 후 다시 원래 속도로 돌아오기 위한 메서드
@@ -152,33 +152,34 @@ def set_start():
         #         time.sleep(1)
 
         # 초음파 센서로 방해물 감지
-        # distance = ultra()
-        # if distance < 60:
-        #     stop()
-        if (GPIO.input(pin) == False) and (GPIO.input(pin2) == False):    # 근접센서1 on, 근접센서2 on
-            #print("no path")
-            stop()                                                          # RC카 멈춘 후
-            break                                                           # 라인트레이스 구동 종료
-        elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):      # 근접센서1 off, 근접센서2 off
-            #print("path")
-            setOg()
-            GPIO.output(mpin1, False)                                       # 전진 운전
-            GPIO.output(mpin2, True)
-            GPIO.output(mpin3, False)
-            GPIO.output(mpin4, True)
-            GPIO.output(mpin5, False)
-            GPIO.output(mpin6, True)
-            GPIO.output(mpin7, True)
-            GPIO.output(mpin8, False)
-            time.sleep(0.00001)
-        elif (GPIO.input(pin) == False) and (GPIO.input(pin2) == True):     # 근접센서1 on, 근접센서2 off
-            #print("right")
-            set_right()                                                     # 우회전 운전
-            time.sleep(sec)
-        elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == False):     # 근접센서1 off, 근접센서2 on
-            #print("left")
-            set_left()                                                      # 좌회전 운전
-            time.sleep(sec)
+        distance = ultra()
+        if distance < 30:
+            stop()
+        elif distance >= 30:
+            if (GPIO.input(pin) == False) and (GPIO.input(pin2) == False):      # 근접센서1 on, 근접센서2 on
+                #print("no path")
+                stop()                                                          # RC카 멈춘 후
+                break                                                           # 라인트레이스 구동 종료
+            elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == True):      # 근접센서1 off, 근접센서2 off
+                #print("path")
+                setOg()
+                GPIO.output(mpin1, False)                                       # 전진 운전
+                GPIO.output(mpin2, True)
+                GPIO.output(mpin3, False)
+                GPIO.output(mpin4, True)
+                GPIO.output(mpin5, False)
+                GPIO.output(mpin6, True)
+                GPIO.output(mpin7, True)
+                GPIO.output(mpin8, False)
+                time.sleep(0.00001)
+            elif (GPIO.input(pin) == False) and (GPIO.input(pin2) == True):     # 근접센서1 on, 근접센서2 off
+                #print("right")
+                set_right()                                                     # 우회전 운전
+                time.sleep(sec)
+            elif (GPIO.input(pin) == True) and (GPIO.input(pin2) == False):     # 근접센서1 off, 근접센서2 on
+                #print("left")
+                set_left()                                                      # 좌회전 운전
+                time.sleep(sec)
         
 ### 경로가 끝난 지점에서 다시 운전하기 위해 180도 회전
 def set_position():
@@ -234,7 +235,7 @@ def on_message(client, userdata, message):
     else: pass
 
 ### mqtt 통신 위한 객체 생성 및 설정
-broker_address='210.119.12.93'  # broker address
+broker_address='210.119.12.92'  # broker address
 pub_topic = 'MOTOR/TEST/'       # topic
 print("creating new instance")
 client=mqtt.Client("P1")        # create new instance
