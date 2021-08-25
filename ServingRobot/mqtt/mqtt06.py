@@ -14,7 +14,7 @@ import time
 # event_stop.clear()
 # event_pause.clear()
 
-### 핀 할당
+### 핀 할당 
 # 라인 근접 센서x2
 pin = 19        # 라인 근접 센서1
 pin2 = 4        # 라인 근접 센서2
