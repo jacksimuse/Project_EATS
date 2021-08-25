@@ -78,7 +78,7 @@ pd.start(40)
 h = 100         # High
 r = 40          # Low
 sec = 0.00001   # second
-flag = 0        # 테이블별 작업을 위한 플래그
+flag = 0        # 테이블 별 작업을 위한 플래그
 
 ### 초음파 센서 이용한 방해물 감지 메서드
 def ultra():
