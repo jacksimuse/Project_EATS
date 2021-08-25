@@ -43,14 +43,14 @@ EATS 프로젝트에서 서빙을 담당할 로봇에 대한 내용입니다.
 #### 원하는 테이블로 서빙 수행
 ---
 ###### 1번 테이블 서빙
-![first](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/3.gif)
+![first](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/1table.gif)
 <br/>
 
 ###### 2번 테이블 서빙
-![second](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/3.gif)
+![second](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/2table.gif)
 <br/>
 
 ###### 3번 테이블 서빙
-![third](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/3.gif)
+![third](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/3table.gif)
 <br/>
 
