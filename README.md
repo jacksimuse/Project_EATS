@@ -31,7 +31,24 @@
 ### 3-2. [주방UI](https://github.com/jacksimuse/Project_EATS/tree/main/%EC%A3%BC%EB%B0%A9/EATS_kitchen)
 ### 3-3. [서빙 로봇 제작](https://github.com/jacksimuse/Project_EATS/tree/hongryeol)
 
-## 4. 발전 방향 및 개선 방안 
+## 4. 결과
+#### 1. 손님이 주문 키오스크를 통해 주문
+![step1](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/last01.gif)
+<br/>
+
+#### 2. 점주는 주방 시스템을 통해 주문 확인 및 서빙 보내기
+![step2](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/last02.gif)
+<br/>
+
+#### 3. 서빙 로봇은 입력받은 테이블로 서빙 시작
+![step3](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/last03.gif)
+<br/>
+
+#### 4. 서빙 로봇은 서빙 완료시 주방으로 복귀
+![step4](https://github.com/jacksimuse/Project_EATS/blob/hongryeol/ServingRobot/refimg/last04.gif)
+<br/>
+
+## 5. 발전 방향 및 개선 방안 
 - DB 데이터 기반 통계 기능 추가
 - 코드 흐름 분석 및 리팩토링 
 - OpenCV를 활용한 시각 정보 활용 자율 주행 기능  
