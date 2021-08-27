@@ -59,7 +59,7 @@
 👦 김현수 : EntityFramework DB 연동, Data Select/Insert 테스트 (8/2), [주문 테스트](https://github.com/jacksimuse/Project_EATS/tree/main/OrderTest) (8/3),    
             키오스크 / 주방UI 동작 로직 설계 및 구현    
 🧑 허재현 : 자료 조사 및 프로젝트 방향 설정 ------ 취업 완료 (2021.07.2x)   
-🧔 성홍렬 : Serving Robot 설계 및 구현   
 👩‍🦰 안성주 :  메뉴UI (8/3) 손님UI(대기번호 전송, 주문확인 결제창) , 관리자 로그인창 (8/05)       
 👩 최연성 :  opencv 움직임 감지 + 초음파 센서 장애물 거리 감지(8/5) LINQ 및 mqtt를 이용한 json 메세지 처리 및 전반적인 피드백 제공 ------ 취업 완료 (2021.08.3x)   
+🧔 성홍렬 : Serving Robot 설계 및 구현   
 <br/>
